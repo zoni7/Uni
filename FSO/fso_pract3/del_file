@@ -1,0 +1,16 @@
+#!/bin/bash 
+# my_processes
+
+
+if test -f $1
+then
+	 rm -f $1
+	 echo "file deleted"
+else 
+	if test -d $1
+	then
+	echo "$1 is a folder"
+	else 
+	echo "There is no file named $1"
+	fi
+fi

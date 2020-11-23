@@ -1,0 +1,13 @@
+echo "PID		PPID		STATE		COMMAND"
+moldel=$(cat /proc/$1/status)
+var1=$(awk '/Pid:/ { print $2} ' /proc/$1/status)
+var2=$(awk '/PPid:/ { print $2} ' /proc/$1/status)
+var3=$(awk '/State:/ { print $2} ' /proc/$1/status)
+var4=$(cat /proc/$1/cmdline | tr '\0' '\n' )
+
+echo $1	"	       " $var2 "		" $var3 "		" $var4
+
+
+
+
+	

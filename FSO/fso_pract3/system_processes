@@ -1,0 +1,7 @@
+num=$(ps h -eo pid)
+echo -e "PID\t\tPPID\t\tSTATE\t\tCMD"
+for i in $num
+do	
+		./inf_process $i | grep -v PID
+done
+
