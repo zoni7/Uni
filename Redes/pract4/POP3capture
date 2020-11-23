@@ -1,0 +1,280 @@
++OK Hello there.
+CAPA
++OK Here's what I can do:
+TOP
+USER
+LOGIN-DELAY 10
+PIPELINING
+UIDL
+IMPLEMENTATION Courier Mail Server
+.
+USER redes21
++OK Password required.
+PASS bloqueo
++OK logged in.
+STAT
++OK 15 11041
+LIST
++OK POP3 clients that break here, they violate STD53.
+1 721
+2 747
+3 733
+4 727
+5 734
+6 738
+7 732
+8 751
+9 762
+10 741
+11 720
+12 740
+13 737
+14 719
+15 739
+.
+UIDL
++OK
+1 1605709386.V803Ia7M436648.serveis-rdc
+2 1605709859.V803Ib1M332699.serveis-rdc
+3 1605709935.V803I9fM109134.serveis-rdc
+4 1605710388.V803I88M425425.serveis-rdc
+5 1605710435.V803Ib6M208008.serveis-rdc
+6 UID6-1605710543
+7 UID7-1605710543
+8 UID8-1605710543
+9 UID9-1605710543
+10 UID10-1605710543
+11 UID11-1605710543
+12 UID12-1605710543
+13 UID13-1605710543
+14 UID14-1605710543
+15 UID15-1605710543
+.
+RETR 6
++OK 738 octets follow.
+Return-Path: <redes21@redes.upv.es>
+X-Original-To: redes21@redes.upv.es
+Delivered-To: redes21@redes.upv.es
+Received: from [10.0.2.15] (vpn237-73.vpns.upv.es [158.42.237.73])
+	by serveis-rdc.redes.upv.es (Postfix) with ESMTP id 8CB2D5F7E5
+	for <redes21@redes.upv.es>; Wed, 18 Nov 2020 15:42:34 +0100 (CET)
+To: redes21@redes.upv.es
+From: Joan Matarredona <redes21@redes.upv.es>
+Subject: POP3
+Message-ID: <dd5f4cc6-4398-da57-aef6-82cac9d44d5d@redes.upv.es>
+Date: Wed, 18 Nov 2020 15:42:34 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+
+hi POP3
+.
+RETR 7
++OK 732 octets follow.
+Return-Path: <redes21@redes.upv.es>
+X-Original-To: redes21@redes.upv.es
+Delivered-To: redes21@redes.upv.es
+Received: from [10.0.2.15] (vpn246-13.vpns.upv.es [158.42.246.13])
+	by serveis-rdc.redes.upv.es (Postfix) with ESMTP id 5B7FC5F7E5
+	for <redes21@redes.upv.es>; Wed, 18 Nov 2020 15:43:21 +0100 (CET)
+To: redes21@redes.upv.es
+From: Alumno de Redes <redes21@redes.upv.es>
+Subject: kk
+Message-ID: <c2e922db-597b-b705-75e0-7af633266adc@redes.upv.es>
+Date: Wed, 18 Nov 2020 15:43:19 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+
+kk
+
+.
+RETR 8
++OK 751 octets follow.
+Return-Path: <redes21@redes.upv.es>
+X-Original-To: redes21@redes.upv.es
+Delivered-To: redes21@redes.upv.es
+Received: from MacBook-Pro-de-Jorge-2.local (vpn246-13.vpns.upv.es [158.42.246.13])
+	by serveis-rdc.redes.upv.es (Postfix) with ESMTP id 0CC155F7E5
+	for <redes21@redes.upv.es>; Wed, 18 Nov 2020 15:44:41 +0100 (CET)
+To: redes21@redes.upv.es
+From: Alumno de Redes <redes21@redes.upv.es>
+Message-ID: <40255c61-691d-e647-eefe-a8187d45f247@redes.upv.es>
+Date: Wed, 18 Nov 2020 15:44:40 +0100
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
+ Gecko/20100101 Thunderbird/78.4.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Content-Language: en-US
+
+,..l
+
+.
+RETR 9
++OK 762 octets follow.
+Return-Path: <redes21@redes.upv.es>
+X-Original-To: redes21@redes.upv.es
+Delivered-To: redes21@redes.upv.es
+Received: from [10.0.2.15] (vpn237-73.vpns.upv.es [158.42.237.73])
+	by serveis-rdc.redes.upv.es (Postfix) with ESMTP id 351C05F7E5
+	for <redes21@redes.upv.es>; Wed, 18 Nov 2020 15:45:43 +0100 (CET)
+To: redes21@redes.upv.es
+From: Joan Matarredona <redes21@redes.upv.es>
+Subject: POP3 version 2
+Message-ID: <7492f0b0-7bd0-35de-a136-b52498a8cfb4@redes.upv.es>
+Date: Wed, 18 Nov 2020 15:45:42 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+
+Hola POP3 version 2
+
+.
+RETR 10
++OK 741 octets follow.
+Return-Path: <redes21@redes.upv.es>
+X-Original-To: redes21@redes.upv.es
+Delivered-To: redes21@redes.upv.es
+Received: from [10.0.2.15] (vpn237-73.vpns.upv.es [158.42.237.73])
+	by serveis-rdc.redes.upv.es (Postfix) with ESMTP id C221A5F7E5
+	for <redes21@redes.upv.es>; Wed, 18 Nov 2020 15:46:48 +0100 (CET)
+To: redes21@redes.upv.es
+From: Joan Matarredona <redes21@redes.upv.es>
+Subject: dsaads
+Message-ID: <f2bd58ff-5160-1573-2779-75a23541257b@redes.upv.es>
+Date: Wed, 18 Nov 2020 15:46:48 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+
+saddsa
+
+.
+RETR 11
++OK 720 octets follow.
+Return-Path: <redes21@redes.upv.es>
+X-Original-To: redes21@redes.upv.es
+Delivered-To: redes21@redes.upv.es
+Received: from [10.0.2.15] (vpn246-13.vpns.upv.es [158.42.246.13])
+	by serveis-rdc.redes.upv.es (Postfix) with ESMTP id 8BD5C5F7E5
+	for <redes21@redes.upv.es>; Wed, 18 Nov 2020 15:46:56 +0100 (CET)
+To: redes21@redes.upv.es
+From: Alumno de Redes <redes21@redes.upv.es>
+Message-ID: <878b8563-5758-0ee0-72b6-a5cee8573458@redes.upv.es>
+Date: Wed, 18 Nov 2020 15:46:54 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+
+kkk
+
+.
+RETR 12
++OK 740 octets follow.
+Return-Path: <redes21@redes.upv.es>
+X-Original-To: redes21@redes.upv.es
+Delivered-To: redes21@redes.upv.es
+Received: from [10.0.2.15] (vpn237-73.vpns.upv.es [158.42.237.73])
+	by serveis-rdc.redes.upv.es (Postfix) with ESMTP id AAB305F7E5
+	for <redes21@redes.upv.es>; Wed, 18 Nov 2020 15:47:16 +0100 (CET)
+To: redes21@redes.upv.es
+From: Joan Matarredona <redes21@redes.upv.es>
+Subject: asd
+Message-ID: <da59048f-200e-31d0-96ed-3a6373e4fe36@redes.upv.es>
+Date: Wed, 18 Nov 2020 15:47:16 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+
+dsasadsa
+
+.
+RETR 13
++OK 737 octets follow.
+Return-Path: <redes21@redes.upv.es>
+X-Original-To: redes21@redes.upv.es
+Delivered-To: redes21@redes.upv.es
+Received: from [10.0.2.15] (vpn237-73.vpns.upv.es [158.42.237.73])
+	by serveis-rdc.redes.upv.es (Postfix) with ESMTP id E01255F7E5
+	for <redes21@redes.upv.es>; Wed, 18 Nov 2020 15:47:52 +0100 (CET)
+To: redes21@redes.upv.es
+From: Joan Matarredona <redes21@redes.upv.es>
+Subject: hola
+Message-ID: <6cb4342c-ca08-6623-da00-dc26010f7e01@redes.upv.es>
+Date: Wed, 18 Nov 2020 15:47:52 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+
+hola
+
+.
+RETR 14
++OK 719 octets follow.
+Return-Path: <redes21@redes.upv.es>
+X-Original-To: redes21@redes.upv.es
+Delivered-To: redes21@redes.upv.es
+Received: from [10.0.2.15] (vpn246-13.vpns.upv.es [158.42.246.13])
+	by serveis-rdc.redes.upv.es (Postfix) with ESMTP id 155EC5F7E5
+	for <redes21@redes.upv.es>; Wed, 18 Nov 2020 15:48:33 +0100 (CET)
+To: redes21@redes.upv.es
+From: Alumno de Redes <redes21@redes.upv.es>
+Message-ID: <3b2c8875-a334-dc6d-80b4-7897daaef977@redes.upv.es>
+Date: Wed, 18 Nov 2020 15:48:31 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+
+,,
+
+.
+RETR 15
++OK 739 octets follow.
+Return-Path: <redes21@redes.upv.es>
+X-Original-To: redes21@redes.upv.es
+Delivered-To: redes21@redes.upv.es
+Received: from [10.0.2.15] (vpn237-73.vpns.upv.es [158.42.237.73])
+	by serveis-rdc.redes.upv.es (Postfix) with ESMTP id 069015F7E5
+	for <redes21@redes.upv.es>; Wed, 18 Nov 2020 15:48:46 +0100 (CET)
+To: redes21@redes.upv.es
+From: Joan Matarredona <redes21@redes.upv.es>
+Subject: hi
+Message-ID: <9b0b94af-b885-f7fc-2aab-a20fcf43b6a0@redes.upv.es>
+Date: Wed, 18 Nov 2020 15:48:46 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+
+hi there
+
+.
+QUIT
++OK Bye-bye.

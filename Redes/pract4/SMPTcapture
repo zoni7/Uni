@@ -1,0 +1,34 @@
+220 serveis-rdc.redes.upv.es ESMTP Postfix (Ubuntu)
+EHLO [10.0.2.15]
+250-serveis-rdc.redes.upv.es
+250-PIPELINING
+250-SIZE 10240000
+250-VRFY
+250-ETRN
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250 DSN
+MAIL FROM:<redes21@redes.upv.es> BODY=8BITMIME SIZE=426
+250 2.1.0 Ok
+RCPT TO:<redes21@redes.upv.es>
+250 2.1.5 Ok
+DATA
+354 End data with <CR><LF>.<CR><LF>
+To: redes21@redes.upv.es
+From: Joan Matarredona <redes21@redes.upv.es>
+Subject: sad
+Message-ID: <8299f890-bce9-b33c-cc2e-d89e29fbf388@redes.upv.es>
+Date: Tue, 17 Nov 2020 21:13:41 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+
+dsaas
+
+.
+250 2.0.0 Ok: queued as E9F5D5F7D4
+QUIT
+221 2.0.0 Bye
