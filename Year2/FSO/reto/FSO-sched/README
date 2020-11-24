@@ -1,0 +1,114 @@
+This application is oriented to get familiar with the
+implementation of the basic scheduling policies in FSO.
+
+The main program is scheduler.py
+
+How to specify the set of processes:
+
+Define the processes: 
+    process identifier
+    Arrival time
+    Priority (if any)
+    Bursts: sequence of CPU and IO
+
+    System.defineProc("P1", 0, 4, (4,2,2,2,1))
+    System.defineProc("P2", 3, 3, (4,2,1,2,1))
+    System.defineProc("P3", 4, 2, (3,1,2,1,2))
+    System.defineProc("P4", 5, 1, (5,1,1)) 
+
+Define the Queue:
+
+   queue identifier
+   priority
+   policy
+   quantum (if any)
+
+    RQ.defineReadyQueue("Q1", 1, "PRIO", 1)
+    RQ.defineReadyQueue("Q2", 3, "RR", 1)
+    RQ.defineReadyQueue("Q3", 1, "RR", 2)
+
+    RQ.defineIOQueue("IO", 10, "FCFS", None) 
+
+when a process arrives, it is queued in     
+    firstQueue = "Q1"
+
+
+Once it is specify, it is run:
+
+$ python scheduler.py
+
+
+A simple system
+
+    System.defineProc("P1", 0, 4, (4,2,2,2,1))
+    System.defineProc("P2", 3, 3, (4,2,1,2,1))
+    System.defineProc("P3", 4, 2, (3,1,2,1,2))
+    System.defineProc("P4", 5, 1, (5,1,1))
+
+one ReadyQueue RR quantum 2 and IO Queue
+
+    RQ.defineReadyQueue("Q1", 1, "RR", 2)
+    firstQueue = "Q1"
+
+    RQ.defineIOQueue("IO", 10, "FCFS", None) 
+    IOQueue = "IO"
+
+From IO to CPU the queue is specified in the promotion procedure:
+def promotion(cnt):
+    return "Q1" 
+
+
+Running FSOScheduler
+    defines a predefined case with 1 Ready Queue
+    Options:
+      -c n   identifies the case numbner n in the code
+      -p policy  assigns the policy to the queue
+      -q quantum in case of RR, assigns the quantum
+      -v          prints the trace of the time units
+
+
+$ python FSOscheduler.py -v -c 1 -p RR -q 2
+==========================================
+P(P1, 0, 4, (4, 2, 2, 2, 1))
+P(P2, 3, 3, (4, 2, 1, 2, 1))
+P(P3, 4, 2, (3, 1, 2, 1, 2))
+P(P4, 5, 1, (5, 1, 1))
+==========================================
+Number of Queues:  2
+Q0  policy: RR (2)  prio: 1
+IO  policy: FCFS  prio: 10
+==========================================
+0   Q0:[]               CPU: P1 (4/1)   IOQ: []         IO: Idle  
+1   Q0:[]               CPU: P1 (4/2)   IOQ: []         IO: Idle  
+2   Q0:[]               CPU: P1 (4/3)   IOQ: []         IO: Idle  
+3   Q0:[P2;]            CPU: P1 (4/4)   IOQ: []         IO: Idle  
+4   Q0:[P3;]            CPU: P2 (4/1)   IOQ: []     IO: P1 (2/1)
+5   Q0:[P3;P4;]         CPU: P2 (4/2)   IOQ: []     IO: P1 (2/2)
+6   Q0:[P4;P2;P1;]      CPU: P3 (3/1)   IOQ: []         IO: Idle  
+7   Q0:[P4;P2;P1;]      CPU: P3 (3/2)   IOQ: []         IO: Idle  
+8   Q0:[P1;P2;P3;]      CPU: P4 (5/1)   IOQ: []         IO: Idle  
+9   Q0:[P1;P2;P3;]      CPU: P4 (5/2)   IOQ: []         IO: Idle  
+10  Q0:[P2;P4;P3;]      CPU: P1 (2/1)   IOQ: []         IO: Idle  
+11  Q0:[P2;P4;P3;]      CPU: P1 (2/2)   IOQ: []         IO: Idle  
+12  Q0:[P3;P4;]         CPU: P2 (4/3)   IOQ: []     IO: P1 (2/1)
+13  Q0:[P3;P4;]         CPU: P2 (4/4)   IOQ: []     IO: P1 (2/2)
+14  Q0:[P4;P1;]         CPU: P3 (3/3)   IOQ: []     IO: P2 (2/1)
+15  Q0:[P1;]            CPU: P4 (5/3)   IOQ: [P3;]  IO: P2 (2/2)
+16  Q0:[P1;P2;]         CPU: P4 (5/4)   IOQ: []     IO: P3 (1/1)
+17  Q0:[P2;P4;P3;]      CPU: P1 (1/1)   IOQ: []         IO: Idle  
+18  Q0:[P3;P4;]         CPU: P2 (1/1)   IOQ: []         IO: Idle  
+19  Q0:[P4;]            CPU: P3 (2/1)   IOQ: []     IO: P2 (2/1)
+20  Q0:[P4;]            CPU: P3 (2/2)   IOQ: []     IO: P2 (2/2)
+21  Q0:[P2;]            CPU: P4 (5/5)   IOQ: []     IO: P3 (1/1)
+22  Q0:[P3;]            CPU: P2 (1/1)   IOQ: []     IO: P4 (1/1)
+23  Q0:[P4;]            CPU: P3 (2/1)   IOQ: []         IO: Idle  
+24  Q0:[P4;]            CPU: P3 (2/2)   IOQ: []         IO: Idle  
+25  Q0:[]               CPU: P4 (1/1)   IOQ: []         IO: Idle  
+==========================================
+Proc.  Finish  CPU  IO    RQue   IOQue
+P1  18  7   4   7   0
+P2  23  6   4   10  0
+P3  25  7   2   11  1
+P4  26  6   1   14  0
+==========================================
+
