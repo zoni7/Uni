@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Figure
+comment0.text=\r\n\ class\ Figure.\r\n\ \r\n\ @author\ LTP\ \r\n\ @version\ 2020-21\r\n
+comment1.params=x\ y
+comment1.target=Figure(double,\ double)
+comment2.params=o
+comment2.target=boolean\ equals(java.lang.Object)
+comment3.params=
+comment3.target=java.lang.String\ toString()
+comment4.params=
+comment4.target=double\ area()
+comment5.params=f
+comment5.target=int\ compareTo(Figure)
+comment5.text=\r\n\ \ \ \ public\ int\ compareTo(Object\ o)\ {\r\n\ \ \ \ \ \ \ \ if\ (\!(o\ instanceof\ Figure))\ throw\ new\ ClassCastException();\r\n\ \ \ \ \ \ \ \ double\ difArea\ \=\ this.area()\ -\ ((Figure)o).area();\r\n\ \ \ \ \ \ \ \ if\ (difArea\ \=\=\ 0)\ return\ 0;\r\n\ \ \ \ \ \ \ \ else\ if\ (difArea\ <\ 0)\ return\ -1;\r\n\ \ \ \ \ \ \ \ else\ return\ 1;\ \r\n\ \ \ \ \ \ \ \ //return\ (difArea\ <\ 0)\ ?\ \ -1\ \:\ (difArea\ \=\=\ 0)\ ?\ 0\ \:\ 1;\r\n\ \ \ \ }\r\n
+numComments=6
