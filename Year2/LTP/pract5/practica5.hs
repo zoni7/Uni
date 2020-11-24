@@ -31,13 +31,32 @@ module Practica5 where
 	selectEP :: [Int] -> [Int]
 	selectEP xs = [xs !! i | i<-[0..(length xs)], even i]
 
-	ins :: Int -> [Int] -> [Int]
-	ins x (y:ys) = if x < y then (x:y:ys) else y:(ins x ys)
+	-- Exercise 8 --
 
--- No va 
+	ins :: Int -> [Int] -> [Int]
+	ins x [] = [x]
+  	ins x (y:ys)
+		| x<=y = (x:y:ys)
+		| otherwise = y : (ins x ys)
+
 	iSort :: [Int] -> [Int]
 	iSort [] = []
 	iSort (x:xs) = ins x (iSort xs)
+
+	-- Exercise 9 --
+
+	doubleAll :: [Int]->[Int]
+	doubleAll [] = []
+	doubleAll (x:xs) = map (*2) (x:xs) 
+
+	-- Exercise 10 --
+	map' :: (a -> b) -> [a] -> [b]
+	map' f [] = []
+	map' f xs = [f x | x <-xs]
+
+	filter' :: (a -> Bool) -> [a] -> [a]
+	filter' f [] = []
+	filter' f xs = [x | x <-xs, f x]
 
 
 
