@@ -4,7 +4,7 @@ import java.io.*;
 import java.net.*;
 
 /**
- * Write a description of class Read here.
+ * Write a description of class Write here.
  *
  * @author (your name)
  * @version (a version number or a date)
@@ -20,11 +20,12 @@ public class Read extends Thread
     public void run() {
         try {
             String leido;
-            Scanner read= new Scanner(System.in);
-            PrintWriter pw = new PrintWriter(client.getOutputStream());
-            leido = read.nextLine();
-            pw.println(leido);
-            pw.flush();
+            Scanner read= new Scanner(client.getInputStream());
+            
+            while(read.hasNext()) {
+                leido = read.nextLine();
+                System.out.println(leido);
+            }
             //client.close();
         } catch(IOException e) {
                 System.out.println("No connection possible");

@@ -4,7 +4,7 @@ import java.io.*;
 import java.net.*;
 
 /**
- * Write a description of class Write here.
+ * Write a description of class Read here.
  *
  * @author (your name)
  * @version (a version number or a date)
@@ -20,11 +20,15 @@ public class Write extends Thread
     public void run() {
         try {
             String leido;
-            Scanner read= new Scanner(client.getInputStream());
+            Scanner read= new Scanner(System.in);
             PrintWriter pw = new PrintWriter(client.getOutputStream());
             leido = read.nextLine();
-            System.out.println(leido);
-            //client.close();
+            while(!leido.equalsIgnoreCase("FIN")) {
+                pw.println(leido);
+                pw.flush();
+            }
+            // es tanca el client quant escrius
+            client.close();
         } catch(IOException e) {
                 System.out.println("No connection possible");
         }
