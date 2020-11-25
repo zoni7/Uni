@@ -1,4 +1,4 @@
-module Practica5 where
+module Practica5_1 where
 
 	decBin:: Int -> [Int]
 

@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=Write
+comment0.text=\n\ Write\ a\ description\ of\ class\ Write\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=s
+comment1.target=Write(java.net.Socket)
+comment2.params=
+comment2.target=void\ run()
+numComments=3
