@@ -52,4 +52,24 @@ module Practica5_2 where
 	treeToList (Leaf a) = [a]
 	treeToList (Branch a b) = (treeToList a) ++ (treeToList b)
 
+	-- Exercise 14 --
+
+	insTree :: Int -> BinTreeInt -> BinTreeInt
+	insTree i (Void) = Node i Void Void
+	insTree i (Node a b c) 
+		|i <= a = Node a (insTree i b) c
+		|otherwise = Node a b (insTree i c) 
+
+	-- Exercise 15 --
+	-- FALTA ORDENAR LA LLISTA
+	creaTree :: [Int] -> BinTreeInt
+	creaTree [x] = Node x Void Void
+	creaTree (x:y:xs) 
+		| x <= y = (Node x Void (creaTree (y:xs)))
+		| otherwise = (Node x (creaTree (y:xs)) Void)
+	
+		
+
+
+
 

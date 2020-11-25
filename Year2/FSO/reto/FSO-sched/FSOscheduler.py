@@ -32,7 +32,7 @@ nquanta = 0
 prevProc = ""
 
 def usage ():
-    print "Usage: python FSOscheduler.py [-c number] [-p RR|FCFS|SJF|SRTF] [-q number] [-v]\n"
+    print ("Usage: python FSOscheduler.py [-c number] [-p RR|FCFS|SJF|SRTF] [-q number] [-v]\n")
 
 def getOpts(argv):
     policy = "FCFS"
@@ -44,7 +44,7 @@ def getOpts(argv):
         opts, args = getopt.getopt(sys.argv[1:], "c:p:q:v", ["caso=","policy=","quantum=","verbose"])
     except getopt.GetoptError as err:
         # print help information and exit:
-        print str(err)  # will print something like "option -a not recognized"
+        print (str(err))  # will print something like "option -a not recognized"
         usage()
         sys.exit(2)
     for o, a in opts:
@@ -140,7 +140,7 @@ def traceExecution(clk, pCPU, pIO):
         txt += t  + "\tIO: " + procName(pIO) + str(procExec(pIO))
     else:
         txt += "\tIOQ: []     \tIO: Idle  "
-    print txt
+    print (txt)
 
 def accounting(pid,piod):
 
@@ -248,13 +248,13 @@ def main (argv):
         procCNT[p] = 0
         statProc[p] = (0,0,0,0) #cpu, io, rq,ioq
 
-    print "=========================================="
-    print System.procPrint(),
-    print "=========================================="
-    print "Number of Queues: ", RQ.rQNumber()
+    print ("==========================================")
+    print (System.procPrint(),)
+    print ("==========================================")
+    print ("Number of Queues: ", RQ.rQNumber())
     for q in RQ.rQids():
-        print q + "  policy: "+ RQ.rQPolicy1(q) + "  prio: "+ str(RQ.rQPriority(q))
-    print "=========================================="
+        print (q + "  policy: "+ RQ.rQPolicy1(q) + "  prio: "+ str(RQ.rQPriority(q)))
+    print ("==========================================")
     nfinished = 0
     clock = 0
 
@@ -355,10 +355,10 @@ def main (argv):
       
         if(nfinished == System.procNumber()):
             break
-    print "=========================================="
-    print "Proc.  Finish  CPU\tIO    RQue   IOQue"
+    print ("==========================================")
+    print ("Proc.  Finish  CPU\tIO    RQue   IOQue")
     for key in sorted(finishProc):
-        print key, "\t", finishProc[key], "\t", statProc[key][0], "\t", statProc[key][1], "\t", statProc[key][2], "\t", statProc[key][3]
-    print "=========================================="
+        print (key, "\t", finishProc[key], "\t", statProc[key][0], "\t", statProc[key][1], "\t", statProc[key][2], "\t", statProc[key][3])
+    print ("==========================================")
 
 main (sys.argv)
