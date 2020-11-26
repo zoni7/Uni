@@ -67,6 +67,16 @@ module Practica5_2 where
 	creaTree (x:y:xs) 
 		| x <= y = (Node x Void (creaTree (y:xs)))
 		| otherwise = (Node x (creaTree (y:xs)) Void)
+
+	-- Exercise 16 --
+
+	treeElem :: Int -> BinTreeInt -> Bool
+	treeElem i (Void) = False
+	treeElem i (Node a b c)
+		| i == a = True
+		| i < a = treeElem i b
+		|otherwise = treeElem i c
+
 	
 		
 
