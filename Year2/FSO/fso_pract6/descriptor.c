@@ -22,5 +22,6 @@ int main (int argc,char *argv[]) {
     fprintf(stderr, "Open failed \n");
   else
        fprintf(stderr, "Write %s descriptor = %d \n",argv[1],fdb);
+
   return(0);
 }

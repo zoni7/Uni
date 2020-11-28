@@ -1,0 +1,17 @@
+total 144
+drwxrwxr-x  2 joan joan  4096 nov 27 13:50 .
+drwxrwxr-x 11 joan joan  4096 nov 26 18:43 ..
+-rwxrwxr-x  1 joan joan 16880 nov 26 18:46 descriptor
+-rw-rw-r--  1 joan joan   588 nov 26 19:13 descriptor.c
+-rwxrwxr-x  1 joan joan 16800 nov 26 18:53 descriptor_output
+-rw-rw-r--  1 joan joan   759 nov 26 18:53 descriptor_output.c
+-rw-rw-r--  1 joan joan   613 nov 27 13:46 Is_redir.c
+-rwx------  1 joan joan   886 nov 27 13:50 ls_output.txt
+-rwxrwxr-x  1 joan joan 17000 nov 27 13:50 ls_redir
+-rw-rw-r--  1 joan joan   511 nov 27 13:50 ls_redir.c
+-rwx------  1 joan joan    47 nov 27 13:16 messages.txt
+-rwx------  1 joan joan    23 nov 27 13:47 output.txt
+-rwxrwxr-x  1 joan joan 17048 nov 27 13:31 redir_output
+-rw-rw-r--  1 joan joan   592 nov 27 13:29 redir_output.c
+-rwxrwxr-x  1 joan joan 16960 nov 27 13:15 share_file
+-rw-rw-r--  1 joan joan   692 nov 27 13:15 share_file.c
