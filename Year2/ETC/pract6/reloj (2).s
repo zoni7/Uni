@@ -20,10 +20,12 @@ cad_reloj_en_s: .asciiz "\n   Reloj en segundos: "
 
 __start:        
                 la $a0, reloj
-				 li $a1, 0x0002030C
-				 jal inicializa_reloj
-				 la $a0, reloj
-				 jal imprime_reloj
+                 li $a1, 0x0012202D
+                 jal inicializa_reloj
+                 la $a0, reloj
+                 jal devuelve_reloj_en_s_sd
+                 move $a0, $v0
+                 jal imprime_s
 
              
 salir:          li $v0, 10              # Código de exit (10)
@@ -31,16 +33,94 @@ salir:          li $v0, 10              # Código de exit (10)
                 .end
 
 inicializa_reloj:
-				li $t0, 0x001F3F3F # 1 in fields HH:MM:SS
-				and $t0, $a1, $t0 # makes 0 the rest of bits
-				sw $t0, 0($a0) # Stores reloj
-				jr $ra
+                                li $t0, 0x001F3F3F # 1 in fields HH:MM:SS
+                                and $t0, $a1, $t0 # makes 0 the rest of bits
+                                sw $t0, 0($a0) # Stores reloj
+                                jr $ra
 
 inicializa_reloj_alt:
-				sb $a3, 0($a0) # Field SS first byte
-				sb $a2, 1($a0) # Field MM second byte
-				sb $a1, 2($a0) # Field HH third byte
-				jr $ra
+                                sb $a3, 0($a0) # Field SS first byte
+                                sb $a2, 1($a0) # Field MM second byte
+                                sb $a1, 2($a0) # Field HH third byte
+                                jr $ra
+
+devuelve_reloj_en_s:
+                                li $t0, 0
+                                lb $a3, 0($a0) # Field SS first byte
+                                lb $a2, 1($a0) # Field MM second byte
+                                lb $a1, 2($a0) # Field HH third byte
+                                li $s4, 3600
+                                li $s5, 60
+                                # Transform the hours in seconds
+                                mult $a1, $s4
+                                mflo $s2
+                                add $t0, $t0, $s2
+                                
+                                # Transform the minutes in seconds
+                                mult $a2, $s5
+                                mflo $s3
+                                add $t0, $t0, $s3
+
+                                # Add the three variables in seconds
+                                add $t0, $a3, $t0
+                                add $v0, $t0, $0
+                                jr $ra
+
+devuelve_reloj_en_s_sd:
+                lb $a3, 0($a0) # Field SS first byte
+                lb $a2, 1($a0) # Field MM second byte
+                lb $a1, 2($a0) # Field HH third byte
+
+                # Transform the hours in seconds
+                sll $v0, $a1, 11
+                sll $t0, $a1, 10
+                addu $v0, $v0, $t0
+                sll $t0, $a1, 9
+                addu $v0, $v0, $t0
+                sll $t0, $a1, 4
+                addu $v0, $v0, $t0
+
+                # Transform the minutes in seconds
+                sll $v1, $a2, 5
+                sll $t0, $a2, 4
+                addu $v1, $v1, $t0
+                sll $t0, $a2, 3
+                addu $v1, $v1, $t0
+                sll $t0, $a2, 2
+                addu $v1, $v1, $t0
+
+                # Add the three variables in seconds
+                add $v0, $v0, $a3
+                add $v0, $v0, $v1
+                jr $ra
+
+ inicializa_reloj_en_s:
+                                #Obtein seconds and the rest in minutes
+                                beq $a1 , $zero, isZero
+                                li $s0, 60
+                                div $a1, $s0
+                                mfhi $t3
+                                mflo $t2
+                                #Obtein minutes and the rest in hours
+                                beq $t2 , $zero, isZero
+                                div $t2, $s0
+                                mflo $t1
+                                mfhi $t2
+                
+                                sb $t3, 0($a0) # Field SS first byte
+                                sb $t2, 1($a0) # Field MM second byte
+                                sb $t1, 2($a0) # Field HH third byte
+                                jr $ra
+
+                isZero: sb $t3, 0($a0) # Field SS first byte
+                                sb $t2, 1($a0) # Field MM second byte
+                                sb $0, 2($a0) # Field HH third byte
+                                jr $ra
+
+
+
+
+
 
 
                 ########################################################## 
