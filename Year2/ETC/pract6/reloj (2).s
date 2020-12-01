@@ -36,6 +36,35 @@ salir:          li $v0, 10              # Código de exit (10)
                 syscall                 # Última instrucción ejecutada
                 .end
 
+pasa_segundo:     
+                # increasse_seconds
+                lbu $t0, 0($a0) # Field SS first byte
+                addiu $t0, $t0, 1
+                li $t1, 60 
+                beq $t0, $t1, ss
+                sb $t0, 0($a0) # Field SS first byte
+                j end  
+
+                # increasse_minutes
+        ss:     sb $zero, 0($a0)
+                lbu $t0, 1($a0) # Field MM second byte
+                addiu $t0, $t0, 1
+                beq $t0, $t0, mm
+                sb $t0, 1($a0) # Field MM second byte
+                j end
+
+                # increasse_hours
+        mm:     sb $zero, 1($a0)
+                lbu $t0, 2($a0) # Field HH third byte
+                addiu $t0, $t0, 1
+                li $t1, 24
+                blt $t0, $t1, hh
+                sb $zero, 2($a0)
+                j end
+
+        hh: sb $t0, 2($a0)
+        end:    jr $ra
+
 inicializa_reloj:
                                 li $t0, 0x001F3F3F # 1 in fields HH:MM:SS
                                 and $t0, $a1, $t0 # makes 0 the rest of bits
@@ -121,43 +150,7 @@ devuelve_reloj_en_s_sd:
                                 sb $0, 2($a0) # Field HH third byte
                                 jr $ra
 
-pasa_segundo:   lb $a3, 0($a0) # Field SS first byte
-                lb $a2, 1($a0) # Field MM second byte
-                lb $a1, 2($a0) # Field HH third byte
 
-                # increasse_seconds
-                addi $a3, $a3, 1
-                li $v1, 60 
-                beq $a3, $v1, yes_ss
-                sb $a3, 0($a0) # Field SS first byte
-                jr $ra
-
-                yes_ss: addi $a2, $a2, 1
-                
-
-                # increasse_minutes
-                li $a3, 0
-                lb $a2, 1($a0) # Field MM second byte
-                addi $a2, $a2, 1
-                li $v1, 60 
-                beq $a2, $v1, yes_mm
-                sb $a2, 1($a0) # Field MM second byte
-                jr $ra
-
-                yes_mm: addi $a1, $a1, 1
-            
-
-                # increasse_hours
-                li $a2, 0
-                lb $a1, 2($a0)
-                addi $a3, $a3, 1
-                li $v1, 24
-                blt $a1, $v1, yes_hh
-                li $a1, 0 
-                jr $ra
-
-        yes_hh: sb $a1, 0($a0)
-                jr $ra
 
         
 
