@@ -20,12 +20,16 @@ cad_reloj_en_s: .asciiz "\n   Reloj en segundos: "
 
 __start:        
                 la $a0, reloj
-                 li $a1, 0x0012202D
+                 li $a1, 0x00173b3b # Hora 23:59:59
                  jal inicializa_reloj
                  la $a0, reloj
-                 jal devuelve_reloj_en_s_sd
-                 move $a0, $v0
-                 jal imprime_s
+                 jal imprime_reloj
+
+                 la $a0, reloj
+                 jal pasa_segundo # Increase 1 second
+                 jal pasa_segundo # Increase 1 second
+                 la $a0, reloj
+                 jal imprime_reloj
 
              
 salir:          li $v0, 10              # Código de exit (10)
@@ -67,9 +71,9 @@ devuelve_reloj_en_s:
                                 jr $ra
 
 devuelve_reloj_en_s_sd:
-                lb $a3, 0($a0) # Field SS first byte
-                lb $a2, 1($a0) # Field MM second byte
-                lb $a1, 2($a0) # Field HH third byte
+                lbu $a3, 0($a0) # Field SS first byte
+                lbu $a2, 1($a0) # Field MM second byte
+                lbu $a1, 2($a0) # Field HH third byte
 
                 # Transform the hours in seconds
                 sll $v0, $a1, 11
@@ -90,8 +94,8 @@ devuelve_reloj_en_s_sd:
                 addu $v1, $v1, $t0
 
                 # Add the three variables in seconds
-                add $v0, $v0, $a3
-                add $v0, $v0, $v1
+                addu $v0, $v0, $a3
+                addu $v0, $v0, $v1
                 jr $ra
 
  inicializa_reloj_en_s:
@@ -117,11 +121,49 @@ devuelve_reloj_en_s_sd:
                                 sb $0, 2($a0) # Field HH third byte
                                 jr $ra
 
+pasa_segundo:   lb $a3, 0($a0) # Field SS first byte
+                lb $a2, 1($a0) # Field MM second byte
+                lb $a1, 2($a0) # Field HH third byte
 
+                # increasse_seconds
+                addi $a3, $a3, 1
+                li $v1, 60 
+                beq $a3, $v1, yes_ss
+                sb $a3, 0($a0) # Field SS first byte
+                jr $ra
 
+                yes_ss: addi $a2, $a2, 1
+                
 
+                # increasse_minutes
+                li $a3, 0
+                lb $a2, 1($a0) # Field MM second byte
+                addi $a2, $a2, 1
+                li $v1, 60 
+                beq $a2, $v1, yes_mm
+                sb $a2, 1($a0) # Field MM second byte
+                jr $ra
 
+                yes_mm: addi $a1, $a1, 1
+            
 
+                # increasse_hours
+                li $a2, 0
+                lb $a1, 2($a0)
+                addi $a3, $a3, 1
+                li $v1, 24
+                blt $a1, $v1, yes_hh
+                li $a1, 0 
+                jr $ra
+
+        yes_hh: sb $a1, 0($a0)
+                jr $ra
+
+        
+
+        
+
+        
 
                 ########################################################## 
                 # Subrutina que imprime el valor del reloj
