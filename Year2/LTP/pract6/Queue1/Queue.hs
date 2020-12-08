@@ -1,5 +1,6 @@
 module Queue (Queue, empty, enqueue, dequeue, first, isEmpty, size,fromList ,toList) where
-	data Queue a = EmptyQueue | Item a (Queue a)
+	data Queue a = EmptyQueue | Item a (Queue a) 
+
 	empty = EmptyQueue
 	enqueue x EmptyQueue = Item x EmptyQueue
 	enqueue x (Item a q) = Item a (enqueue x q)
@@ -18,13 +19,17 @@ module Queue (Queue, empty, enqueue, dequeue, first, isEmpty, size,fromList ,toL
 	toList (Item x y) = [x] ++ toList(y) 
 	
 	
-
+	-- instance Show ... using recursion
 	instance (Show a) => Show (Queue a) where
 		show EmptyQueue = " <- "
 		show (Item x y) = " <- " ++ (show x) ++ (show y)
 
-	-- instance Eq ...
-	--instance (Eq a) => Eq (Queue a) where
-	--	eq (Item a q) (Item b m)
-	--		| (a == b) = True
-	--		| otherwise = False 
+	-- instance Eq ... using recursion
+	instance (Eq a) => Eq (Queue a) where
+		-- I used the method (==) defined in the class Eq from Prelude
+		(==) (Item a q) (Item b m) = if (a == b) then ((==) q m) else False
+		(==) EmptyQueue EmptyQueue = True
+		(==) (Item a q) EmptyQueue = False
+		(==) EmptyQueue (Item b m) = False
+
+	
