@@ -11,8 +11,8 @@ int main (int argc,char *argv[]) {
     char *arch = "ls_output.txt";
     mode_t fd_mode = S_IRWXU;// file premissions
 
-    fd = open(arch,O_RDONLY,fd_mode);
-    if (dup2(fd,STDIN_FILENO) == -1) { 
+    fd = open(arch,O_RDONLY,fd_mode); // added the O_RDONLY
+    if (dup2(fd,STDIN_FILENO) == -1) { // added the STDIN_FILEMO
         printf("Error calling dup2\n");
         exit(-1);
     }

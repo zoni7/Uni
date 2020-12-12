@@ -4,8 +4,8 @@
 #include <stdlib.h>
 #include <semaphore.h>
 
-#define REPETITIONS 20000000   // CONSTANT
-
+//#define REPETITIONS 20000000   // CONSTANT
+long int REPETITIONS = 20000000;
 // GLOBAL SHARED VARIABLES 
 long int V = 100;      // Initial value
 
@@ -63,9 +63,12 @@ int main (void) {
      pthread_create (&incThread, &attr, inc,V);
      pthread_create (&decThread, &attr, dec, V);
      pthread_create (&inspecThread, &attr, inspec,V);
+    
+
     // EXERCISE: The main thread has to wait inc and dec threads to end
-     pthread_join(incThread,NULL);
-     pthread_join(decThread,NULL);
+    pthread_join(incThread,NULL);
+    pthread_join(decThread,NULL);
+     
 
 
     // Main program end

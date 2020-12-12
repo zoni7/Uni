@@ -1,0 +1,27 @@
+Process PID: 3123
+
+main function address: 0x401d5f 
+f function address: 0x401d35 
+Initialiazed global variable i_glob address: 0x4c20f0
+Non initialized global variable ni_glob address 
+ 1st ni_glob element address: 0x4c5520
+ Last ni_glob element address: 0x4c651f
+Initialized local variable i_loc address: 0x7fff438b6808
+Non initialized local variable ni_loc address: 0x7fff438b6810
+Address of funcion f parameter: 0x7fff438b67ec
+The mathematical operation result is: 0.707107
+
+ PROCESS MEMORY MAP /proc/3123/maps 
+00400000-00401000 r--p 00000000 08:05 1466288                            /home/joan/Desktop/Uni-Odin/Year2/FSO/fso_pract8/lib_static
+00401000-00497000 r-xp 00001000 08:05 1466288                            /home/joan/Desktop/Uni-Odin/Year2/FSO/fso_pract8/lib_static
+00497000-004be000 r--p 00097000 08:05 1466288                            /home/joan/Desktop/Uni-Odin/Year2/FSO/fso_pract8/lib_static
+004bf000-004c2000 r--p 000be000 08:05 1466288                            /home/joan/Desktop/Uni-Odin/Year2/FSO/fso_pract8/lib_static
+004c2000-004c5000 rw-p 000c1000 08:05 1466288                            /home/joan/Desktop/Uni-Odin/Year2/FSO/fso_pract8/lib_static
+004c5000-004c7000 rw-p 00000000 00:00 0 
+011c0000-011e3000 rw-p 00000000 00:00 0                                  [heap]
+7fff43898000-7fff438b9000 rw-p 00000000 00:00 0                          [stack]
+7fff43917000-7fff4391a000 r--p 00000000 00:00 0                          [vvar]
+7fff4391a000-7fff4391b000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
+ ---------------
+
