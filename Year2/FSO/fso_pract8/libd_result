@@ -1,40 +1,39 @@
-Process PID: 3126
+Process PID: 9301
 
-main function address: 0x556364eef233 
-f function address: 0x556364eef209 
-Initialiazed global variable i_glob address: 0x556364ef2010
+main function address: 0x566232c0 
+f function address: 0x5662328d 
+Initialiazed global variable i_glob address: 0x56626008
 Non initialized global variable ni_glob address 
- 1st ni_glob element address: 0x556364ef2040
- Last ni_glob element address: 0x556364ef303f
-Initialized local variable i_loc address: 0x7ffc5bad1578
-Non initialized local variable ni_loc address: 0x7ffc5bad1580
-Address of funcion f parameter: 0x7ffc5bad155c
+ 1st ni_glob element address: 0x56626040
+ Last ni_glob element address: 0x5662703f
+Initialized local variable i_loc address: 0xffacbd20
+Non initialized local variable ni_loc address: 0xffacbd24
+Address of funcion f parameter: 0xffacbd10
 The mathematical operation result is: 0.707107
 
- PROCESS MEMORY MAP /proc/3126/maps 
-556364eee000-556364eef000 r--p 00000000 08:05 1466293                    /home/joan/Desktop/Uni-Odin/Year2/FSO/fso_pract8/lib_dynamic
-556364eef000-556364ef0000 r-xp 00001000 08:05 1466293                    /home/joan/Desktop/Uni-Odin/Year2/FSO/fso_pract8/lib_dynamic
-556364ef0000-556364ef1000 r--p 00002000 08:05 1466293                    /home/joan/Desktop/Uni-Odin/Year2/FSO/fso_pract8/lib_dynamic
-556364ef1000-556364ef2000 r--p 00002000 08:05 1466293                    /home/joan/Desktop/Uni-Odin/Year2/FSO/fso_pract8/lib_dynamic
-556364ef2000-556364ef3000 rw-p 00003000 08:05 1466293                    /home/joan/Desktop/Uni-Odin/Year2/FSO/fso_pract8/lib_dynamic
-556364ef3000-556364ef4000 rw-p 00000000 00:00 0 
-556366eca000-556366eeb000 rw-p 00000000 00:00 0                          [heap]
-7f6596873000-7f6596898000 r--p 00000000 08:05 133256                     /usr/lib/x86_64-linux-gnu/libc-2.31.so
-7f6596898000-7f6596a10000 r-xp 00025000 08:05 133256                     /usr/lib/x86_64-linux-gnu/libc-2.31.so
-7f6596a10000-7f6596a5a000 r--p 0019d000 08:05 133256                     /usr/lib/x86_64-linux-gnu/libc-2.31.so
-7f6596a5a000-7f6596a5b000 ---p 001e7000 08:05 133256                     /usr/lib/x86_64-linux-gnu/libc-2.31.so
-7f6596a5b000-7f6596a5e000 r--p 001e7000 08:05 133256                     /usr/lib/x86_64-linux-gnu/libc-2.31.so
-7f6596a5e000-7f6596a61000 rw-p 001ea000 08:05 133256                     /usr/lib/x86_64-linux-gnu/libc-2.31.so
-7f6596a61000-7f6596a67000 rw-p 00000000 00:00 0 
-7f6596a79000-7f6596a7a000 r--p 00000000 08:05 133252                     /usr/lib/x86_64-linux-gnu/ld-2.31.so
-7f6596a7a000-7f6596a9d000 r-xp 00001000 08:05 133252                     /usr/lib/x86_64-linux-gnu/ld-2.31.so
-7f6596a9d000-7f6596aa5000 r--p 00024000 08:05 133252                     /usr/lib/x86_64-linux-gnu/ld-2.31.so
-7f6596aa6000-7f6596aa7000 r--p 0002c000 08:05 133252                     /usr/lib/x86_64-linux-gnu/ld-2.31.so
-7f6596aa7000-7f6596aa8000 rw-p 0002d000 08:05 133252                     /usr/lib/x86_64-linux-gnu/ld-2.31.so
-7f6596aa8000-7f6596aa9000 rw-p 00000000 00:00 0 
-7ffc5bab2000-7ffc5bad3000 rw-p 00000000 00:00 0                          [stack]
-7ffc5bb1a000-7ffc5bb1d000 r--p 00000000 00:00 0                          [vvar]
-7ffc5bb1d000-7ffc5bb1e000 r-xp 00000000 00:00 0                          [vdso]
-ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
+ PROCESS MEMORY MAP /proc/9301/maps 
+56622000-56623000 r--p 00000000 08:05 1466293                            /home/joan/Desktop/Uni-Odin/Year2/FSO/fso_pract8/lib_dynamic
+56623000-56624000 r-xp 00001000 08:05 1466293                            /home/joan/Desktop/Uni-Odin/Year2/FSO/fso_pract8/lib_dynamic
+56624000-56625000 r--p 00002000 08:05 1466293                            /home/joan/Desktop/Uni-Odin/Year2/FSO/fso_pract8/lib_dynamic
+56625000-56626000 r--p 00002000 08:05 1466293                            /home/joan/Desktop/Uni-Odin/Year2/FSO/fso_pract8/lib_dynamic
+56626000-56627000 rw-p 00003000 08:05 1466293                            /home/joan/Desktop/Uni-Odin/Year2/FSO/fso_pract8/lib_dynamic
+56627000-56628000 rw-p 00000000 00:00 0 
+583bc000-583de000 rw-p 00000000 00:00 0                                  [heap]
+f7d3a000-f7d57000 r--p 00000000 08:05 929377                             /usr/lib/i386-linux-gnu/libc-2.31.so
+f7d57000-f7eb2000 r-xp 0001d000 08:05 929377                             /usr/lib/i386-linux-gnu/libc-2.31.so
+f7eb2000-f7f22000 r--p 00178000 08:05 929377                             /usr/lib/i386-linux-gnu/libc-2.31.so
+f7f22000-f7f23000 ---p 001e8000 08:05 929377                             /usr/lib/i386-linux-gnu/libc-2.31.so
+f7f23000-f7f25000 r--p 001e8000 08:05 929377                             /usr/lib/i386-linux-gnu/libc-2.31.so
+f7f25000-f7f27000 rw-p 001ea000 08:05 929377                             /usr/lib/i386-linux-gnu/libc-2.31.so
+f7f27000-f7f29000 rw-p 00000000 00:00 0 
+f7f3e000-f7f40000 rw-p 00000000 00:00 0 
+f7f40000-f7f43000 r--p 00000000 00:00 0                                  [vvar]
+f7f43000-f7f44000 r-xp 00000000 00:00 0                                  [vdso]
+f7f44000-f7f45000 r--p 00000000 08:05 929373                             /usr/lib/i386-linux-gnu/ld-2.31.so
+f7f45000-f7f63000 r-xp 00001000 08:05 929373                             /usr/lib/i386-linux-gnu/ld-2.31.so
+f7f63000-f7f6e000 r--p 0001f000 08:05 929373                             /usr/lib/i386-linux-gnu/ld-2.31.so
+f7f6f000-f7f70000 r--p 0002a000 08:05 929373                             /usr/lib/i386-linux-gnu/ld-2.31.so
+f7f70000-f7f71000 rw-p 0002b000 08:05 929373                             /usr/lib/i386-linux-gnu/ld-2.31.so
+ffaad000-fface000 rw-p 00000000 00:00 0                                  [stack]
  ---------------
 

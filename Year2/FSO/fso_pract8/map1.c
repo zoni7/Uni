@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+
 char path_maps[80]; /* Global variable */
 char ni_glob[4095];
 long i_glob=20;      /* Initialized global variable */

@@ -4,8 +4,8 @@
 #include <stdlib.h>
 #include <semaphore.h>
 
-//#define REPETITIONS 20000000   // CONSTANT
-long int REPETITIONS = 20000000;
+#define REPETITIONS 200000000   // CONSTANT
+
 // GLOBAL SHARED VARIABLES 
 long int V = 100;      // Initial value
 

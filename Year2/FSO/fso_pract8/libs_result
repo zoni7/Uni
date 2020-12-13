@@ -1,27 +1,26 @@
-Process PID: 3123
+Process PID: 9287
 
-main function address: 0x401d5f 
-f function address: 0x401d35 
-Initialiazed global variable i_glob address: 0x4c20f0
+main function address: 0x8049d88 
+f function address: 0x8049d55 
+Initialiazed global variable i_glob address: 0x80e8068
 Non initialized global variable ni_glob address 
- 1st ni_glob element address: 0x4c5520
- Last ni_glob element address: 0x4c651f
-Initialized local variable i_loc address: 0x7fff438b6808
-Non initialized local variable ni_loc address: 0x7fff438b6810
-Address of funcion f parameter: 0x7fff438b67ec
+ 1st ni_glob element address: 0x80e9e60
+ Last ni_glob element address: 0x80eae5f
+Initialized local variable i_loc address: 0xff9430d0
+Non initialized local variable ni_loc address: 0xff9430d4
+Address of funcion f parameter: 0xff9430c0
 The mathematical operation result is: 0.707107
 
- PROCESS MEMORY MAP /proc/3123/maps 
-00400000-00401000 r--p 00000000 08:05 1466288                            /home/joan/Desktop/Uni-Odin/Year2/FSO/fso_pract8/lib_static
-00401000-00497000 r-xp 00001000 08:05 1466288                            /home/joan/Desktop/Uni-Odin/Year2/FSO/fso_pract8/lib_static
-00497000-004be000 r--p 00097000 08:05 1466288                            /home/joan/Desktop/Uni-Odin/Year2/FSO/fso_pract8/lib_static
-004bf000-004c2000 r--p 000be000 08:05 1466288                            /home/joan/Desktop/Uni-Odin/Year2/FSO/fso_pract8/lib_static
-004c2000-004c5000 rw-p 000c1000 08:05 1466288                            /home/joan/Desktop/Uni-Odin/Year2/FSO/fso_pract8/lib_static
-004c5000-004c7000 rw-p 00000000 00:00 0 
-011c0000-011e3000 rw-p 00000000 00:00 0                                  [heap]
-7fff43898000-7fff438b9000 rw-p 00000000 00:00 0                          [stack]
-7fff43917000-7fff4391a000 r--p 00000000 00:00 0                          [vvar]
-7fff4391a000-7fff4391b000 r-xp 00000000 00:00 0                          [vdso]
-ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
+ PROCESS MEMORY MAP /proc/9287/maps 
+08048000-08049000 r--p 00000000 08:05 1466288                            /home/joan/Desktop/Uni-Odin/Year2/FSO/fso_pract8/lib_static
+08049000-080b6000 r-xp 00001000 08:05 1466288                            /home/joan/Desktop/Uni-Odin/Year2/FSO/fso_pract8/lib_static
+080b6000-080e5000 r--p 0006e000 08:05 1466288                            /home/joan/Desktop/Uni-Odin/Year2/FSO/fso_pract8/lib_static
+080e6000-080e8000 r--p 0009d000 08:05 1466288                            /home/joan/Desktop/Uni-Odin/Year2/FSO/fso_pract8/lib_static
+080e8000-080ea000 rw-p 0009f000 08:05 1466288                            /home/joan/Desktop/Uni-Odin/Year2/FSO/fso_pract8/lib_static
+080ea000-080ec000 rw-p 00000000 00:00 0 
+09463000-09485000 rw-p 00000000 00:00 0                                  [heap]
+f7fdf000-f7fe2000 r--p 00000000 00:00 0                                  [vvar]
+f7fe2000-f7fe3000 r-xp 00000000 00:00 0                                  [vdso]
+ff925000-ff946000 rw-p 00000000 00:00 0                                  [stack]
  ---------------
 
