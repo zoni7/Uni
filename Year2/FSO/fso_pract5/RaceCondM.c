@@ -24,14 +24,16 @@ int test_and_set(int *spinlock) {
 void *inc (void *parameter) {
     long int cont, aux;
     for (cont = 0; cont < REPETITIONS; cont = cont + 1) {
-    pthread_mutex_lock(&mutex);  
-        V = V + 1;
-    pthread_mutex_unlock(&mutex);
+        // locking the mutex
+        pthread_mutex_lock(&mutex);  
+            V = V + 1;
+        // unclocking the mutex
+        pthread_mutex_unlock(&mutex);
+        }
+        printf("-------> inc end (V = %ld)\n", V);
+        printf("-------> inc end (REPETITIONS = %ld)\n", cont);
+        pthread_exit(0);
     }
-    printf("-------> inc end (V = %ld)\n", V);
-    printf("-------> inc end (REPETITIONS = %ld)\n", cont);
-    pthread_exit(0);
-}
 
 void *dec (void *parameter) {
     long int cont,aux;
