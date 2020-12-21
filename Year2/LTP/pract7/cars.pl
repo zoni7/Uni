@@ -59,6 +59,9 @@ isSameYear(A,B) :- since(A,C), since(B,C), A \== B.
 isRelated(A,B) :- isSameBrand(A,B).
 isRelated(A,B) :- isSameYear(A,B).
 isRelated(A,B) :- segment(A,C), segment(B,C), A \== B. 
+isRelated(A,B) :- isClassic(A), isClassic(B), A \==B.
 
 % A is country of B if B isModelFrom A
-isCountryOf(A,B) :- isModelFrom(B,A) 
+isCountryOf(A,B) :- isModelFrom(B,A). 
+
+isClassic(A) :- since(A, Y), Y =< 1995.
