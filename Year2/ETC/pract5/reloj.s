@@ -84,10 +84,13 @@ devuelve_reloj_en_s:
 				sb $t1, 2($a0) # Field HH third byte
  				jr $ra
 
- 		isZero: sb $t3, 0($a0) # Field SS first byte
-				sb $t2, 1($a0) # Field MM second byte
-				sb $0, 2($a0) # Field HH third byte
- 				jr $ra
+ 		isZero: j salir
+
+ 				# OLD IMPLEMENTATION TO TREAR DIVISION BY ZERO
+ 				# sb $t3, 0($a0) # Field SS first byte
+				# sb $t2, 1($a0) # Field MM second byte
+				# sb $0, 2($a0) # Field HH third byte
+ 				# jr $ra
 
 
 
