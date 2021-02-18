@@ -11,7 +11,7 @@ public class ProducerConsumer
 
         try{
             c1.join();
-                                                                                                                                        p1.join();
+            p1.join();
         }catch(InterruptedException e) { }
     }
 }

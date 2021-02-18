@@ -1,20 +1,19 @@
-public class Consumer extends Thread
+public class Producer extends Thread
 {
     private Box box;
-    private int cname;
-    public Consumer(Box c, int name)
+    private int prodname;
+    public Producer (Box c, int name)
     {
         box = c;
-        cname = name;
+        prodname = name;
     }
 
     public void run()
     { 
         for (int i=1; i<=10; i++){
-            int value = 0;
-            value = box.get();
-            System.out.println("Consumer #" +
-            (cname++) + " gets: " + value);
+            box.put(i);
+            System.out.println("Producer #" +
+            prodname + " puts: " + i);
             try {
                 Thread.sleep((int)(Math.random() *
                 100));

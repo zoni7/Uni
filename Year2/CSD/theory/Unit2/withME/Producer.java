@@ -13,7 +13,7 @@ public class Producer extends Thread
         for (int i=1; i<=10; i++){
             box.put(i);
             System.out.println("Producer #" +
-            (prodname++) + " puts: " + i);
+            (prodname) + " puts: " + i);
             try {
                 Thread.sleep((int)(Math.random() *
                 100));
