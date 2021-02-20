@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ejerciciologin;
+package calculator;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,19 +15,15 @@ import javafx.stage.Stage;
  *
  * @author USUARIO
  */
-public class EjercicioLogin extends Application {
+public class Calculator extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLLogin.fxml")); // indicates the first screen of the app
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
-        
-        stage.setTitle("Login");
-        stage.setResizable(false); // impide el redimensionamiento del formulario
-        
         stage.show();
     }
 

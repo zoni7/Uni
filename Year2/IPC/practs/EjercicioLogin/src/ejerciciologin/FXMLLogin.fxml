@@ -55,9 +55,9 @@
             <Insets />
          </GridPane.margin>
       </TextField>
-      <Button mnemonicParsing="false" onAction="#pulsadoIniciar" text="Start" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <Button fx:id="btt" mnemonicParsing="false" onAction="#pulsadoIniciar" text="Start" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <GridPane.margin>
-            <Insets left="100.0" />
+            <Insets left="110.0" />
          </GridPane.margin>
       </Button>
       <Text fx:id="mensaje_usuario" fill="#eb2929" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="4">

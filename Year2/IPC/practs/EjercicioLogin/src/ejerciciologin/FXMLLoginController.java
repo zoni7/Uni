@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
@@ -24,6 +25,8 @@ public class FXMLLoginController implements Initializable {
     private TextField texto_usuario;
     @FXML
     private Text mensaje_usuario;
+    @FXML
+    private Button btt;
 
     /**
      * Initializes the controller class.
