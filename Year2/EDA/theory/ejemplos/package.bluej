@@ -1,0 +1,26 @@
+#BlueJ package file
+objectbench.height=102
+objectbench.width=333
+package.divider.horizontal=0.648854961832061
+package.divider.vertical=0.6228373702422145
+package.editor.height=173
+package.editor.width=374
+package.editor.x=259
+package.editor.y=132
+package.frame.height=347
+package.frame.width=544
+package.numDependencies=0
+package.numTargets=1
+package.showExtends=true
+package.showUses=true
+readme.height=58
+readme.name=@README
+readme.width=47
+readme.x=10
+readme.y=10
+target1.height=62
+target1.name=tema1
+target1.type=PackageTarget
+target1.width=80
+target1.x=70
+target1.y=90

@@ -6,7 +6,7 @@ public class Box {
         // Waits until the buffer is not empty
         while (content == 0) {
             try {
-                wait(100);
+                wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -14,6 +14,7 @@ public class Box {
         int value = content;
         content = 0;
         full = false;
+        notifyAll();
         return value;
     }
 
@@ -21,13 +22,14 @@ public class Box {
         // Waits until the buffer is not full 
         while (full) {
             try {
-                wait(100);
+                wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
         full = true;
         content = value; 
+        notifyAll();
         
     }
 }

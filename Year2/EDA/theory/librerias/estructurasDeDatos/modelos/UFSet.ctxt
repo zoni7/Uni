@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=i
+comment0.target=int\ find(int)
+comment0.text=\ Devuelve\ el\ identificador\ de\ la\ clase\ de\ equivalencia\ \ \n\ \ -subconjunto-\ al\ que\ pertence\ i,\ tras\ realizar\ una\ \n\ \ compresion\ de\ caminos.\n
+comment1.params=claseI\ claseJ
+comment1.target=void\ union(int,\ int)
+comment1.text=\ PRECONDICION\:\ claseI\ \!\=\ claseJ\ AND\ claseI\ \=\ find(i)\ &&\ claseJ\ \=\ find(j)\n\ \ Une\ las\ clases\ de\ equivalencia\ -subconjuntos-\ con\ \n\ \ identificadores\ claseI\ y\ claseJ\ mediante\ combinacion\ \n\ \ por\ rango.\n
+numComments=2

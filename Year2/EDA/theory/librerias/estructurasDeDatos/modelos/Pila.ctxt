@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=Pila
+comment0.text=\n\ Modelo\ de\ una\ Pila\n\ @param\ <E>,\ el\ tipo\ de\ los\ datos\ de\ la\ Pila\n\ \n\ @version\ Junio\ 2020\n
+comment1.params=e
+comment1.target=void\ apilar(java.lang.Object)
+comment1.text=Inserta\ el\ Elemento\ e\ en\ una\ Pila,\ o\ lo\ situa\ en\ su\ tope
+comment2.params=
+comment2.target=java.lang.Object\ desapilar()
+comment2.text=\ SII\ \!esVacia()\:\nDevuelve\ y\ elimina\ de\ una\ Pila\ el\ Elemento\ que\ ocupa\ su\ tope
+comment3.params=
+comment3.target=java.lang.Object\ tope()
+comment3.text=\ SII\ \!esVacia()\:\nDevuelve\ el\ Elemento\ que\ ocupa\ el\ tope\ de\ una\ Pila
+comment4.params=
+comment4.target=boolean\ esVacia()
+comment4.text=Comprueba\ si\ una\ Pila\ esta\ vacia
+numComments=5
