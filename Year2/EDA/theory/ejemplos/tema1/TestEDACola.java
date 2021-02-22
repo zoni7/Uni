@@ -1,12 +1,15 @@
 package ejemplos.tema1;
 
+import librerias.estructurasDeDatos.modelos.ColaPlus;
+import librerias.estructurasDeDatos.lineales.ArrayColaPlus;
+
 
 /** Clase que prueba la jerarquia Cola */
 
 public class TestEDACola {
     public static void main(String[] args) {
         
-        Cola q = new ArrayCola();
+        ColaPlus q = new ArrayColaPlus();
         System.out.println("Creada una Cola con " + q.talla() 
                            + " Integer, q = " + q.toString());
         q.encolar(new Integer(10)); 
@@ -16,7 +19,7 @@ public class TestEDACola {
         System.out.println("Usando otros metodos para mostrar sus Datos... ");
         String datosQ = "";
         while (!q.esVacia()) {
-            Integer primero = q.primero();
+            Integer primero = (Integer)q.primero();
             if (primero.equals(q.desencolar())) { datosQ += primero + " "; }
             else { datosQ += "ERROR "; }
         }

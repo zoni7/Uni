@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=ArrayCola
-comment0.text=\ Implementaci\u00F3n\ de\ Cola\ utilizando\ un\ array\ circular\n\ \ @param\ <E>,\ el\ tipo\ delos\ datos\ de\ la\ Cola\n
+comment0.text=\ Implementaci\u00F3n\ de\ Cola\ utilizando\ un\ array\ circular\r\n\ \ @param\ <E>,\ el\ tipo\ delos\ datos\ de\ la\ Cola\r\n
 comment1.params=
 comment1.target=int\ talla()
 comment2.params=
@@ -15,10 +15,10 @@ comment5.params=indice
 comment5.target=int\ incrementar(int)
 comment6.params=
 comment6.target=java.lang.Object\ desencolar()
-comment6.text=\ SII\ \!esVacia()\nobtiene\ y\ elimina\ el\ dato\ que\ ocupa\ su\ principio
+comment6.text=\ SII\ \!esVacia()\r\nobtiene\ y\ elimina\ el\ dato\ que\ ocupa\ su\ principio
 comment7.params=
 comment7.target=java.lang.Object\ primero()
-comment7.text=\ SII\ \!esVacia()\n\ \ obtiene\ el\ dato\ que\ ocupa\ el\ principio\ de\ una\ \ \ \nCola,\ el\ primero\ en\ orden\ de\ insercion
+comment7.text=\ SII\ \!esVacia()\r\n\ \ obtiene\ el\ dato\ que\ ocupa\ el\ principio\ de\ una\ \ \ \r\nCola,\ el\ primero\ en\ orden\ de\ insercion
 comment8.params=
 comment8.target=boolean\ esVacia()
 comment8.text=comprueba\ si\ una\ Cola\ esta\ vacia
