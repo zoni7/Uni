@@ -1,5 +1,6 @@
 package ejemplos.tema1;
 
+import librerias.estructurasDeDatos.modelos.ColaPlus;
 import librerias.estructurasDeDatos.lineales.ArrayColaPlus;
 
 /** Ejercicio: La clase GestorDePacientes usa Cola */
@@ -10,8 +11,9 @@ public class GestorDePacientes {
     public static final double HORA_INICIO_CONSULTA = 9.00; 
     public static final double TIEMPO_MEDIO_VISITA = 0.15;
     
-    private librerias.estructurasDeDatos.modelos.ColaPlus<Paciente> q;  
+    private ColaPlus<Paciente> q;  
     private double horaCita;
+    
   
     public GestorDePacientes() {
         q = new ArrayColaPlus<Paciente>(); 

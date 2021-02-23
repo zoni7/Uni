@@ -69,7 +69,7 @@ public class ArrayCola<E> implements Cola<E> {
      */
     // OJO: se contempla la circularidad de elArray no solo usando el metodo
     // incrementar, sino contando el numero de Elementos desde 0 hasta talla-1
-    /*public String toString() {
+    public String toString() {
         // NOTA: se usa la clase StringBuilder, en lugar de String, 
         // por motivos de eficiencia
         StringBuilder res = new StringBuilder();
@@ -90,5 +90,5 @@ public class ArrayCola<E> implements Cola<E> {
         if (talla != 0) { res.append(elArray[aux].toString() + "]"); }
         else { res.append("]"); }
         return res.toString();
-    }*/
+    }
 }
