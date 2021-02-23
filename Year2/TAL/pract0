@@ -1,0 +1,28 @@
+numeroRep[lista_, i_ ] := Module[{cont, j},
+     cont = 0;
+     j = 0;
+  
+  While[j <= Length[lista],
+   
+   If[i == lista[[j]], cont++];
+   j++;
+   ];(* while *)
+  
+  Return[ cont];
+  ](* fin de la definición del modulo *)
+
+
+
+
+// a este modul li falta retornar els dos valors, sols retorna un.
+
+  returnElement[lista_, i_, j_ ] := Module[{a, b},
+         a = lista[[i]] ;
+  b = lista[[j]];
+  Return[ b];
+  ](* fin de la definición del modulo *)
+
+
+
+
+

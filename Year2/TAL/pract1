@@ -1,0 +1,167 @@
+//ex1
+
+  lletraRep[word_, symbol_] := Module[{cont, j}, cont = 0;
+  j = 0;
+  While[j <= Length[word], If[symbol == word[[j]], cont++];
+   j++;];(*while*)Return[cont];](*fin de la definición del modulo*)
+
+
+// ex2
+
+ concatena[word_, i_] := Module[{j, res}, j = 0;
+  res = {};
+  While[j <= i, res = Append[res, word];
+   j++;];(*while*)Return[res];](*fin de la definición del modulo*)
+
+// ex3
+
+returnPref[word_] := Module[{j, res}, j = 0;
+  res = {};
+  While[j <= Length[word], res = Append[res, Take[word, j]];
+   j++;];(*while*)Return[res];](*fin de la definición del modulo*)
+
+// ex4
+
+returnSuf[word_] := Module[{j, res}, j = Length[word] - 1;
+  res = {};
+  While[j >= 0, res = Append[res, Drop[word, j]];
+   j--;];(*while*)Return[res];](*fin de la definición del modulo*)
+
+// ex5 falta acabarlo
+
+returnSeg[word_] := Module[{j, k, res, aux, i, bool}, j = 0;
+  k = Length[word] + 1;
+  res = {};
+  While[j <= Length[word],
+   aux = word;
+   For[i = 1, i <= k, i++,
+    bool = MemberQ[res, Take[aux, j]];
+    If[bool =!= True,
+     AppendTo[res, Take[aux, j]]
+     ];(*if*)
+     aux = RotateLeft[aux];
+    
+    ];
+   k--;
+   j++;];(*while*)Return[res];](*fin de la definición del modulo*)
+
+
+
+// ex6
+
+productLeng[leng1_, leng2_] := 
+ Module[{res, aux1, aux2, i, j}, res = {};
+  aux1 = leng1;
+  For[i = 1, i <= Length[leng1], i++, aux2 = leng2;
+   For[j = 1, j <= Length[leng2], j++, 
+    AppendTo[res, Join[Take[aux1, 1], Take[aux2, 1]]];
+    aux2 = RotateLeft[aux2]];
+   aux1 = RotateLeft[aux1]];
+  res = Sort[res];
+  Return[res];]
+
+
+
+
+  L2 = {{}, {ba}, {bba}}
+
+  L1 = {{a}, {bb}, {aba}}
+
+
+  -----solution from Fabian------
+
+  ProdL[L1_, L2_]:=Module[{sol,i,j,kk},
+    sol = {};
+    For[i=1,i <= Length[L1],i++,
+      For[j=1,j<=Length[L2],j++,
+        kk = Join[L1[[i]],L2[[j]]];
+        AppendTo[sol,kk];
+      ];
+    ];
+    Return[sol];
+  ]
+
+
+// ex7
+
+union[leng1_, leng2_] := Module[{res},
+  res = Join [
+    Join[ Complement[leng1, leng2], Complement[leng2, leng1]], 
+    Intersection[leng1, leng2]];
+  
+  res = Sort[res];
+  (*while*)Return[res];](*fin de la definición del modulo*)
+
+  //ex8
+
+  powLeng[leng_, int_] := Module[{res, aux1, aux2, i, j, k}, res = {};
+  aux1 = leng;
+  For[k = 1, k < int, k++,
+   For[i = 0, i < Length[leng], i++, aux2 = leng;
+    For[j = 0, j < Length[leng], j++, 
+     AppendTo[res, Join[Take[aux1, 1], Take[aux2, 1]]];
+     aux2 = RotateLeft[aux2]];
+    aux1 = RotateLeft[aux1]];
+   aux1 = res;];
+  (*while*)Return[res];](*fin de la definición del modulo*)
+
+
+  -----solution from Fabian------
+  PowerL[L_, n_]:=Module[{sol,i},
+    sol = {{}}; (* neutral element *)
+    For[i=1,i <= n,i++,
+      sol = ProdL[sol,L];
+    ];
+    Return[sol];
+  ]
+
+
+  // ex 9
+  
+  ex9[w_] := Module[{sol},
+  sol = False;
+  If[EvenQ[Length[Position[w, a]]] == True && 
+    Length[Position[w, b]] >= 2,
+   sol = True
+   ];
+  Return[sol];
+  ]
+
+
+  //ex12
+  //Take[w2, {2, 3}] == w1
+
+  segPosition[word1_, word2_] := Module[{i, j, res},
+  i = 1;
+  j = Length[word1];
+  
+  If[Length[word1] > Length[word2], res = False,
+   While[j =!= Length[word2] + 1 && Take[word2, {i, j}] =!= word1,
+    i++;
+    j++;];
+   
+   If[j =!= Length[word2] + 1, res = i, res = False];
+   ];
+  (*while*)Return[res];](*fin de la definición del modulo*)
+
+
+  //ex13
+
+  segPosition2[m_, w_] := Module[{i, j, res, k, seg},
+  res = {};
+  For[k = 1, k <= Length[m], k++,
+   j = Length[m[[k]]];
+   i = 1;
+   If[Length[m[[k]]] > Length[w], res = res, While[j =!= Length[w] + 1,
+      If[Take[w, {i, j}] == m[[k]],
+       seg = Append[{i}, m[[k]]];
+       AppendTo[res, seg];
+       res = Sort[res];];
+      
+      i++;
+      j++;];
+    
+    ];
+   ];
+  
+  (*while*)Return[res];](*fin de la definición del modulo*)

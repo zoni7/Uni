@@ -1,0 +1,219 @@
+// ex1
+
+isDFA[A_] := Module[{l, i, j, sol},
+  l = A[[2]];
+  sol = True;
+  For[j = 1, j <= Length[l], j++,
+   For[i = 1, i < Length[A[[1]]], i++,
+     If[Length[Cases[A[[3]], {i, l[[j]], _}]] > 1, sol = False];
+     ];
+   ];
+  
+  Return[sol];]
+
+// ex2
+
+isBidetermista[A_] := Module[{l, i, j, sol},
+  l = A[[2]];
+  sol = False;
+  For[j = 1, j <= Length[l], j++,
+   For[i = 1, i < Length[A[[1]]], i++,
+     If[Length[Cases[A[[3]], {_, l[[j]], i}]] == 1 && 
+        Length[A[[5]]] == 1, sol = True];
+     ];
+   ];
+  
+  Return[sol];]
+
+// ex3  
+
+isCompleted[A_] := Module[{i, j, l1, l2, sol},
+  l1 = A[[1]];
+  l2 = A[[2]];
+  sol = True;
+  For[i = 1, i < Length[A[[1]]], i++, 
+   For[j = 1, j <= Length[A[[2]]], j++, 
+     If[Length[Cases[A[[3]], {l1[[i]], l2[[j]], _}]] > 1, 
+       sol = False;];
+     ];];
+  Return[sol];]
+
+// ex4
+----------------------------------------------------
+# The function to detect if the initial state coincide
+
+initialState[A_, w_] := Module[{ini, sol, cases},
+  sol = True;
+  ini = A[[4]];
+  
+  cases = Cases[A[[3]], {A[[ini]], w[[1]], _}];
+  sol = True;
+  If[Length[cases] == 0, sol = False];
+  Return[sol];]
+-----------------------------------------------------
+# The function to detect if the final state coincide
+
+finState[ini_, fi_] := Module[{j, sol,},
+  sol = False;
+  For[j = 1, j <= Length[fi], j++,
+   If[ini == fi[[j]], sol = True];
+   ];
+  Return[sol];]
+
+-----------------------------------------------------
+# Completed version 
+
+isInDFA[A_, w_] := 
+ Module[{ini, fin, sol, i, j, cases}, sol = False;
+  ini = A[[4]];
+  fin = A[[5]];
+  i = 1;
+  cases = Cases[A[[3]], {ini, w[[1]], _}];
+  If[ Length[cases] == 0, sol == False,
+   sol = True;
+   While[i <= Length[w] && sol == True,
+    If[Length[Cases[A[[3]], {ini, w[[i]], _}]] == 1, 
+      cases = Cases[A[[3]], {ini, w[[i]], _}];
+      cases = cases[[1]];
+      ini = cases[[3]];
+      i++;
+      
+      (*else*), sol = False;
+      ];
+    
+    ]; 
+   ];
+  j = 1;
+  If[sol == True,
+   sol = False;
+   While[j <= Length[fin] && sol == False,
+    If[ini == fin[[j]], sol = True];
+    j++;
+    ];
+   ];
+  Return[sol];]
+
+
+  ------------------------------------------------------------------
+  # Version from Damian 
+
+  isInDFA[A_,x_] := Module[{state,symbol,i,tr},
+    state = A[[4]];
+    For[i = 1, i <= Length[x], i++,
+    symbol = x[[i]];
+    tr = Cases[A[[3]], {state,symbol,_}];
+    Print[tr[[1]]];
+    If[tr=={},Return[False]];
+    state = tr[[1,3]];
+
+    ];
+
+    Return[MemberQ[A[[5]],state]];
+  ]
+
+
+
+// ex 7
+
+viableStates[A_, s_, l_] := 
+ Module[{i, j, k, sol, activeState, lenCase, cases},
+  sol = {};
+  For[i = 1, i <= Length[s], i++,
+   activeState = s[[i]];
+   For[j = 1, j <= Length[A[[3]]], j++,
+    lenCase = Length[Cases[A[[3]], {activeState, l, _}]];
+    If[lenCase >= 1,
+     For[k = 1, k <= lenCase, k++,
+       cases = Cases[A[[3]], {activeState, l, _}];
+       	        cases = cases[[k]];
+       If[MemberQ[sol, cases[[3]]] == False,
+        AppendTo[sol, cases[[3]] ]
+        ];
+       
+       ];
+     ];
+    ];
+   ];
+  Return[sol];]
+
+  ---------------------------------
+  #opció optimizada
+  viableStates[A_, s_, l_] := Module[{i, j, sol, list},
+  sol = {};
+  For[i = 1, i <= Length[s], i++,
+   list = Cases[A[[3]], {s[[i]], l, _}];
+   For[j = 1, j <= Length[list], j++,
+    AppendTo[sol, list[[j , 3]]]
+    ];];
+  Return[Union[sol]];]
+
+
+// ex 8
+
+isInNFA[A_, w_] := 
+ Module[{fin, sol, i, j, k, cases, s}, sol = False;
+  s = A[[4]];
+  fin = A[[5]];
+  i = 1;
+  cases = Cases[A[[3]], {s, w[[1]], _}];
+  If[Length[cases] == 0, sol == False, sol = True;
+   s = {1};
+   While[i <= Length[w] && sol == True, s = viableStates[A, s, w[[i]]];
+    If[Length[s] == 0, sol = False];
+    i++;];];
+  If[sol == True, sol = False; j = 1;
+   While[j <= Length[s], k = 1;
+    While[k <= Length[fin], If[fin[[k]] == s[[j]], sol = True;];
+     k++;];
+    j++;];];
+  Return[sol];]
+
+---------------------------------------
+# opció optimizada
+  isInNFA[A_, w_] := Module[{i, s},
+  s = {A[[4]]};
+  For[i = 1, i <= Length[w], i++,
+   s = viableStates[A, s, w[[i]]];
+   ];
+  Return[Intersection[A[[5]], s] =!= {}];]
+
+
+
+
+// ex 9
+
+
+
+cumpleP[A_] := Module[{sol, i, j},
+  sol = True;
+  For[i = 1, i <= Length[A[[1]]], i++,
+   j = 1;
+   While[ 
+    j <= Length[A[[2]]] && ! 
+      MemberQ[A[[3]], {_, A[[2, j]], A[[1, i]]}],
+    j++;
+    ];
+   j++;
+   While[j <= Length[A[[2]]] && sol == True,
+    If[MemberQ[A[[3]], {_, A[[2, j]], A[[1, i]]}], sol = False];
+    j++;
+    ];
+   ];
+  Return[sol];
+  ]
+
+// ex 10
+ex10[A_, w_] := Module[{sol, i, minA, j, tr, state},
+  sol = {};
+  state = A[[1, 1]];
+  For[i = 1, i <= Length[A[[1]]], i++,
+   minA = Cases[A[[3]], {state, _, _}];
+   For[j = 1, j <= Length[w], j++,
+    tr = Cases[minA, {state, w[[j]], _}];
+    If[tr == {}, Return[False]];
+    state = tr [[1, 3]];
+    ];
+   AppendTo[sol, state] 
+   ];
+  Return[Sort[sol] == A[[1]] ]
+  ] 

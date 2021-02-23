@@ -1,0 +1,82 @@
+
+M = {{a, b, a, a}, {a, a, b, b}, {b, a}}
+
+alf = Union[Flatten[M]]
+
+
+
+// ex 1
+returnPref[word_] := Module[{j, res}, j = 0;
+  res = {};
+  While[j <= Length[word], res = Append[res, Take[word, j]];
+   j++;];(*while*)Return[res];](*fin de la definición del modulo*)
+
+
+listPref[M_] := Module[{i, prefM}, prefM = {};
+  For[i = 1, i <= Length[M], i++, 
+   prefM = Union[prefM, returnPref[M[[i]]]];];
+  Return[prefM];]
+
+
+ex1[M_] := Module[{sol, alf, i, prefM, seg, j, new}, prefM = listPref[M];
+  alf = Union[Flatten[M]];
+  seg = {};
+  For[i = 1, i <= Length[prefM], i++, For[j = 1, j <= Length[alf], j++,
+     new = Append[prefM[[i]], alf[[j]]];
+     If[MemberQ[prefM, new],
+      AppendTo[seg, {prefM[[i]], alf[[j]], new}];];];
+   ];
+  sol = {};
+  AppendTo[sol, {prefM, alf, Union[seg], {}, M}];
+  Return[sol];]
+
+
+ ---------------------------------
+
+// ex2
+// Fa us dels moduls returnPref i listPref
+
+ex2[M_] := 
+ Module[{sol, alf, i, prefM, seg, j, new, bucle}, prefM = listPref[M];
+  alf = Union[Flatten[M]];
+  seg = {};
+  For[i = 1, i <= Length[prefM], i++, For[j = 1, j <= Length[alf], j++,
+     new = Append[prefM[[i]], alf[[j]]];
+     bucle = {prefM[[1]], alf[[j]], prefM[[1]]};
+     If[MemberQ[seg, bucle] ==  False, AppendTo[seg, bucle];];
+     
+     If[MemberQ[prefM, new],
+      AppendTo[seg, {prefM[[i]], alf[[j]], new}];];];
+   ];
+  sol = {};
+  AppendTo[sol, {prefM, alf, Union[seg], {}, M}];
+  Return[sol[[1]]];]
+
+ ---------------------------------
+ 
+  // ex3
+  utilitza tot lo del ex2 i el ex7 i 8 de la pract2
+
+  viableStates[A_, s_, l_] := Module[{i, j, sol, list},
+  sol = {};
+  For[i = 1, i <= Length[s], i++,
+   list = Cases[A[[3]], {s[[i]], l, _}];
+   For[j = 1, j <= Length[list], j++,
+    AppendTo[sol, list[[j , 3]]]
+    ];];
+  Return[Union[sol]];]
+
+  ex3[M_, w_] := Module[{i, j, s, sol, A, finals},
+   A = ex2[M];
+   s = {{}};
+   sol = {};
+   For[i = 1, i <= Length[w], i++,
+    s = viableStates[A, s, w[[i]]];
+    finals = Intersection[A[[5]], s];
+    If[finals =!= {},
+     For[j = 1, j <= Length[finals], j++,
+       AppendTo[sol, {(i - Length[finals[[j]]] + 1), finals[[j]]}];
+       ];
+     ];
+    ];
+   Return[sol]];

@@ -1,0 +1,90 @@
+// OTHER MODULES USED
+
+returnPref[word_] := Module[{j, res}, j = 0;
+  res = {};
+  While[j <= Length[word], res = Append[res, Take[word, j]];
+   j++;];(*while*)Return[res];](*fin de la definición del modulo*)
+
+returnSuf[word_] := Module[{j, res}, j = Length[word] - 1;
+  res = {};
+  While[j >= 0, res = Append[res, Drop[word, j]];
+   j--;];(*while*)Return[res];](*fin de la definición del modulo*)
+
+listPref[M_] := Module[{i, prefM}, prefM = {};
+  For[i = 1, i <= Length[M], i++, 
+   prefM = Union[prefM, returnPref[M[[i]]]];];
+  Return[prefM];]
+
+// ex1 and ex2
+
+dictionaryA[M_] := 
+ Module[{alf, i, j, k, prefM, new, seg, sol, finals, listSuf},
+  alf = Union[Flatten[M]];
+  prefM = listPref[M];
+  seg = {};
+  finals = {};
+  For[i = 1, i <= Length[prefM], i++,
+   For[j = 1, j <= Length[alf], j++,
+    new = Append[prefM[[i]], alf[[j]]];
+    If[MemberQ[prefM, new], 
+     AppendTo[seg, {prefM[[i]], alf[[j]], new}];,
+     k = False;
+     While[k == False ,
+      new = Rest[new];
+      If[MemberQ[prefM, new],
+       k = True;
+       AppendTo[seg, {prefM[[i]], alf[[j]], new}];
+       ];
+      ];
+     ];
+    ];
+    (*Getting the finals*)
+   listSuf = returnSuf[prefM[[i]]];
+   If [Intersection[listSuf, M] != {}, AppendTo[finals, prefM[[i]]]];
+   ];
+  sol = {}; 
+  AppendTo[sol, {prefM, alf, Union[seg], {}, finals}];
+  
+  Return [sol[[1]]];
+  ]
+
+
+// ex 3
+
+ex3[DAut_, T_, M_] := Module[{state, q, i, j, sol, length}, sol = {};
+  state = DAut[[4]];
+  For[i = 1, i <= Length[T], i++, 
+   q = Cases[DAut[[3]], {state, T[[i]], _}];
+   q = q[[1, 3]];
+   If[MemberQ[DAut[[5]], q],
+    (*You found a pattern*)
+    length = tableEx3[q, M];
+    For[j = 1, j <= Length[length], j++,
+     If[MemberQ[sol, (i - length[[j]] + 1)] == False,
+       AppendTo[sol, (i - length[[j]] + 1)]];
+     ];
+    ];
+   
+   state = q;];
+  Return[sol]]
+
+
+tableEx3[q_, M_] := Module[{pref, i, sol},
+sol = {};
+pref = returnPref[q];
+For[i = 1, i <= Length[pref], i++,
+If[MemberQ[M, pref[[i]]],
+ AppendTo[sol, Length[pref[[i]]]]
+ ];
+];
+Return[sol]]
+
+
+
+
+// EXAMPLE DATA
+
+m = {{a}, {b, b}, {a, a, a}, {a, a, b}, {a, b, b}, {a, a, a, b}, {a, 
+   a, b, a}, {a, a, b, a, b}, {a, a, b, b, b}}
+
+x={b, b, a, a, a, b, a, b, b}
