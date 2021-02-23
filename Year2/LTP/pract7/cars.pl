@@ -65,3 +65,6 @@ isRelated(A,B) :- isClassic(A), isClassic(B), A \==B.
 isCountryOf(A,B) :- isModelFrom(B,A). 
 
 isClassic(A) :- since(A, Y), Y =< 1995.
+
+
+

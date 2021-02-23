@@ -25,3 +25,5 @@ connection_same_day(Origin,Destination,Date):-
     Hl1_in_minutes is Hl1 * 60 + Ms1 + 60,
     Hs2_in_minutes is Hs2 * 60 + Ms2,
     Hl1_in_minutes =< Hs2_in_minutes.
+
+
