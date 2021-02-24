@@ -1,15 +1,15 @@
           .globl __start
           .text 0x00400000
-__start:  
-	  
-repeat:	  li $a0, 'M'	  
-	  jal Input
-	  move $s0,$v0	  
-	  
+__start:
 
-	  li $a0, 'Q'	 
+repeat:	  li $a0, 'M'
+	  jal Input
+	  move $s0,$v0
+
+
+	  li $a0, 'Q'
           jal Input
-	   
+
 
           move $a1,$v0
 	  move $a0,$s0
@@ -24,7 +24,7 @@ continue:
 	  li $a0, 'R'
           jal Output
 	  j repeat
-	   
+
 fi:
           li $v0,10
           syscall
@@ -36,23 +36,23 @@ MultFor:  add $v0, $v0, $a0
           bne $a1, $zero, MultFor
 MultRet:  jr $ra
 
-Input:	  
+Input:
 	  li $v0, 11
 	  syscall
-	  
+
 	  li $v0, 11
 	  li $a0, '='
 	  syscall
 
-	  li $v0,5          
+	  li $v0,5
 	  syscall
 	  
 	  jr $ra
 
 Output:	  li $v0, 11
 	  syscall
-	  
-	  li $v0, 11	  
+
+	  li $v0, 11
 	  li $a0, '='
 	  syscall
 
@@ -68,7 +68,4 @@ Output:	  li $v0, 11
 
 sign:	  sub $a1, $zero, $a1
 	  sub $a0, $zero, $a0
-	  j continue 
-
-	  
-	  
+	  j continue
