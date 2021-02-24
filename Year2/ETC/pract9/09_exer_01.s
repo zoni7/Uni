@@ -21,7 +21,7 @@ __start:  li $a0,'M'
           la $a0 'R'
           la $a1 R
           jal OutputV
-          
+
 
           # Terminar el proceso
           li $v0,10
@@ -52,24 +52,24 @@ OutputV:   # Output acepta parámetros directamente en registros:
 
 
           li $v0, 1         # print_int
-          move $s1, $a1     # Entero a imprimir en $s1
-          syscall           # Imprime $s1
+          move $a0, $s1     # Entero a imprimir en $a0
+          syscall           # Imprime $a0
 
           li $v0, 11        # print_char
           li $a0, 10        # Carácter ASCII ‘\n’ en $a0
           syscall           # Imprime ‘\n’
           jr $ra            # Retorno de Output
 
-MultR:    # MultR acepta parámetros y retorna el resultado directamente en registros:
+MultV:    # MultR acepta parámetros y retorna el resultado directamente en registros:
           #    int Mult (int $a0, int $a1)
           # Hay que cambiarla por MultV, que opera sobre variables en memoria:
           #    void MultV (int *$a0, int *$a1, int *$a2)
 
           lw $s0, 0($a0)
           lw $s1, 0($a1)
-          lw $s2, 0($a2)
+
 
           mult $s0, $s1     # Multiplica argumentos
           mflo $v0          # Resultado en $v0
-          sw $s2, 0($v0)
+          sw $v0, 0($a2)
           jr $ra            # Retorno de Mult
