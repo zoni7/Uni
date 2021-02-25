@@ -29,7 +29,8 @@ public class FXMLLoginController implements Initializable {
     private Button btt;
 
     /**
-     * Initializes the controller class.
+     * Initializes the controller class.     * Initializes the controller class.
+
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
