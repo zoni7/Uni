@@ -1,4 +1,4 @@
-package librerias.estructuraDeDatos.modelos;
+package librerias.estructurasDeDatos.modelos;
 
 /**
  * Modelo de una Lista Con Punto de Interes (PI), 
