@@ -18,6 +18,8 @@ public class ApuestaPrimitiva {
     // una combinacion de 6 numeros de La Primitiva
     private ListaConPI<NumeroPrimitiva> combinacion;
     
+    private NumeroPrimitiva num;
+    
     /**
      * Crea una ApuestaPrimitiva, o una combinacion de  
      * seis numeros aleatorios con valores distintos y   
@@ -27,10 +29,20 @@ public class ApuestaPrimitiva {
      *                 sus 6 numeros, debe estar ordenada Asc.
      *                 (true) o no (false).           
      */
-    public ApuestaPrimitiva(boolean ordenada) {
-        
+    public ApuestaPrimitiva(boolean ordenada) {       
         /* COMPLETAR */
-        
+        if (ordenada) {
+            combinacion = new LEGListaConPIOrdenada<NumeroPrimitiva>();
+            
+        } else {
+            combinacion = new LEGListaConPI<NumeroPrimitiva>();
+        }
+        for(int i = 0; i < 6; i++ ) {
+            num = new NumeroPrimitiva();
+            if (this.posicionDe(num) == -1) { 
+                combinacion.insertar(num);       
+            } else {i--;}
+        }
     }
     
     /**
@@ -44,10 +56,16 @@ public class ApuestaPrimitiva {
      *          en el intervalo [0, 5] si n esta en la combinacion      
      *          o -1 en caso contrario
      */
-    protected int posicionDe(NumeroPrimitiva n) {
-        
+    protected int posicionDe(NumeroPrimitiva n) {        
         /* COMPLETAR */
-        
+        int posicion = 0;
+        combinacion.inicio();
+        while(!combinacion.esFin() && !combinacion.recuperar().equals(n)) {
+            combinacion.siguiente();
+            posicion++;
+        }
+        if (!combinacion.esFin()) return posicion;
+        return -1;
     }
     
     /**
@@ -56,9 +74,17 @@ public class ApuestaPrimitiva {
      * 
      * @return el String con la ApuestaPrimitiva en el formato texto dado. 
      */
-    public String toString() {
-        
+    public String toString() {    
         /* COMPLETAR */
+        combinacion.inicio();
+        String res = combinacion.recuperar().toString();
+        combinacion.siguiente();
+        
+        while(!combinacion.esFin()) {            
+            res = res + ", " + combinacion.recuperar().toString(); 
+            combinacion.siguiente();
+        }
+        return res;
         
     }
 }

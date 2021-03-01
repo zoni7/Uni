@@ -9,7 +9,7 @@ public class TestListaConPIDeLaCompra {
         ListaConPI<String> l = new LEGListaConPI<String>();
         
         /*l.inicio();*/
-
+        l.insertar("perejil"/*, l.talla()*/); // Modification exercise 6
         l.insertar("patatas"/*, l.talla()*/);
         l.insertar("cerezas"/*, l.talla()*/);
         l.insertar("leche"/*, l.talla()*/);
@@ -21,10 +21,17 @@ public class TestListaConPIDeLaCompra {
         l.inicio(); String e = "perejil";
         while (!l.esFin() && !l.recuperar(/*i*/).equals(e)) { l.siguiente(); }
         if (l.esFin()) {
+            l.inicio(); // modification exercise 5
             l.insertar(e/*, l.talla()*/);
-            System.out.println("Pues si. Lo apunto al final y arreglado:\n"
+            System.out.println("Pues si. Lo apunto al inicio y arreglado:\n"
                                + l.toString());
         }
-        else { System.out.println("Pues no. Ya esta en la lista!"); }
+        else { System.out.println("Pues no. Ya esta en la lista!"); 
+             // Modification exercise 6
+             l.eliminar();
+             while(!l.esFin() && !l.recuperar(/*i*/).equals("cerezas")) { l.siguiente(); }
+             l.insertar(e);
+             System.out.println("Voy a apuntarlo antes de las cerezas: \n" + l.toString()); 
+        }
     }
 }
