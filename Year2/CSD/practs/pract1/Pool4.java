@@ -15,7 +15,7 @@ public class Pool4 extends Pool { //kids cannot enter if there are instructors w
             wait();
         }
         numKids++; // update the state
-        notifyAll(); // notify other kids waiting to swim
+        //notifyAll(); // notify other kids waiting to swim
         log.swimming();
         
     }
