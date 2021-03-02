@@ -4,18 +4,17 @@ public class Pool3 extends Pool{ //max capacity
     private int numInt = 0;
     private int numKids = 0;
 
-    private int ni = 7;
-    private int nk = 3;
-    private int op = (int) Math.round(ni/nk);
-    private int max = (ni + nk) / 2;
+    private int ki;
+    private int cap;
 
-    public void init(int ki, int cap)           {}
+    public void init(int ki, int cap)  {this.ki = ki; this.cap = cap;}
     public synchronized void kidSwims() throws InterruptedException {
-        while((numInt == 0 || numKids >= (op * numInt)) || (numInt + numKids) >= max ) { //no kids alone && max kids/instructor
+        while((numInt == 0 || numKids >= (ki * numInt)) || (numInt + numKids) >= cap ) { //no kids alone, max kids/instructor, max capacity 
             log.waitingToSwim();
             wait();
         }
         numKids++; // update the state
+        //notifyAll(); // notify other kids waiting to swim
         log.swimming();
         
     }
@@ -27,7 +26,7 @@ public class Pool3 extends Pool{ //max capacity
     
     }
     public synchronized void instructorSwims() throws InterruptedException  {
-        while ((numInt + numKids) >= max) {
+        while ((numInt + numKids) >= cap) { // max capacity
             log.waitingToSwim();
             wait();
         }
@@ -37,7 +36,7 @@ public class Pool3 extends Pool{ //max capacity
         
     }
     public synchronized void instructorRests() throws InterruptedException  {
-        while((numKids > 0 && numInt == 1) || (numKids >= (op * (numInt -1)) && numKids != 0)) { //no kids alone && max kids/instructor
+        while((numKids > 0 && numInt == 1) || (numKids >= (ki * (numInt -1)) && numKids != 0)) { //no kids alone && max kids/instructor
             log.waitingToRest();
             wait();
         }
