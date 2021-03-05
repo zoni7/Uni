@@ -118,7 +118,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="b10" alignment="CENTER" layoutX="389.0" layoutY="16.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#playerMove" prefHeight="65.0" prefWidth="175.0" textAlignment="CENTER" textFill="GREY" GridPane.rowIndex="1">
+            <Button fx:id="b10" alignment="CENTER" layoutX="389.0" layoutY="16.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#playerMove" prefHeight="65.0" prefWidth="175.0" textAlignment="CENTER" textFill="#6495ea" GridPane.rowIndex="1">
                <effect>
                   <DropShadow />
                </effect>
@@ -140,7 +140,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="b11" alignment="CENTER" layoutX="15.0" layoutY="16.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#playerMove" prefHeight="65.0" prefWidth="175.0" textAlignment="CENTER" textFill="GREY" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Button fx:id="b11" alignment="CENTER" layoutX="15.0" layoutY="16.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#playerMove" prefHeight="65.0" prefWidth="175.0" textAlignment="CENTER" textFill="#6495ea" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <effect>
                   <DropShadow />
                </effect>
@@ -162,7 +162,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="b21" alignment="CENTER" layoutX="389.0" layoutY="93.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#playerMove" prefHeight="65.0" prefWidth="175.0" textAlignment="CENTER" textFill="CORNFLOWERBLUE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Button fx:id="b21" alignment="CENTER" layoutX="389.0" layoutY="93.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#playerMove" prefHeight="65.0" prefWidth="175.0" textAlignment="CENTER" textFill="#6495ea" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <effect>
                   <DropShadow />
                </effect>
