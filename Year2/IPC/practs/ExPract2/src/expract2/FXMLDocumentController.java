@@ -7,6 +7,12 @@ package expract2;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.DoubleBinding;
+import javafx.beans.binding.NumberBinding;
+import javafx.beans.binding.StringBinding;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,6 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.util.converter.NumberStringConverter;
+import javax.print.attribute.standard.MediaSize.Other;
 
 /**
  *
@@ -59,6 +66,7 @@ public class FXMLDocumentController implements Initializable {
             double op =Math.round((num1 * num2)* 100);
             String res = Double.toString(op / 100);
             myOutput.textProperty().setValue(res);
+            
         } catch (Exception e) {
             System.out.println("No introducido un numero");
         }
@@ -70,6 +78,26 @@ public class FXMLDocumentController implements Initializable {
         myOutput.textProperty().setValue("");
         myInput.textProperty().setValue("");
         myRate.textProperty().setValue("");
+    }
+
+    @FXML
+    private void automatize(ActionEvent event) {
+        if (myCheckBox.isSelected()) {
+            // hi ha que convertir-ho en un DoubleProperty
+            //DoubleProperty porperty = (DoubleProperty) myInput.textProperty();
+            
+         //NumberBinding num2 = (myInput.;
+         NumberBinding num1 = mySlider.valueProperty().multiply(num2);
+         
+         //DoubleBinding num2 = myInput.textProperty();
+            myOutput.textProperty().bind(num1.asString());
+            //myOutput.textProperty().bindBidirectional(mySlider.valueProperty(), new NumberStringConverter());
+            
+            
+        } else {
+            bConvert.setDisable(false);
+            myOutput.textProperty().unbind();
+        }
     }
     
 }
