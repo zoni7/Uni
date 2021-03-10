@@ -4,7 +4,7 @@
 
                 .data 0x10000000
 A:              .word 0,1,2,3,4,5,6,7   # Vector A
-                .data 0x10002080
+                .data 0x10001040
 B:              .space 32               # Vector B (result)
                 .data 0x1000A030
 k:              .word 7                 # Scalar constant
