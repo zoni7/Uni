@@ -83,15 +83,10 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void automatize(ActionEvent event) {
         if (myCheckBox.isSelected()) {
-            // hi ha que convertir-ho en un DoubleProperty
-            //DoubleProperty porperty = (DoubleProperty) myInput.textProperty();
-            
-         //NumberBinding num2 = (myInput.;
-         NumberBinding num1 = mySlider.valueProperty().multiply(num2);
-         
-         //DoubleBinding num2 = myInput.textProperty();
+            bConvert.setDisable(true);
+            double num2 = Double.parseDouble(myInput.textProperty().getValue());
+            NumberBinding num1 = mySlider.valueProperty().multiply(num2);
             myOutput.textProperty().bind(num1.asString());
-            //myOutput.textProperty().bindBidirectional(mySlider.valueProperty(), new NumberStringConverter());
             
             
         } else {
