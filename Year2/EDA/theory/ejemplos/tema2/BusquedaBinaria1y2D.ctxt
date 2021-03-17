@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=BusquedaBinaria1y2D
+comment0.text=\ Ejercicios\ sobre\ B\u00FAsqueda\ Binaria\ en\ arrays\r\n\ \ @author\ EDA\r\n\ \ @version\ Septiembre\ 2020\r\n
+comment1.params=m\ e
+comment1.target=java.awt.Point\ buscarEnMatriz(java.lang.Comparable[][],\ java.lang.Comparable)
+comment1.text=\ SII\ m\ es\ un\ matriz\ cuadrada\ ordenada\ Asc.\ por\ filas\ y\ sin\ repetidos\:\ \r\n\ \ obtiene\ con\ coste\ logaritmico\ la\ posicion\ del\ elemento\ e\ en\ m\r\n\ \ (busqueda\ con\ garantia\ de\ exito,\ por\ simplificar)\r\n
+comment2.params=m\ e\ fIni\ fFin\ f
+comment2.target=java.awt.Point\ buscarEnMatriz(java.lang.Comparable[][],\ java.lang.Comparable,\ int,\ int,\ int)
+comment3.params=v\ e
+comment3.target=int\ buscarBin(java.lang.Comparable[],\ java.lang.Comparable)
+comment3.text=\ SII\ v\ es\ un\ array\ ordenado\ Asc.\:\ obtiene\ la\ posicion\ de\ la\ primera\ \ \r\n\ \ aparicion\ de\ e\ en\ v;\ si\ e\ no\ esta\ en\ v\ devuelve\ -1\ para\ advertirlo.\r\n
+comment4.params=v\ e\ izq\ der
+comment4.target=int\ buscarBin(java.lang.Comparable[],\ java.lang.Comparable,\ int,\ int)
+numComments=5

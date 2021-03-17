@@ -1,0 +1,9 @@
+public int lessThan(String[] v, String e, int i, int f ) {
+  mitad = (i + f) / 2;
+  // if the chosen element is greater than e
+  if (v[mitad].compareTo(e) > 0) { return lessThan(v, e, i, mitad - 1); }
+  // the case wanted, BASE CASE
+  else if (v[mitad].compareTo(e) == 0) { return (v.length - 1); }
+  // if the chosen element is less than e
+  else { return  v.length + lessThan(v, e, mitad + 1, f ); }
+}
