@@ -43,36 +43,37 @@ public class FXMLExampleListViewController implements Initializable {
     private ObservableList<Persona> observablePersonData;
 
     @FXML
-    private Button buttonDetails;
+    private Button bDelete;
+    @FXML
+    private Button bAdd;
+    @FXML
+    private Button bModify;
 
 
-    private void handleOnActionButtonAñadir(ActionEvent event) throws IOException {
+    @FXML
+    private void handleOnActionButtonAdd(ActionEvent event) throws IOException {
         
-        //Get the selected item index
-        int index = listViewPerson.getSelectionModel().selectedIndexProperty().getValue();
-        if (index>=0){
-           //If there is an item selected, a new modal window is opened
-           
-            //Load the IU objects
-            FXMLLoader myLoader = new FXMLLoader(getClass().getResource("/view/FXMLDetailsView.fxml"));
-            Pane root = (Pane) myLoader.load();
+
+         //Load the IU objects
+         FXMLLoader myLoader = new FXMLLoader(getClass().getResource("/view/FXMLDetailsView.fxml"));
+         Pane root = (Pane) myLoader.load();
+
+         //Get the controller of the UI
+         FXMLDetailsViewController detailsController = myLoader.<FXMLDetailsViewController>getController();          
+         //We pass the data to the cotroller. Passing the observableList we 
+         //give controll to the modal for deleting/adding/modify the data 
+         //we see in the listView
+         detailsController.addInitData(observablePersonData);
+
+         Scene scene = new Scene (root);
+         Stage stage = new Stage();
+         stage.setScene(scene);
+         stage.setTitle("Person addition");
+         stage.initModality(Modality.APPLICATION_MODAL); // The modal avoid to used the rest of the app if we don't close the new window
+         stage.setResizable(false);
+         stage.show();
             
-            //Get the controller of the UI
-            FXMLDetailsViewController detailsController = myLoader.<FXMLDetailsViewController>getController();          
-            //We pass the data to the cotroller. Passing the observableList we 
-            //give controll to the modal for deleting/adding/modify the data 
-            //we see in the listView
-            detailsController.initData(observablePersonData,index);
-          
-            Scene scene = new Scene (root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setTitle("Person addition");
-            stage.initModality(Modality.APPLICATION_MODAL); // The modal avoid to used the rest of the app if we don't close the new window
-            stage.setResizable(false);
-            stage.show();
-            
-        }
+        
         
     }
     
@@ -107,8 +108,11 @@ public class FXMLExampleListViewController implements Initializable {
         
     }
 
+   
+
     @FXML
-    private void handleOnActionButtonDetails(ActionEvent event) {
+    private void delete(ActionEvent event) {
+        observablePersonData.remove(listViewPerson.getSelectionModel().getSelectedItem());
     }
     
     class PersonListCell extends ListCell<Persona> {
@@ -136,7 +140,7 @@ public class FXMLExampleListViewController implements Initializable {
         listViewPerson.setCellFactory((c)->{return new PersonListCell();});
         
         //Boton de borrar solo está disponible cuando un elemento está seleccionado
-        buttonDetails.disableProperty().bind(Bindings.equal(-1,listViewPerson.getSelectionModel().selectedIndexProperty()));
+        bModify.disableProperty().bind(Bindings.equal(-1,listViewPerson.getSelectionModel().selectedIndexProperty()));
         
      
     }    

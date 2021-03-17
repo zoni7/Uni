@@ -16,13 +16,13 @@
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button fx:id="buttonDetails" accessibleHelp="Añade el valor dado en los campos Nombre y  Apellidos" accessibleText="Añadir" mnemonicParsing="false" onAction="#handleOnActionButtonDetails" prefHeight="25.0" prefWidth="69.0" text="Añadir" />
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="68.0" text="Borrar">
+                  <Button fx:id="bAdd" accessibleHelp="Añade el valor dado en los campos Nombre y  Apellidos" accessibleText="Añadir" mnemonicParsing="false" onAction="#handleOnActionButtonAdd" prefHeight="25.0" prefWidth="69.0" text="Add" />
+                  <Button fx:id="bDelete" mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="68.0" text="Delete">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#handleOnActionButtonModificar" text="Modificar">
+                  <Button fx:id="bModify" mnemonicParsing="false" onAction="#handleOnActionButtonModificar" prefHeight="25.0" prefWidth="68.0" text="Modify">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
