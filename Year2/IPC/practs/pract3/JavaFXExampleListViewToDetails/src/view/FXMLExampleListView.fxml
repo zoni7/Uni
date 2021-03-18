@@ -22,7 +22,7 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="bModify" mnemonicParsing="false" onAction="#handleOnActionButtonModificar" prefHeight="25.0" prefWidth="68.0" text="Modify">
+                  <Button fx:id="bModify" mnemonicParsing="false" onAction="#handleOnActionButtonModify" prefHeight="25.0" prefWidth="68.0" text="Modify">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>

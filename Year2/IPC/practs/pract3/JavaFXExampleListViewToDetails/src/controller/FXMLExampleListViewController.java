@@ -78,7 +78,7 @@ public class FXMLExampleListViewController implements Initializable {
     }
     
     @FXML
-    private void handleOnActionButtonModificar(ActionEvent event) throws IOException {
+    private void handleOnActionButtonModify(ActionEvent event) throws IOException {
         
         //Get the selected item index
         int index = listViewPerson.getSelectionModel().selectedIndexProperty().getValue();

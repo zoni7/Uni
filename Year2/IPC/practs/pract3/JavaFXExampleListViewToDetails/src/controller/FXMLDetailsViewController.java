@@ -36,7 +36,7 @@ public class FXMLDetailsViewController implements Initializable {
     private TextField editSurname;
     
     @FXML
-    private Button buttonAdd;
+    private Button buttonOk;
     
     boolean modify;
     @FXML
@@ -50,9 +50,12 @@ public class FXMLDetailsViewController implements Initializable {
         // TODO
         
     }   
-
+    /**
+     * Modifies an existing or adds a new element
+     * @param event 
+     */
     @FXML
-    private void onActionButtonAdd(ActionEvent event) {
+    private void onActionButtonOk(ActionEvent event) {
         if (modify) {
             observableListPersonData.remove(selectedIndex);
             observableListPersonData.add( selectedIndex,new Persona(editName.textProperty().getValue().toString(),editSurname.textProperty().getValue()));
@@ -62,17 +65,22 @@ public class FXMLDetailsViewController implements Initializable {
         ((Node) event.getSource()).getScene().getWindow().hide();
     }
     
-    
+    /**
+     * Initializes data for the modify button
+     * @param listaPersonas 
+     */
     public void initData ( ObservableList<Persona> listaPersonas , int index){
         observableListPersonData = listaPersonas;
         editName.textProperty().setValue(observableListPersonData.get(index).getNombre());
         editSurname.textProperty().setValue(observableListPersonData.get(index).getApellidos());       
         selectedIndex = index;
-        buttonAdd.textProperty().setValue("Modify");
         modify = true;
   
     }
-    
+    /**
+     * Initializes data for the add button
+     * @param listaPersonas 
+     */
     public void addInitData ( ObservableList<Persona> listaPersonas){
         observableListPersonData = listaPersonas;
         modify = false;
