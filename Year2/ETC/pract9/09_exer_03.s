@@ -49,7 +49,7 @@ OutputS:  li $v0, 4
           jr $ra
 
 StrLength:li $s0 , 0 # contador
-          li $s3, 10
+          li $s3, 10 # line feed (LF) character
     loop:
           lb $s1, 0($a0)
           addiu $a0, $a0, 1
