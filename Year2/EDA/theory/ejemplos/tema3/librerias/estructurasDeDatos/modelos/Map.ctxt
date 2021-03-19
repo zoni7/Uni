@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.target=Map
+comment0.text=\r\n\ Modelo\ Diccionario\ SIN\ claves\ repetidas,\ o\ Map\:\ Busqueda\ Dinamica\ \r\n\ de\ una\ Entrada\ de\ Clave\ dada\ en\ una\ Coleccion,\ para\ recuperar\ el\ \r\n\ Valor\ asociado\ a\ esta\ \r\n\ @param\ <C>,\ el\ tipo\ de\ sus\ claves\r\n\ @param\ <V>,\ el\ tipo\ de\ sus\ valores\r\n\ @version\ Febrero\ 2017\r\n
+comment1.params=c\ v
+comment1.target=java.lang.Object\ insertar(java.lang.Object,\ java.lang.Object)
+comment1.text=\ Inserta/actualiza\ la\ Entrada\ (c,v)\ en\ un\ Map\ y\ devuelve\ \r\n\ \ el\ valor\ que\ YA\ estuviera\ asociado\ a\ su\ clave,\ null\ si\ \r\n\ \ no\ existe\ una\ Entrada\ con\ clave\ c\r\n
+comment2.params=c
+comment2.target=java.lang.Object\ eliminar(java.lang.Object)
+comment2.text=\ Elimina\ la\ Entrada\ con\ clave\ c\ de\ un\ Map\ y\ devuelve\ su\ \r\n\ \ valor\ asociado,\ null\ si\ no\ existe\ una\ Entrada\ con\ clave\ c\r\n
+comment3.params=c
+comment3.target=java.lang.Object\ recuperar(java.lang.Object)
+comment3.text=\ Devuelve\ el\ valor\ asociado\ a\ la\ clave\ c\ en\ un\ Map,\r\n\ \ null\ si\ no\ existe\ una\ Entrada\ con\ clave\ c\r\n
+comment4.params=
+comment4.target=boolean\ esVacio()
+comment4.text=Comprueba\ si\ un\ Map\ esta\ vacio
+comment5.params=
+comment5.target=int\ talla()
+comment5.text=Devuelve\ la\ talla,\ o\ numero\ de\ Entradas,\ de\ un\ Map
+comment6.params=
+comment6.target=librerias.estructurasDeDatos.modelos.ListaConPI\ claves()
+comment6.text=Devuelve\ una\ ListaConPI\ con\ las\ talla()\ Claves\ de\ un\ Map
+numComments=7
