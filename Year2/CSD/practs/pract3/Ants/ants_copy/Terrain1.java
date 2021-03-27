@@ -25,7 +25,9 @@ public class Terrain1 implements Terrain {
     public void     bye     (int a) {         
         try{
             lock.lock();
-            v.bye(a);
+            // Before leaving the ant notifies if someone is  waiting for its cell
+            queue.signal();
+            v.bye(a);          
         } finally {lock.unlock();}  
     }
     public void     move    (int a) throws InterruptedException {
@@ -33,9 +35,7 @@ public class Terrain1 implements Terrain {
             lock.lock();
             v.turn(a); Pos dest=v.dest(a); 
             while (v.occupied(dest)) {
-                // waterfall awake
                 queue.await();
-                queue.signal(); 
                 v.retry(a);
             }
             v.go(a); queue.signal();
