@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="401.0" prefWidth="356.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.upv.inf.FXMLExampleTableWithImagesController">
+   <center>
+      <TableView fx:id="tablePersons" prefHeight="262.0" prefWidth="323.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="colId" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="colFullName" prefWidth="75.0" text="Full Name" />
+            <TableColumn fx:id="colCity" prefWidth="75.0" text="City" />
+            <TableColumn fx:id="colProfileImage" prefWidth="137.5" text="Profile Image" />
+        </columns>
+      </TableView>
+   </center>
+</BorderPane>

@@ -1,9 +1,22 @@
-public int lessThan(String[] v, String e, int i, int f ) {
-  mitad = (i + f) / 2;
-  // if the chosen element is greater than e
-  if (v[mitad].compareTo(e) > 0) { return lessThan(v, e, i, mitad - 1); }
-  // the case wanted, BASE CASE
-  else if (v[mitad].compareTo(e) == 0) { return (v.length - 1); }
-  // if the chosen element is less than e
-  else { return  v.length + lessThan(v, e, mitad + 1, f ); }
+
+class ex5 {
+  public static <T extends Comparable<E>> int menoresQue(E[] v, E e) {
+    return menoresQue(v,e,0,v.length - 1);
+  }
+
+  public static <E extends Comparable<E>>int lessThan(E[] v, E e, int i, int f ) {
+    if( f < i ) { return 0; }
+    mitad = (i + f) / 2;
+    int compare = v[mitad].compareTo(e); // v[mitad].compareTo(e) is expensive
+    // if the chosen element is greater than e
+    if (compare > 0) { return lessThan(v, e, i, mitad - 1); }
+    // the case wanted, BASE CASE
+    else if (compare == 0 { return mitad-i+1; }
+    // if the chosen element is less than e
+    else { return  lessThan(v, e, mitad + 1, f ); }
+  }
+
+  public void main (String args[]) {
+
+  }
 }
