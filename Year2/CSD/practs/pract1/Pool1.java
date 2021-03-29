@@ -6,7 +6,10 @@ public class Pool1 extends Pool {   //no kids alone
     private int numInt = 0;
     private int numKids = 0;
 
-    public void init(int ki, int cap)           {}
+    private int ki;
+    private int cap;
+
+    public void init(int ki, int cap)  {this.ki = ki; this.cap = cap; }
     public synchronized void kidSwims() throws InterruptedException {
         while(numInt == 0) { //no kids alone
             log.waitingToSwim();
@@ -25,7 +28,7 @@ public class Pool1 extends Pool {   //no kids alone
     }
     public synchronized void instructorSwims() throws InterruptedException  {
         numInt++; // update the state
-        notifyAll(); // notify kidSwims()
+        notifyAll(); // notify kidSwims(), instructorRests()
         log.swimming();   
          
         

@@ -30,7 +30,7 @@ public class Termino {
     // por eficiencia: "caching the Hash code" o "Hash cache"
     protected int valorHash;
     // para evaluar distintos metodos hashCode, con distintas bases
-    protected int baseHashCode;
+    protected int baseHashCode; // used to calculate valor hash
     
     /** Crea el Termino asociado a la palabra t y 
      *  le asocia la base a emplear en el metodo hashCode */
@@ -64,7 +64,8 @@ public class Termino {
         // de forma EFICIENTE, i.e. usando la regla de Horner
         int n = this.termino.length();
         for(int i = 0; i < n; i++) {
-            res += this.termino.charAt(i) * this.baseHashCode^(n - (i + 1));            
+            res = baseHashCode * res + this.termino.charAt(i);
+            // res += this.termino.charAt(i) * this.baseHashCode^(n - (i + 1));            
         }
         
         
@@ -80,10 +81,9 @@ public class Termino {
      */
     public boolean equals(Object otro) {
         /* COMPLETAR */
-        if (this.valorHash == otro.hashCode()) {
-            return this.toString().equals(otro.toString());
-            //this.equals(otro);
-        } else { return false; }
+        return otro instanceof Termino 
+                && this.valorHash == ((Termino) otro).valorHash
+                && this.toString().equals(otro.toString());        
     }
     
     /** Devuelve un String que representa un Termino en cierto formato texto */

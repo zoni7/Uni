@@ -11,6 +11,9 @@ public class Terrain3 implements Terrain {
     ReentrantLock lock;
     Condition[][] queue;
     
+    /**
+     * Terrain3 constructor, initializing the lock and all queues
+     */
     public  Terrain3 (int t, int ants, int movs) {
         lock = new ReentrantLock();
         v=new Viewer(t,ants,movs,"0.- basic monitor");
@@ -22,6 +25,10 @@ public class Terrain3 implements Terrain {
         }
         for (int i=0; i<ants; i++) new Ant(i,this,movs).start();
     }
+
+    /**
+     *  The ant is created
+     */
     public void     hi      (int a) {
         try{
             lock.lock();
@@ -29,6 +36,10 @@ public class Terrain3 implements Terrain {
         } finally {lock.unlock();}
            
     }
+
+    /**
+     *  The ant is deleted and leving the current possition free
+     */
     public void     bye     (int a) {         
         try{
             // Before leaving the ant notifies if someone is  waiting for its cell
@@ -39,6 +50,13 @@ public class Terrain3 implements Terrain {
             v.bye(a);
         } finally {lock.unlock();}  
     }
+
+    /**
+     *  The ant move to the next possition leving the current one free
+     * 
+     *  Preventing deadlocks: Prevention is used and hold and wait is the
+     *  Coffman condition which is broken here. So we are breacking cyrcularity as well
+     */
     public void     move    (int a) throws InterruptedException {
         
         try{
@@ -52,6 +70,7 @@ public class Terrain3 implements Terrain {
                 wait = queue[dest.x][dest.y].await(300, TimeUnit.MILLISECONDS); 
                 v.retry(a);
             }
+            // Wait gets false when the timeout period expired
             if (wait == false) {v.chgDir(a);}
             v.go(a); queue[x][y].signal();
         } finally {lock.unlock();}

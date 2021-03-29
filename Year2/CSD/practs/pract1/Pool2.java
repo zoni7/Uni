@@ -6,8 +6,9 @@ public class Pool2 extends Pool{ //max kids/instructor
     private int numKids = 0;
 
     private int ki;
+    private int cap;
 
-    public void init(int ki, int cap) { this.ki = ki; }
+    public void init(int ki, int cap) { this.ki = ki; this.cap = cap; }
     public synchronized void kidSwims() throws InterruptedException {
         while(numInt == 0 || numKids >= (ki * numInt)) { //no kids alone && max kids/instructor
             log.waitingToSwim();

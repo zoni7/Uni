@@ -20,7 +20,27 @@ class Exam {
             else { return posicionAdicional(a, b, i, x - 1);}
         } else { return posicionAdicional(a, b, x + 1, f);}
 
-        }
+    }
+    /*
+    public static int metodo(int[] v, int x) {
+        return metodo(v, x, 0, v.length - 1);
+      }
+    
+      public static int metodo(int[] v, int x, int ini, int fin) {
+        int mit = (ini + fi) / 2
+        if (v[mit] == x]) return v[mit];
+        int near = comparar(v, v[ini], v[fin], x);  
+        if (fi - ini + 1 >= 3) {
+          if (near == v[ini]) 
+            return metodo(v, x, ini, mit - 1);
+          if (near == v[fin]) 
+            return metodo(v, x, mit + 1, fin);
+        } 
+        
+        return near;
+      }
+      */
+    
     public static void main(String args[]) {
         System.out.println("hola");
         int[] a = {2, 4, 16, 8, 3, 9};

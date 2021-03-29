@@ -10,10 +10,14 @@ public class Terrain2 implements Terrain {
     ReentrantLock lock;
     Condition[][] queue;
     
+    /**
+     * Terrain2 constructor, initializing the lock and all queues
+     */
     public  Terrain2 (int t, int ants, int movs) {
         lock = new ReentrantLock();
         v=new Viewer(t,ants,movs,"0.- basic monitor");
         queue = new Condition[v.getHeight()][v.getWidth()];
+        // Create a condition for every cell
         for (int i =0; i < v.getHeight(); i++) {
             for (int j = 0; j < v.getWidth(); j++) {
                 queue[i][j] = lock.newCondition();
@@ -21,6 +25,10 @@ public class Terrain2 implements Terrain {
         }
         for (int i=0; i<ants; i++) new Ant(i,this,movs).start();
     }
+
+    /**
+     *  The ant is created
+     */
     public void     hi      (int a) {
         try{
             lock.lock();
@@ -28,6 +36,10 @@ public class Terrain2 implements Terrain {
         } finally {lock.unlock();}
            
     }
+
+    /**
+     *  The ant is deleted and leving the current possition free
+     */
     public void     bye     (int a) {         
         try{            
             lock.lock();
@@ -38,6 +50,10 @@ public class Terrain2 implements Terrain {
             v.bye(a);
         } finally {lock.unlock();}  
     }
+
+    /**
+     *  The ant move to the next possition leving the current one free
+     */
     public void     move    (int a) throws InterruptedException {
         
         try{
