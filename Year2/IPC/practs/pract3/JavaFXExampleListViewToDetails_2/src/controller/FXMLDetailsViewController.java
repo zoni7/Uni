@@ -58,8 +58,8 @@ public class FXMLDetailsViewController implements Initializable {
     private void onActionButtonOk(ActionEvent event) {
         if (modify) {
             observableListPersonData.remove(selectedIndex);
-            observableListPersonData.add( selectedIndex,new Persona(editName.textProperty().getValue().toString(),editSurname.textProperty().getValue()));
-        } else { observableListPersonData.add( new Persona(editName.textProperty().getValue().toString(),editSurname.textProperty().getValue())); }
+            observableListPersonData.add( selectedIndex,new Persona(editName.textProperty().getValue().toString(),editSurname.textProperty().getValue(), "/images/Sonriente.png"));
+        } else { observableListPersonData.add( new Persona(editName.textProperty().getValue().toString(),editSurname.textProperty().getValue(),"/images/Sonriente.png")); }
         
         //Close the window
         ((Node) event.getSource()).getScene().getWindow().hide();

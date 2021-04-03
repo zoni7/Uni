@@ -8,11 +8,13 @@ public class Persona {
 	
 	private final StringProperty Nombre = new SimpleStringProperty();
 	private final StringProperty Apellidos = new SimpleStringProperty();
+        private final StringProperty Image = new SimpleStringProperty();
 		
-	public Persona(String nombre, String apellidos)
+	public Persona(String nombre, String apellidos, String image)
 	{
 		Nombre.setValue(nombre);
 		Apellidos.setValue(apellidos);
+                Image.setValue(image);
 	}
 	
 	public final StringProperty NombreProperty() {
@@ -33,16 +35,17 @@ public class Persona {
 	public final void setApellidos(final java.lang.String Apellidos) {
 		this.ApellidosProperty().set(Apellidos);
 	}
+        
         public String getPathImage() {
-        return pathImage.get();
+        return Image.get();
         }
 
         public void setPathImage(String value) {
-            pathImage.set(value);
+            Image.set(value);
         }
 
         public StringProperty pathImageProperty() {
-            return pathImage;
+            return Image;
         }
 
 }

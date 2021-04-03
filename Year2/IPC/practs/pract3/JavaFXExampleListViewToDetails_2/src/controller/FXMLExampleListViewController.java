@@ -22,10 +22,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -57,7 +60,7 @@ public class FXMLExampleListViewController implements Initializable {
     @FXML
     private TableView<Persona> tableView;
     @FXML
-    private TableColumn<?, ?> ImageColumn;
+    private TableColumn<Persona, String> ImageColumn;
 
 
     @FXML
@@ -143,12 +146,33 @@ public class FXMLExampleListViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         ArrayList<Persona> personData = new ArrayList<Persona>();
-        personData.add(new Persona ("Pepe","Navarro"));
-        personData.add(new Persona ("Amparo","García"));
+        personData.add(new Persona ("Pepe","Navarro","/images/Lloroso.png"));
+        personData.add(new Persona ("Amparo","García","/images/Pregunta.png"));
         observablePersonData = FXCollections.observableArrayList(personData);
         NameColumn.setCellValueFactory(new PropertyValueFactory<Persona,String>("Nombre"));
         SurnameColumn.setCellValueFactory((c)->{return c.getValue().ApellidosProperty();});
-        ImageColumn.setCellFactory(new PropertyValueFactory<Person, String>(//imagen));
+ 
+        //Assign the url of the image as value
+        ImageColumn.setCellValueFactory((c) -> {return c.getValue().pathImageProperty();});
+        //We decide how to show the url: loading the corresponding image
+    
+        ImageColumn.setCellFactory((c)->{
+            return new TableCell<Persona,String>(){
+                @Override
+                protected void updateItem(String item, boolean empty){
+                    super.updateItem(item, empty);
+                    if(item == null || empty)
+                        setGraphic(null);
+                    else{
+                        ImageView imageView = new ImageView();
+                        imageView.setImage(new Image(item,40,40,true,true));
+                        setGraphic(imageView);
+                    }
+                        
+                }
+            };
+        });
+        
         tableView.setItems(observablePersonData);
         //tableView.setCellFactory((c)->{return new PersonListCell();});
         
