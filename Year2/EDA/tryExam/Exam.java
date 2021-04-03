@@ -40,13 +40,21 @@ class Exam {
         return near;
       }
       */
+
+      public static int blancasTalla (String[] v, int ini, int fin) {
+        int m = (ini + fin) / 2;
+        if (v[m].equals("blanca")) {
+          if( v[m + 1].equals("negra")) return m + 1;
+          else { return blancasTalla(v, m + 1, fin); }
+        } else {
+          return blancasTalla(v, ini, m - 1);
+        }
+      }
     
     public static void main(String args[]) {
-        System.out.println("hola");
-        int[] a = {2, 4, 16, 8, 3, 9};
-        int[] b ={2, 4, 16, 8, 3};
-        int c = posicionAdicional(a, b);
-        System.out.println(c);
+        System.out.println("Your problem: ");
+        String[] v = {"blanca", "negra", "negra"};
+        System.out.println(blancasTalla(v, 0, v.length - 1));
 
     }
 }
