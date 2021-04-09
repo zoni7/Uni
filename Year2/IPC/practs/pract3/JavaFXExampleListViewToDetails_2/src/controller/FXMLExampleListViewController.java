@@ -114,7 +114,7 @@ public class FXMLExampleListViewController implements Initializable {
             stage.setScene(scene);
             stage.setTitle("Person modification");
             stage.initModality(Modality.APPLICATION_MODAL); // The modal avoid to used the rest of the app if we don't close the new window
-            stage.setResizable(false);
+            stage.setResizable(false);         
             stage.show();
             
         }
