@@ -75,6 +75,7 @@ public class FXMLStartController implements Initializable {
         observablePlayerData = FXCollections.observableArrayList(playerData);
         
         
+        
         // test
         try {            
             String nickName = "nickName";
@@ -144,6 +145,33 @@ public class FXMLStartController implements Initializable {
         
         
             
+    }
+
+    @FXML
+    private void handleButtonLogout(ActionEvent event) throws IOException {
+        //Load the IU objects
+        FXMLLoader myLoader = new FXMLLoader(getClass().getResource("FXMLLogout.fxml"));
+        Pane root = (Pane) myLoader.load();
+
+        //Get the controller of the UI
+        FXMLLogoutController detailsController = myLoader.<FXMLLogoutController>getController();          
+        //We pass the data to the cotroller. Passing the observableList we 
+        //give controll to the modal for deleting/adding/modify the data 
+        //we see in the listView
+        if (bLogInP1.isHover()) {
+            detailsController.initData(observablePlayerData, true);
+        } 
+        if (bLogInP2.isHover()) {
+            detailsController.initData(observablePlayerData, false);
+        }
+
+        Scene scene = new Scene (root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Log out");
+        stage.initModality(Modality.APPLICATION_MODAL); // The modal avoid to used the rest of the app if we don't close the new window
+        stage.setResizable(false);
+        stage.show();
     }
     
 }

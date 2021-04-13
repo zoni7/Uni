@@ -40,7 +40,7 @@
                               <Insets bottom="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="bLogOutP1" mnemonicParsing="false" text="Log out" />
+                        <Button fx:id="bLogOutP1" mnemonicParsing="false" onAction="#handleButtonLogout" text="Log out" />
                      </children>
                      <HBox.margin>
                         <Insets left="10.0" />
@@ -73,7 +73,7 @@
                               <Insets bottom="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="bLogOutP2" mnemonicParsing="false" text="Log out" />
+                        <Button fx:id="bLogOutP2" mnemonicParsing="false" onAction="#handleButtonLogout" text="Log out" />
                      </children>
                      <HBox.margin>
                         <Insets right="10.0" />
