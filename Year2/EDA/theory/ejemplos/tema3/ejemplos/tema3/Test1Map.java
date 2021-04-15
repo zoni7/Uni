@@ -1,4 +1,4 @@
-package ejemplos.tema3;
+package ejemplos.tema3.ejemplos.tema3;
 
 import librerias.estructurasDeDatos.modelos.Map; 
 import librerias.estructurasDeDatos.modelos.ListaConPI;

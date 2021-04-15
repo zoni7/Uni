@@ -1,4 +1,4 @@
-package librerias.estructurasDeDatos.deDispersion;
+package ejemplos.tema3.librerias.estructurasDeDatos.deDispersion;
 
 /**
  * Representa un elemento de la Lista con PI que implementa   

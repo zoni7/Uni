@@ -1,4 +1,4 @@
-package librerias.estructurasDeDatos.modelos;
+package ejemplos.tema3.librerias.estructurasDeDatos.modelos;
 
 /**
  * Modelo Diccionario SIN claves repetidas, o Map: Busqueda Dinamica 

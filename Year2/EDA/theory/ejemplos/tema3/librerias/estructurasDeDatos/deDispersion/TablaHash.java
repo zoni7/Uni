@@ -1,4 +1,4 @@
-package librerias.estructurasDeDatos.deDispersion;
+package ejemplos.tema3.librerias.estructurasDeDatos.deDispersion;
 
 import librerias.estructurasDeDatos.modelos.Map;
 import librerias.estructurasDeDatos.modelos.ListaConPI; 

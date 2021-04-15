@@ -1,4 +1,4 @@
-package librerias.estructurasDeDatos.modelos;
+package ejemplos.tema3.librerias.estructurasDeDatos.modelos;
 
 /**
  * Modelo de una Lista Con Punto de Interes, o de Acceso Secuencial 
