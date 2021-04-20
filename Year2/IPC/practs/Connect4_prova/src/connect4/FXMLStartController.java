@@ -13,6 +13,12 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.binding.Binding;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.BooleanBinding;
+import javafx.beans.binding.StringBinding;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -73,8 +79,20 @@ public class FXMLStartController implements Initializable {
         // Create the list to get player1 and player2
         ArrayList<Player> playerData = new ArrayList<Player>();
         observablePlayerData = FXCollections.observableArrayList(playerData);
-        
-        
+        /*
+        if (!txtNameP1.textProperty().getValue().equals("Player1")) {
+            StringProperty player1Property = new SimpleStringProperty(observablePlayerData.get(0).getNickName());
+
+            StringBinding player1binding = (StringBinding) player1Property.concat("");
+            txtNameP1.textProperty().bind(player1binding);
+        }
+        */
+        //-------------------------------------------------------------------------------------------------------------------
+        BooleanBinding player1Loged = txtNameP1.textProperty().isEqualTo("Player1");
+        BooleanBinding player2Loged = txtNameP2.textProperty().isEqualTo("Player2");
+        bPlayAI.disableProperty().bind(player1Loged);
+        bPlayFriend.disableProperty().bind(player2Loged);
+        //-------------------------------------------------------------------------------------------------------------------
         
         // test
         try {            
@@ -140,11 +158,7 @@ public class FXMLStartController implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL); // The modal avoid to used the rest of the app if we don't close the new window
         stage.setResizable(false);
         stage.show();
-        
-        
-        
-        
-            
+          
     }
 
     @FXML
@@ -173,5 +187,84 @@ public class FXMLStartController implements Initializable {
         stage.setResizable(false);
         stage.show();
     }
+
+    @FXML
+    private void handleButtonPlayWithIA(ActionEvent event) throws IOException {
+        //Load the IU objects
+        FXMLLoader myLoader = new FXMLLoader(getClass().getResource("FXMLGameBoard.fxml"));
+        Pane root = (Pane) myLoader.load();
+
+        //Get the controller of the UI
+        FXMLGameBoardController detailsController = myLoader.<FXMLGameBoardController>getController();          
+        
+        detailsController.initData(observablePlayerData, false);
+
+        Scene scene = new Scene (root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Log out");
+        stage.initModality(Modality.APPLICATION_MODAL); // The modal avoid to used the rest of the app if we don't close the new window
+        stage.setResizable(false);
+        stage.show();
+    }
+
+    @FXML
+    private void handleButtonPlayFriend(ActionEvent event) throws IOException {
+        //Load the IU objects
+        FXMLLoader myLoader = new FXMLLoader(getClass().getResource("FXMLGameBoard.fxml"));
+        Pane root = (Pane) myLoader.load();
+
+        //Get the controller of the UI
+        FXMLGameBoardController detailsController = myLoader.<FXMLGameBoardController>getController();          
+           
+        detailsController.initData(observablePlayerData, true);
+
+        Scene scene = new Scene (root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Log out");
+        stage.initModality(Modality.APPLICATION_MODAL); // The modal avoid to used the rest of the app if we don't close the new window
+        stage.setResizable(false);
+        stage.show();
+    }
     
+    @FXML
+    private void handleButtonPlayWithIA(ActionEvent event) throws IOException {
+        //Load the IU objects
+        FXMLLoader myLoader = new FXMLLoader(getClass().getResource("FXMLGameBoard.fxml"));
+        Pane root = (Pane) myLoader.load();
+
+        //Get the controller of the UI
+        FXMLGameBoardController detailsController = myLoader.<FXMLGameBoardController>getController();          
+        
+        detailsController.initData(observablePlayerData, false);
+
+        Scene scene = new Scene (root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Log out");
+        stage.initModality(Modality.APPLICATION_MODAL); // The modal avoid to used the rest of the app if we don't close the new window
+        stage.setResizable(false);
+        stage.show();
+    }
+
+    @FXML
+    private void handleButtonPlayFriend(ActionEvent event) throws IOException {
+        //Load the IU objects
+        FXMLLoader myLoader = new FXMLLoader(getClass().getResource("FXMLGameBoard.fxml"));
+        Pane root = (Pane) myLoader.load();
+
+        //Get the controller of the UI
+        FXMLGameBoardController detailsController = myLoader.<FXMLGameBoardController>getController();          
+           
+        detailsController.initData(observablePlayerData, true);
+
+        Scene scene = new Scene (root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Log out");
+        stage.initModality(Modality.APPLICATION_MODAL); // The modal avoid to used the rest of the app if we don't close the new window
+        stage.setResizable(false);
+        stage.show();
+    }
 }

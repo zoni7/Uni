@@ -21,11 +21,10 @@ package aplicaciones.biblioteca;
  */
 
 public class Termino {
-    
+    // as bigger the base is the quality of the function is better, but the time it takes is worse
     public static final int BASE_TRIVIAL = 1;  
     public static final int BASE_JAVA_LANG_STRING = 31;
-    public static final int BASE_MCKENZIE = 4;
-    
+    public static final int BASE_MCKENZIE = 4;  
     protected String termino;
     // por eficiencia: "caching the Hash code" o "Hash cache"
     protected int valorHash;
@@ -65,7 +64,7 @@ public class Termino {
         int n = this.termino.length();
         for(int i = 0; i < n; i++) {
             res = baseHashCode * res + this.termino.charAt(i);
-            // res += this.termino.charAt(i) * this.baseHashCode^(n - (i + 1));            
+            // res += this.termino.charAt(i) * this.baseHashCode^(n - (i + 1));   THIS IS NOT CORRECT         
         }
         
         
@@ -83,7 +82,8 @@ public class Termino {
         /* COMPLETAR */
         return otro instanceof Termino 
                 && this.valorHash == ((Termino) otro).valorHash
-                && this.toString().equals(otro.toString());        
+                && this.termino.equals(((Termino) otro).termino);  
+                // the equals of the string should be the last instruction because it is the most expensive     
     }
     
     /** Devuelve un String que representa un Termino en cierto formato texto */

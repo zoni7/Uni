@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="connect4.FXMLStartController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="connect4.FXMLStartController">
    <top>
       <HBox alignment="BOTTOM_LEFT" prefHeight="143.0" prefWidth="310.0" BorderPane.alignment="CENTER">
          <children>
@@ -105,12 +105,12 @@
             </Label>
             <HBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="bPlayAI" mnemonicParsing="false" text="Play with AI">
+                  <Button fx:id="bPlayAI" mnemonicParsing="false" onAction="#handleButtonPlayWithIA" text="Play with AI">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="bPlayFriend" mnemonicParsing="false" text="Play with friend">
+                  <Button fx:id="bPlayFriend" mnemonicParsing="false" onAction="#handleButtonPlayFriend" text="Play with friend">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>

@@ -3,9 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/USUARIO/Desktop/Uni-Odin/Year2/IPC/practs/Connect4_prova/src/connect4/FXMLStartController.java</file>
-            <file>file:/C:/Users/USUARIO/Desktop/Uni-Odin/Year2/IPC/practs/Connect4_prova/src/connect4/FXMLLoginController.java</file>
-            <file>file:/C:/Users/USUARIO/Desktop/Uni-Odin/Year2/IPC/practs/Connect4_prova/src/connect4/FXMLLogoutController.java</file>
+            <file>file:/C:/Users/Joan/Desktop/Estudis/Uni-Odin/Year2/IPC/practs/Connect4_prova/src/connect4/FXMLStartController.java</file>
+            <file>file:/C:/Users/Joan/Desktop/Estudis/Uni-Odin/Year2/IPC/practs/Connect4_prova/src/connect4/FXMLLoginController.java</file>
+            <file>file:/C:/Users/Joan/Desktop/Estudis/Uni-Odin/Year2/IPC/practs/Connect4_prova/src/connect4/FXMLGameBoardController.java</file>
+            <file>file:/C:/Users/Joan/Desktop/Estudis/Uni-Odin/Year2/IPC/practs/Connect4_prova/src/connect4/FXMLGameBoard.fxml</file>
+            <file>file:/C:/Users/Joan/Desktop/Estudis/Uni-Odin/Year2/IPC/practs/Connect4_prova/src/connect4/FXMLLogoutController.java</file>
         </group>
     </open-files>
 </project-private>

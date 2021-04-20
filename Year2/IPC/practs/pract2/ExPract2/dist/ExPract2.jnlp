@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="ExPract2.jar" size="3849" download="eager" />
+    <jar href="ExPract2.jar" size="3854" download="eager" />
   </resources>
   <jfx:javafx-desc  width="800" height="600" main-class="expract2.ExPract2"  name="ExPract2" />
   <update check="always"/>

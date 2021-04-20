@@ -43,15 +43,21 @@ public class FXMLLogoutController implements Initializable {
     }
     @FXML
     private void No(ActionEvent event) {
+        // Close the screen
+        bNo.getScene().getWindow().hide(); 
     }
 
     @FXML
     private void Yes(ActionEvent event) {
         if (isLeft){
-                observableAux.remove(0);                
+                observableAux.remove(0);   
+                // Close the screen
+            bYes.getScene().getWindow().hide(); 
             } else {                
                 
                 observableAux.remove(1);
+                // Close the screen
+            bYes.getScene().getWindow().hide(); 
                 
             }
     }
