@@ -13,12 +13,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.binding.Binding;
-import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
-import javafx.beans.binding.StringBinding;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -56,12 +51,15 @@ public class FXMLStartController implements Initializable {
     private Button bPlayAI;
     @FXML
     private Button bPlayFriend;
-    
+
     private Player pLeft;
-    
+
     private Player pRight;
+
+    private Player[] playerArray;
+
+    FXMLStartController  stageStart;  
     
-    private ObservableList<Player> observablePlayerData;
     @FXML
     private ImageView imageP1;
     @FXML
@@ -77,78 +75,84 @@ public class FXMLStartController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb){
         // Create the list to get player1 and player2
-        ArrayList<Player> playerData = new ArrayList<Player>();
-        observablePlayerData = FXCollections.observableArrayList(playerData);
-        /*
-        if (!txtNameP1.textProperty().getValue().equals("Player1")) {
-            StringProperty player1Property = new SimpleStringProperty(observablePlayerData.get(0).getNickName());
-
-            StringBinding player1binding = (StringBinding) player1Property.concat("");
-            txtNameP1.textProperty().bind(player1binding);
-        }
-        */
-        //-------------------------------------------------------------------------------------------------------------------
+        //ArrayList<Player> playerData = new ArrayList<Player>();
+        //observablePlayerData = FXCollections.observableArrayList(playerData);
+        playerArray = new Player[2];
+        stageStart = this;
+        
         BooleanBinding player1Loged = txtNameP1.textProperty().isEqualTo("Player1");
-        BooleanBinding player2Loged = txtNameP2.textProperty().isEqualTo("Player2");
-        bPlayAI.disableProperty().bind(player1Loged);
-        bPlayFriend.disableProperty().bind(player2Loged);
-        //-------------------------------------------------------------------------------------------------------------------
+        BooleanBinding player2Loged = txtNameP2.textProperty().isEqualTo("Player2");        
+        bLogOutP1.disableProperty().bind(player1Loged);
+        bLogOutP2.disableProperty().bind(player2Loged);
         
+        bLogInP1.disableProperty().bind(player1Loged.not());
+        bLogInP2.disableProperty().bind(player2Loged.not());
+
         // test
-        try {            
-            String nickName = "nickName";
-            String email = "email@gmail.com";
-            String password = "1234";
-            LocalDate birthdate = LocalDate.now().minusYears(18);
-            int points = 10;
-            Connect4 c = Connect4.getSingletonConnect4();
-            Player result = c.registerPlayer(nickName, email, password, birthdate, points);
-                                    
-        } catch (Connect4DAOException ex) {
-            Logger.getLogger(FXMLStartController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            // nickName = "nickName";
+            // email = "email@gmail.com";
+            // password = "1234";
+
+
         
-        bPlayFriend.setOnMouseClicked((MouseEvent event)-> 
-        {System.out.println(observablePlayerData.get(0));}
-        );
-        
+
         // updates the P1 nickName label
-        bLogInP1.setOnMouseExited((MouseEvent event)-> 
+        bLogInP1.setOnMouseExited((MouseEvent event)->
             {
-                if(!observablePlayerData.isEmpty()) txtNameP1.textProperty().setValue(observablePlayerData.get(0).getNickName());  
+                if(playerArray[0] != null) txtNameP1.textProperty().setValue(playerArray[0].getNickName());
 
             }
         );
         // updates the P2 nickName label
-        bLogInP2.setOnMouseExited((MouseEvent event)-> 
+        bLogInP2.setOnMouseExited((MouseEvent event)->
             {
-                if(!observablePlayerData.isEmpty()) txtNameP2.textProperty().setValue(observablePlayerData.get(1).getNickName());                
+                if(playerArray[1] != null) txtNameP2.textProperty().setValue(playerArray[1].getNickName());
             }
         );
-       
-    }    
+        
+        bLogOutP1.setOnMouseExited((MouseEvent event)->
+            {
+                if(playerArray[0] == null) txtNameP1.textProperty().setValue("Player1");
+
+            }
+        );
+        // updates the P2 nickName label
+        bLogOutP2.setOnMouseExited((MouseEvent event)->
+            {
+                if(playerArray[1] == null) txtNameP2.textProperty().setValue("Player2");
+            }
+        );
+
+    }
     
- 
+    public void initData(Player[] a) {
+        playerArray = a;
+    }
+    
+    public void logOutPlayer(boolean b) {
+        if (b) ;
+    }
+
     /**
      * Opens a screen to log in the a user
      * It will open FXMLLogin
      */
     @FXML
-    private void handleButtonLogIn(ActionEvent event) throws IOException {        
+    private void handleButtonLogIn(ActionEvent event) throws IOException {
         //Load the IU objects
         FXMLLoader myLoader = new FXMLLoader(getClass().getResource("FXMLLogin.fxml"));
         Pane root = (Pane) myLoader.load();
 
         //Get the controller of the UI
-        FXMLLoginController detailsController = myLoader.<FXMLLoginController>getController();          
-        //We pass the data to the cotroller. Passing the observableList we 
-        //give controll to the modal for deleting/adding/modify the data 
+        FXMLLoginController detailsController = myLoader.<FXMLLoginController>getController();
+        //We pass the data to the cotroller. Passing the observableList we
+        //give controll to the modal for deleting/adding/modify the data
         //we see in the listView
         if (bLogInP1.isHover()) {
-            detailsController.initData(observablePlayerData, true);
-        } 
+            detailsController.initDataLogIn(stageStart ,playerArray, true);
+        }
         if (bLogInP2.isHover()) {
-            detailsController.initData(observablePlayerData, false);
+            detailsController.initDataLogIn(stageStart ,playerArray, false);
         }
 
         Scene scene = new Scene (root);
@@ -158,7 +162,11 @@ public class FXMLStartController implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL); // The modal avoid to used the rest of the app if we don't close the new window
         stage.setResizable(false);
         stage.show();
-          
+
+
+
+
+
     }
 
     @FXML
@@ -168,15 +176,15 @@ public class FXMLStartController implements Initializable {
         Pane root = (Pane) myLoader.load();
 
         //Get the controller of the UI
-        FXMLLogoutController detailsController = myLoader.<FXMLLogoutController>getController();          
-        //We pass the data to the cotroller. Passing the observableList we 
-        //give controll to the modal for deleting/adding/modify the data 
+        FXMLLogoutController detailsController = myLoader.<FXMLLogoutController>getController();
+        //We pass the data to the cotroller. Passing the observableList we
+        //give controll to the modal for deleting/adding/modify the data
         //we see in the listView
-        if (bLogInP1.isHover()) {
-            detailsController.initData(observablePlayerData, true);
-        } 
-        if (bLogInP2.isHover()) {
-            detailsController.initData(observablePlayerData, false);
+        if (bLogOutP1.isHover()) {
+            detailsController.initDataLogOut(stageStart,playerArray, true);
+        }
+        if (bLogOutP2.isHover()) {
+            detailsController.initDataLogOut(stageStart, playerArray, false);
         }
 
         Scene scene = new Scene (root);
@@ -189,7 +197,7 @@ public class FXMLStartController implements Initializable {
     }
 
     @FXML
-    private void handleButtonPlayWithIA(ActionEvent event) throws IOException {
+    private void handleButtonPlay(ActionEvent event) throws IOException {
         //Load the IU objects
         FXMLLoader myLoader = new FXMLLoader(getClass().getResource("FXMLGameBoard.fxml"));
         Pane root = (Pane) myLoader.load();
@@ -197,7 +205,12 @@ public class FXMLStartController implements Initializable {
         //Get the controller of the UI
         FXMLGameBoardController detailsController = myLoader.<FXMLGameBoardController>getController();          
         
-        detailsController.initData(observablePlayerData, false);
+        if (bPlayAI.isHover()) {
+            detailsController.initData(playerArray, false);
+        } 
+        if  (bPlayFriend.isHover()) {
+            detailsController.initData(playerArray, true);
+        }
 
         Scene scene = new Scene (root);
         Stage stage = new Stage();
@@ -208,63 +221,6 @@ public class FXMLStartController implements Initializable {
         stage.show();
     }
 
-    @FXML
-    private void handleButtonPlayFriend(ActionEvent event) throws IOException {
-        //Load the IU objects
-        FXMLLoader myLoader = new FXMLLoader(getClass().getResource("FXMLGameBoard.fxml"));
-        Pane root = (Pane) myLoader.load();
-
-        //Get the controller of the UI
-        FXMLGameBoardController detailsController = myLoader.<FXMLGameBoardController>getController();          
-           
-        detailsController.initData(observablePlayerData, true);
-
-        Scene scene = new Scene (root);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.setTitle("Log out");
-        stage.initModality(Modality.APPLICATION_MODAL); // The modal avoid to used the rest of the app if we don't close the new window
-        stage.setResizable(false);
-        stage.show();
-    }
     
-    @FXML
-    private void handleButtonPlayWithIA(ActionEvent event) throws IOException {
-        //Load the IU objects
-        FXMLLoader myLoader = new FXMLLoader(getClass().getResource("FXMLGameBoard.fxml"));
-        Pane root = (Pane) myLoader.load();
 
-        //Get the controller of the UI
-        FXMLGameBoardController detailsController = myLoader.<FXMLGameBoardController>getController();          
-        
-        detailsController.initData(observablePlayerData, false);
-
-        Scene scene = new Scene (root);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.setTitle("Log out");
-        stage.initModality(Modality.APPLICATION_MODAL); // The modal avoid to used the rest of the app if we don't close the new window
-        stage.setResizable(false);
-        stage.show();
-    }
-
-    @FXML
-    private void handleButtonPlayFriend(ActionEvent event) throws IOException {
-        //Load the IU objects
-        FXMLLoader myLoader = new FXMLLoader(getClass().getResource("FXMLGameBoard.fxml"));
-        Pane root = (Pane) myLoader.load();
-
-        //Get the controller of the UI
-        FXMLGameBoardController detailsController = myLoader.<FXMLGameBoardController>getController();          
-           
-        detailsController.initData(observablePlayerData, true);
-
-        Scene scene = new Scene (root);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.setTitle("Log out");
-        stage.initModality(Modality.APPLICATION_MODAL); // The modal avoid to used the rest of the app if we don't close the new window
-        stage.setResizable(false);
-        stage.show();
-    }
 }

@@ -7,7 +7,6 @@ package connect4;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -28,7 +27,11 @@ public class FXMLLogoutController implements Initializable {
     
     private boolean isLeft;
     
-    private ObservableList<Player> observableAux;
+    private Player[] playerArray;
+    
+    private Player player = null;
+    
+    private FXMLStartController stageStart;
 
     /**
      * Initializes the controller class.
@@ -37,29 +40,26 @@ public class FXMLLogoutController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    public void initData(ObservableList<Player> lplayer, boolean isLeft) {
+    
+    public void initDataLogOut(FXMLStartController s, Player[] a, boolean isLeft) {
+        this.stageStart = s;
         this.isLeft =  isLeft;
-        this.observableAux = lplayer;       
+        this.playerArray = a;       
     }
+    
     @FXML
-    private void No(ActionEvent event) {
+    private void handleButtonNo(ActionEvent event) {        
         // Close the screen
         bNo.getScene().getWindow().hide(); 
     }
 
     @FXML
-    private void Yes(ActionEvent event) {
-        if (isLeft){
-                observableAux.remove(0);   
-                // Close the screen
-            bYes.getScene().getWindow().hide(); 
-            } else {                
-                
-                observableAux.remove(1);
-                // Close the screen
-            bYes.getScene().getWindow().hide(); 
-                
-            }
+    private void handleButtonYes(ActionEvent event) {
+        if (isLeft) playerArray[0] = null;
+        else playerArray[1] = null;
+        
+        // Close the screen
+        bYes.getScene().getWindow().hide(); 
     }
     
 }

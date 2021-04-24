@@ -51,14 +51,17 @@ public class FXMLLoginController implements Initializable {
     
     private boolean isLeft;
     
-    private ObservableList<Player> observableAux; // loginUser is added here
+    private Player[] playerArray; // loginUser is added here
+    
+    private FXMLStartController stageStart;
     
 
     /**
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb) {        
+        
         bOk.setOnMouseClicked((MouseEvent m) -> {
             //get user and password from input
         try{
@@ -78,6 +81,8 @@ public class FXMLLoginController implements Initializable {
             
             //check pwd
             if (!loginUser.checkCredentials(usr,pwd)) {
+                System.out.println(pwd);
+                System.out.println(loginUser);
                 onWrongLogin.textProperty().set("Incorrect password");
                 //reset user
                 loginUser = null;
@@ -90,27 +95,24 @@ public class FXMLLoginController implements Initializable {
             
             loginUser = Connect4.getSingletonConnect4().loginPlayer(usr, pwd);
             if (isLeft){
-                observableAux.add(0, loginUser);                
+               playerArray[0] = loginUser;                
             } else {                
-                if (observableAux.size() == 0) {
-                    observableAux.add(0, null);
-                    observableAux.add(1, loginUser);
-                } else {
-                    observableAux.add(1, loginUser);
-                }
+               playerArray[1] = loginUser; 
             }
                         
         } catch(Connect4DAOException c4daoex) {c4daoex.printStackTrace();}        
-            //close window, return Player object            
+            stageStart.initData(playerArray);
+            //close window, return Player object             
             bOk.getScene().getWindow().hide();            
         });
     }    
     /**
      *  Initialize the data needed to move the loginUser to the main screen (Start)    
      */
-    public void initData(ObservableList<Player> lplayer, boolean isLeft) {
+    public void initDataLogIn(FXMLStartController s, Player[] a, boolean isLeft) {
+        this.stageStart = s;
         this.isLeft =  isLeft;
-        this.observableAux = lplayer;       
+        this.playerArray = a;       
     }
 
     
