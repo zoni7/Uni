@@ -15,8 +15,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import model.Player;
 import java.util.concurrent.ThreadLocalRandom;
+import javafx.animation.TranslateTransition;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
 
 /**
  * FXML Controller class
@@ -169,6 +172,23 @@ public class FXMLGameBoardController implements Initializable {
     @FXML
     private Circle c6_3;
     
+    @FXML
+    private Rectangle rTop1;
+    @FXML
+    private Rectangle rTop2;
+    @FXML
+    private Rectangle rTop3;
+    @FXML
+    private Rectangle rTop4;
+    @FXML
+    private Rectangle rTop5;
+    @FXML
+    private Rectangle rTop6;
+    @FXML
+    private Rectangle rTop7;
+    @FXML
+    private Rectangle rTop8;
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -244,6 +264,21 @@ public class FXMLGameBoardController implements Initializable {
                         grid.setDisable(true);
                     }
                 }
+                
+                Circle toMove = circleGrid[col][h];
+                //store destination
+                double xdest = toMove.getCenterX();
+                double ydest = toMove.getCenterY();
+
+                //manually move to top of col
+                toMove.setCenterX(rTop[col].getX());
+                toMove.setCenterY(rTop[col].getY());
+                toMove.setVisible(true);
+                toMove.setFill(color);
+                TranslateTransition move = new TranslateTransition(Duration.millis(500),toMove);
+                move.setToY(ydest);
+                move.setToX(xdest);
+                move.play();
 
         });
     } 

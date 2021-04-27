@@ -35,7 +35,7 @@ wait:   # Waits for bit R == 1
 
         ### TO BE COMPLETED: Read keyboard data register
     lw $t2, 4($t0)    # Handle
-    li $t1, 0x01	  # Cancel
+    li $t1, 0x00	  # Cancel
     sw $t1, 0($t0)
 
 	# Print message T2 on the console

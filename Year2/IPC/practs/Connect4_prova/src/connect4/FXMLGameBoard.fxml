@@ -69,7 +69,7 @@
         </rowConstraints>
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8eff5" height="40.0" stroke="BLACK" strokeType="INSIDE" width="45.0" GridPane.rowIndex="1" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8eff5" height="40.0" stroke="BLACK" strokeType="INSIDE" width="45.0" GridPane.columnIndex="1" />
+            <Rectangle fx:id="rTop2" arcHeight="5.0" arcWidth="5.0" fill="#e8eff5" height="40.0" stroke="BLACK" strokeType="INSIDE" width="45.0" GridPane.columnIndex="1" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8eff5" height="40.0" stroke="BLACK" strokeType="INSIDE" width="45.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8eff5" height="40.0" stroke="BLACK" strokeType="INSIDE" width="45.0" GridPane.rowIndex="2" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8eff5" height="40.0" stroke="BLACK" strokeType="INSIDE" width="45.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -142,7 +142,7 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8eff5" height="40.0" stroke="BLACK" strokeType="INSIDE" width="45.0" GridPane.columnIndex="4" GridPane.rowIndex="5" />
             <Circle fx:id="c4_5" fill="DODGERBLUE" radius="18.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="5" />
             <Circle fx:id="c4_6" fill="DODGERBLUE" radius="18.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="6" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8eff5" height="40.0" stroke="BLACK" strokeType="INSIDE" width="45.0" GridPane.columnIndex="2" />
+            <Rectangle fx:id="rTop3" arcHeight="5.0" arcWidth="5.0" fill="#e8eff5" height="40.0" stroke="BLACK" strokeType="INSIDE" width="45.0" GridPane.columnIndex="2" />
             <Circle fx:id="c2_0" fill="DODGERBLUE" radius="18.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="2" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8eff5" height="40.0" stroke="BLACK" strokeType="INSIDE" width="45.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Circle fx:id="c2_1" fill="DODGERBLUE" radius="18.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1" />
@@ -154,7 +154,7 @@
             <Circle fx:id="c2_4" fill="DODGERBLUE" radius="18.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8eff5" height="40.0" stroke="BLACK" strokeType="INSIDE" width="45.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
             <Circle fx:id="c2_5" fill="DODGERBLUE" radius="18.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8eff5" height="40.0" stroke="BLACK" strokeType="INSIDE" width="45.0" GridPane.columnIndex="3" />
+            <Rectangle fx:id="rTop4" arcHeight="5.0" arcWidth="5.0" fill="#e8eff5" height="40.0" stroke="BLACK" strokeType="INSIDE" width="45.0" GridPane.columnIndex="3" />
             <Circle fx:id="c3_0" fill="DODGERBLUE" radius="18.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="3" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8eff5" height="40.0" stroke="BLACK" strokeType="INSIDE" width="45.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
             <Circle fx:id="c3_1" fill="DODGERBLUE" radius="18.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="1" />
@@ -167,7 +167,7 @@
             <Circle fx:id="c3_5" fill="DODGERBLUE" radius="18.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="5" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8eff5" height="40.0" stroke="BLACK" strokeType="INSIDE" width="45.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
             <Circle fx:id="c3_6" fill="DODGERBLUE" radius="18.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8eff5" height="40.0" stroke="BLACK" strokeType="INSIDE" width="45.0" GridPane.columnIndex="4" />
+            <Rectangle fx:id="rTop5" arcHeight="5.0" arcWidth="5.0" fill="#e8eff5" height="40.0" stroke="BLACK" strokeType="INSIDE" width="45.0" GridPane.columnIndex="4" />
             <Circle fx:id="c4_0" fill="DODGERBLUE" radius="18.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="4" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8eff5" height="40.0" stroke="BLACK" strokeType="INSIDE" width="45.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
             <Circle fx:id="c4_1" fill="DODGERBLUE" radius="18.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="1" />
@@ -177,7 +177,7 @@
             <Circle fx:id="c4_3" fill="DODGERBLUE" radius="18.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="3" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8eff5" height="40.0" stroke="BLACK" strokeType="INSIDE" width="45.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
             <Circle fx:id="c4_4" fill="DODGERBLUE" radius="18.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8eff5" height="40.0" stroke="BLACK" strokeType="INSIDE" width="45.0" GridPane.columnIndex="5" />
+            <Rectangle fx:id="rTop6" arcHeight="5.0" arcWidth="5.0" fill="#e8eff5" height="40.0" stroke="BLACK" strokeType="INSIDE" width="45.0" GridPane.columnIndex="5" />
             <Circle fx:id="c5_0" fill="DODGERBLUE" radius="18.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="5" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8eff5" height="40.0" stroke="BLACK" strokeType="INSIDE" width="45.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
             <Circle fx:id="c5_1" fill="DODGERBLUE" radius="18.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="5" GridPane.rowIndex="1" />
@@ -191,7 +191,7 @@
             <Circle fx:id="c5_5" fill="DODGERBLUE" radius="18.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="5" GridPane.rowIndex="5" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8eff5" height="40.0" stroke="BLACK" strokeType="INSIDE" width="45.0" GridPane.columnIndex="5" GridPane.rowIndex="6" />
             <Circle fx:id="c5_6" fill="DODGERBLUE" radius="18.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="5" GridPane.rowIndex="6" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8eff5" height="40.0" stroke="BLACK" strokeType="INSIDE" width="45.0" GridPane.columnIndex="6" />
+            <Rectangle fx:id="rTop7" arcHeight="5.0" arcWidth="5.0" fill="#e8eff5" height="40.0" stroke="BLACK" strokeType="INSIDE" width="45.0" GridPane.columnIndex="6" />
             <Circle fx:id="c6_0" fill="DODGERBLUE" radius="18.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="6" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8eff5" height="40.0" stroke="BLACK" strokeType="INSIDE" width="45.0" GridPane.columnIndex="6" GridPane.rowIndex="1" />
             <Circle fx:id="c6_1" fill="DODGERBLUE" radius="18.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="6" GridPane.rowIndex="1" />
@@ -203,7 +203,7 @@
             <Circle fx:id="c6_5" fill="DODGERBLUE" radius="18.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="6" GridPane.rowIndex="5" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8eff5" height="40.0" stroke="BLACK" strokeType="INSIDE" width="45.0" GridPane.columnIndex="6" GridPane.rowIndex="6" />
             <Circle fx:id="c6_6" fill="DODGERBLUE" radius="18.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="6" GridPane.rowIndex="6" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8eff5" height="40.0" stroke="BLACK" strokeType="INSIDE" width="45.0" GridPane.columnIndex="7" />
+            <Rectangle fx:id="rTop8" arcHeight="5.0" arcWidth="5.0" fill="#e8eff5" height="40.0" stroke="BLACK" strokeType="INSIDE" width="45.0" GridPane.columnIndex="7" />
             <Circle fx:id="c7_0" fill="DODGERBLUE" radius="18.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="7" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8eff5" height="40.0" stroke="BLACK" strokeType="INSIDE" width="45.0" GridPane.columnIndex="7" GridPane.rowIndex="1" />
             <Circle fx:id="c7_1" fill="DODGERBLUE" radius="18.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="7" GridPane.rowIndex="1" />
@@ -215,7 +215,7 @@
             <Circle fx:id="c7_4" fill="DODGERBLUE" radius="18.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="7" GridPane.rowIndex="4" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8eff5" height="40.0" stroke="BLACK" strokeType="INSIDE" width="45.0" GridPane.columnIndex="7" GridPane.rowIndex="5" />
             <Circle fx:id="c7_5" fill="DODGERBLUE" radius="18.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="7" GridPane.rowIndex="5" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8eff5" height="40.0" stroke="BLACK" strokeType="INSIDE" width="45.0" />
+            <Rectangle fx:id="rTop1" arcHeight="5.0" arcWidth="5.0" fill="#e8eff5" height="40.0" stroke="BLACK" strokeType="INSIDE" width="45.0" />
             <Circle fx:id="c0_0" fill="DODGERBLUE" radius="18.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8eff5" height="40.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="45.0" GridPane.columnIndex="7" GridPane.rowIndex="6" />
             <Circle fx:id="c7_6" fill="DODGERBLUE" radius="18.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="7" GridPane.rowIndex="6" />

@@ -24,8 +24,8 @@
 
 __start:	
 	# Loads keyboard base address
-	la $a2, 0xffff0000
-	la $a3, 0xffff0008		
+	la $a2, 0xffff0000	# keyboard
+	la $a3, 0xffff0008	# console	
 
 	li $a0, 'P'		# 
 	jal putchar		# putchar('P')
@@ -59,9 +59,8 @@ wait1:
 
 	
 	lw $v0, 4($a2)    # Handle
-    li $t1, 0x01	  # Cancel
+    li $t1, 0x00	  # Cancel
     sw $t1, 0($a2)
-
 
 
 ###
@@ -79,9 +78,8 @@ wait2:
 
 	
 	sw $a0, 4($a3)    # Handle
-    li $t1, 0x01	  # Cancel
+    li $t1, 0x00	  # Cancel
     sw $t1, 0($a3)
-
 
 
 ###

@@ -12,7 +12,7 @@
 
 #------- Data segment ---------#
 	.data		
-T1:	.asciiz "Waiting...\n"
+T1:	.asciiz "\nWaiting...\n"
 T2:	.asciiz "\nEnd\n"
 
 #------- Code segment ---------#
@@ -36,21 +36,21 @@ wait:   # Waits for bit R == 1
 
         ### TO BE COMPLETED: Read keyboard data register
     lw $t2, 4($t0)    # Handle
-    li $t1, 0x01	  # Cancel
+    li $t1, 0x00	  # Cancel
     sw $t1, 0($t0)
 
     li $v0, 1
     move $a0, $t2
     syscall
+	
+	# When 0 is pressed it will stop, otherwise it will poll 
+	li $t1, 48
+	bne $t2, $t1, poll
 
 	# Print message T2 on the console
 	li $v0, 4
 	la $a0, T2
 	syscall
-	
-	# When 0 is pressed it will stop, otherwise it will poll 
-	li $t1, 40
-	bne $t2, $t1, poll
 
 	# exit
 	li $v0, 10
