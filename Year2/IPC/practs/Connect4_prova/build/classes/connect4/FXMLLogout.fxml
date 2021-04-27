@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="189.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="connect4.FXMLLogoutController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="189.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="connect4.FXMLLogoutController">
    <children>
       <HBox alignment="CENTER" prefHeight="247.0" prefWidth="600.0">
          <children>
@@ -20,7 +20,7 @@
       </HBox>
       <HBox alignment="TOP_RIGHT" prefHeight="101.0" prefWidth="600.0">
          <children>
-            <Button fx:id="bNo" minWidth="50.0" mnemonicParsing="false" onAction="#No" text="No">
+            <Button fx:id="bYes" minWidth="50.0" mnemonicParsing="false" onAction="#handleButtonYes" text="Yes">
                <HBox.margin>
                   <Insets right="30.0" />
                </HBox.margin>
@@ -28,7 +28,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="bYes" minWidth="50.0" mnemonicParsing="false" onAction="#Yes" text="Yes">
+            <Button fx:id="bNo" minWidth="50.0" mnemonicParsing="false" onAction="#handleButtonNo" text="No">
                <HBox.margin>
                   <Insets right="50.0" />
                </HBox.margin>
