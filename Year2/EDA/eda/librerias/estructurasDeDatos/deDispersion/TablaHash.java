@@ -229,23 +229,26 @@ public class TablaHash<C, V> implements Map<C, V> {
     //
     @SuppressWarnings("unchecked")
     protected final void rehashing() {
+        int nuevaCapacidad = siguientePrimo(elArray.length * 2);
         
-        /*
         // Copy the actual Array in a variable
-        ListaConPI<EntradaHash<C, V>>[] elArrayOld = elArray;
+        ListaConPI<EntradaHash<C, V>>[] elArrayOld = this.elArray;
         // Create a new array doubling the size
-        elArray = new LEGListaConPI[elArray.length * 2];
+        this.elArray = new LEGListaConPI[nuevaCapacidad];
+        
+        for (int i = 0; i < elArray.length; i++) {
+            elArray[i] = new LEGListaConPI<EntradaHash<C,V>>();
+        }
         talla = 0;
         // Insert the elements that were before rehashing
-        for (int cub = 0; cub < elArrayOld.length; cub ++) {
-            ListaConPI<EntradaHash<C, V>> aux = elArrayOld[cub];
-            while(aux != null) {
-                C key = aux.recuperar().clave;
-                insertar(key, recuperar(key));
-                aux.siguiente();
+        for(int i = 0; i < elArrayOld.length; i++) { 
+            ListaConPI<EntradaHash<C,V>> l = elArrayOld[i];
+            for ( l.inicio(); !l.esFin(); l.siguiente()) {
+                EntradaHash<C, V> e = l.recuperar();
+                this.insertar(e.clave, e.valor);
             }
-        } 
-        */
+        }
+        
     }
     
     // Metodos para el analisis de la eficiencia de una 
@@ -270,11 +273,12 @@ public class TablaHash<C, V> implements Map<C, V> {
      */
     public final double costeMLocalizar() {
         /* COMPLETAR */
-        double sum = 0;
+        double colisions = 0;
         for (int i = 0; i < elArray.length; i++) {
-            sum = sum + elArray [i].talla() * (1 + elArray[i].talla()) / 2; 
+            // The 1 means one colition
+            colisions += elArray[i].talla() * (1 + elArray[i].talla()) / 2; 
         }
-        return (double)sum / talla;
+        return (double) colisions / talla;
         
     }
 
