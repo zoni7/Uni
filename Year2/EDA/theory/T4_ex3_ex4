@@ -1,0 +1,48 @@
+protected NodoABB<E> recuperar(E e, NodoABB<E> actual) {
+  NodoABB<E> res = actual;
+  if (actual != null) {
+    int resC = actual.dato.compareTo(e);
+    if (resC > 0) { res = recuperar(e, actual.izq); }
+    else if (resC < 0) { res = recuperar(e, actual.der); }
+    // else NO hacer nada porque res se ha inicializado a actual
+  }
+  return res;
+}
+
+// Driver method
+public boolean esHoja(E e) {
+  return esHoja( e, this.raiz);
+}
+
+protected boolean esHoja(E e, NodoABB<E> actual) {
+  NodoABB<E> res = actual;
+  // Get the element
+  if (actual != null) {
+    // Just calls ones the compareTo because it can be very heavy if we use it a compareTo for left and an other for the right
+    int resC = actual.dato.compareTo(e);
+    if (resC > 0) { res = recuperar(e, actual.izq); }
+    else if (resC < 0) { res = recuperar(e, actual.der); }
+    // Check if it is a leaf
+    else { return actual.izq == null && actual.der == null; }
+    // else return false
+  } else { return false; }
+
+}
+// Driver method
+public boolean esNodoInterno(E e) {
+  return esNodoInterno( e, this.raiz);
+}
+
+protected boolean esNodoInterno(E e, NodoABB<E> actual) {
+  NodoABB<E> res = actual;
+  // Get the element
+  if (actual != null) {
+    int resC = actual.dato.compareTo(e);
+    if (resC > 0) { res = recuperar(e, actual.izq); }
+    else if (resC < 0) { res = recuperar(e, actual.der); }
+    // Check if it is a leaf
+    else { return actual.izq != null || actual.der != null; }
+    // else return false
+  } else { return false; }
+
+}
