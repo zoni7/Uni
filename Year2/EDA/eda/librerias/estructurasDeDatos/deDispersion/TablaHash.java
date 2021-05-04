@@ -29,7 +29,7 @@ public class TablaHash<C, V> implements Map<C, V> {
     /** El valor (boolean) que indica si una Tabla Hash realiza 
      *  Rehashing cuando su factor de carga supera FC_ESTANDAR
      */
-    public static final boolean REHASHING = true; // en Parte 1 vale false;
+    public static final boolean REHASHING = true; // en Parte 1 vale false; en Parte 2 vale true;
     
     // UN array de Listas Con PI de EntradaHash<C, V> elArray:
     // - elArray[h] representa una cubeta, o lista de    
@@ -229,9 +229,25 @@ public class TablaHash<C, V> implements Map<C, V> {
     //
     @SuppressWarnings("unchecked")
     protected final void rehashing() {
-        /* COMPLETAR */
+        int nuevaCapacidad = siguientePrimo(elArray.length * 2);
         
+        // Copy the actual Array in a variable
+        ListaConPI<EntradaHash<C, V>>[] elArrayOld = this.elArray;
+        // Create a new array doubling the size
+        this.elArray = new LEGListaConPI[nuevaCapacidad];
         
+        for (int i = 0; i < elArray.length; i++) {
+            elArray[i] = new LEGListaConPI<EntradaHash<C,V>>();
+        }
+        talla = 0;
+        // Insert the elements that were before rehashing
+        for(int i = 0; i < elArrayOld.length; i++) { 
+            ListaConPI<EntradaHash<C,V>> l = elArrayOld[i];
+            for ( l.inicio(); !l.esFin(); l.siguiente()) {
+                EntradaHash<C, V> e = l.recuperar();
+                this.insertar(e.clave, e.valor);
+            }
+        }
         
     }
     
@@ -242,9 +258,10 @@ public class TablaHash<C, V> implements Map<C, V> {
      *  cubetas de una Tabla Hash Enlazada */
     public final double desviacionTipica() {
         /* COMPLETAR */
-        double sum ;
-        for (int i = 0; i < talla; i++) { sum = sum + () }
-        return Math.sqrt(sum / 2);
+        double sum = 0;
+        double factorCarga = factorCarga(); 
+        for (int i = 0; i < elArray.length; i++) { sum = sum + ( elArray[i].talla() - factorCarga) * (elArray[i].talla() - factorCarga);}
+        return Math.sqrt(sum / elArray.length);
         
     }
     
@@ -256,7 +273,12 @@ public class TablaHash<C, V> implements Map<C, V> {
      */
     public final double costeMLocalizar() {
         /* COMPLETAR */
-        
+        double colisions = 0;
+        for (int i = 0; i < elArray.length; i++) {
+            // The 1 means one colition
+            colisions += elArray[i].talla() * (1 + elArray[i].talla()) / 2; 
+        }
+        return (double) colisions / talla;
         
     }
 

@@ -1,0 +1,72 @@
+## ESTRUCTURA DE COMPUTADORES   (ETSInformatica)
+##  
+##
+## LAB 13. Synchronization by interrupts
+##
+## Initial handler code
+
+
+##############################################################
+##              HANDLER DATA SEGMENT                        ##
+##############################################################
+
+			.kdata
+var1:	.word 0xFFFFFFFF
+context: .space 16 # the area to put the context
+
+#############################################################
+##                  HANDLER CODE                           ##
+#############################################################
+
+          .ktext 0x80000080
+
+    ## Save the user program context
+    .set noat
+    sw  $at, 0($k1)
+    .set at
+
+    ## Identify and handle interrupts
+    la $t0 ,0xFFFF0000
+    lw  $a0 , 4($t0)            # <--- Cancel
+
+    li $v0, 11
+    li $a0, '*'
+    syscall
+
+    ## Restore context
+    ## (nothing for the moment)
+
+    ## Set user mode and return to the user program
+    
+    # $k0 has the return address
+    mfc0 $k0, $14
+	rfe
+	jr $k0 
+
+#############################################################
+##                    Starting code                        ##
+#############################################################
+
+          .text
+          .globl __start 
+__start: 
+    ## Starting code 
+      
+    # enable interrupts
+    li $a1, 0xFFFF0000
+    ori $a1, 0x02
+
+    # Context base address
+    la $k1, context
+
+    # the line Int0* goes to unmasked
+    li $t0, 0x0103
+    mtc0 $t0, $12
+
+    ## Jump to user program
+	jal main
+
+    ## Ending code
+	li $v0, 10
+	syscall	 # exit function
+
