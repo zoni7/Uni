@@ -1,5 +1,6 @@
 // CSD 2013, Pablo Galdámez
 import java.rmi.*;
+import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.*;
 
 //
@@ -42,18 +43,26 @@ public class ChatClientCSD
 	     //ACTIVITY 1. Locate ChatServer using the name server 
 	     //1.a Obtain a reference to the name server, using LocateRegistry.getRegistry. 
 	     //Store this reference in a variable of type "Registry".  
-	   
-	 
+	     Registry reg = LocateRegistry.getRegistry(conf.getNameServiceHost(), conf.getNameServicePort());
+        
+	     
 	     	     
 		 
-          //1.b Look for the object "ChatServer" in the name server, using the previous reference. 
-          // Remember that the object name is stored in the variable "serverName" (input parameter of the "doConnect" method) 
-		  // Store the obtained remote reference in the variable "srv" (defined at the beginning of ChatClientCSD class)
-			
+         //1.b Look for the object "ChatServer" in the name server, using the previous reference. 
+         // Remember that the object name is stored in the variable "serverName" (input parameter of the "doConnect" method) 
+		   // Store the obtained remote reference in the variable "srv" (defined at the beginning of ChatClientCSD class)
+			srv = (IChatServer) reg.lookup(serverName);
 		  
 		  
-	 
-    } catch(Exception e){}   
+	      }
+    catch (RemoteException e) {
+            System.err.println("Communication Error: " + e.toString());
+        }
+   catch (Exception e) {
+            System.err.println("Exception in ClientEcho:");
+            e.printStackTrace();
+        }
+   
          //1.c Replace this previous line with the following lines for exception management:
 
   /*/	 } catch (java.rmi.ConnectException e) {
@@ -72,19 +81,19 @@ public class ChatClientCSD
       /* ACTIVITY 2. Create a local object "ChatUser" and register it in the server. 
       //2.a Create the ChatUser object, indicating as parameters the nick of the user and "this" as MessageListener. 
       */
-     
+      myUser = new ChatUser(nick,this);
      
      
      
       /* 2.b Connect the client to the ChatServer, using the method "connectUser" of ChatServer class. 
       // Launch an exception if there is any error.  
       */
-     
+      if(!srv.connectUser(myUser)) throw new Exception ("The nickname is already used");
      
      
      
       /* 2.c Obtain the list of channels, using the method "listChannels" of ChatServer.  */
-      IChatChannel [] channels=null;  // <---- 2.c Substitute "null" with the right value 
+      IChatChannel [] channels= srv.listChannels();  // <---- 2.c Substitute "null" with the right value 
      
       
       if (channels == null || channels.length == 0) 
@@ -123,7 +132,7 @@ public class ChatClientCSD
       /* ****************************    */
       //ACTIVITY 3: JOIN A CHANNEL 
       //3.b Make that the user "myUser" leaves the channel "ch".   
-   
+      ch.leave(myUser);
       
       
       
@@ -144,7 +153,7 @@ public class ChatClientCSD
       /* ****************************    */
       //ACTIVITY 3: JOIN A CHANNEL 
       //3.a Make that the user "myUser" joins the channel "ch".   
-  
+      ch.join(myUser);
   
       
       
@@ -174,7 +183,7 @@ public class ChatClientCSD
 	  /* ****************************    */
       //ACTIVITY 4: SENDING A MESSAGE TO A CHANNEL
 	  //4.a  Send the message to the destinationchannel. 
-	  
+	  c_dst.sendMessage(c_msg);
 	  
 	  
 	  
@@ -198,7 +207,7 @@ public class ChatClientCSD
 	  /* ****************************    */
       //ACTIVITY 5: SENDING A MESSAGE TO A USER
 	  //5.a Send the message to the destination user  
-
+     u_dst.sendMessage(c_msg);
 	  
 	  
 	  
