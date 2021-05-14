@@ -49,7 +49,7 @@ public class FXMLController implements Initializable {
         int hist3[] = generate_histogram(10);
         int hist4[] = generate_histogram(10);
         
-        
+        // Declare and initialize the observable lists
         ObservableList<PieChart.Data> pie_chart_data = FXCollections.observableArrayList();
         ObservableList<XYChart.Data<String,Number>> data = FXCollections.observableArrayList();
         ObservableList<XYChart.Data<String,Number>> data2 = FXCollections.observableArrayList();
