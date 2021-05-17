@@ -37,6 +37,8 @@ public class FXMLController implements Initializable {
     private NumberAxis barChart_yAxis;
     @FXML
     private CategoryAxis barChart_xAxis;
+    @FXML
+    private PieChart pieChart;
 
     /**
      * Initializes the controller class.
@@ -89,6 +91,10 @@ public class FXMLController implements Initializable {
         // BarChart Axes names
         barChart_xAxis.setLabel("Ranges");
         barChart_yAxis.setLabel("Frequencies");
+        
+        // introduce the observable in the pieChart
+        pieChart.setData(pie_chart_data);
+        pieChart.setTitle("Pie chart - hist1");
     }    
     
     public int[] generate_histogram(int lenght ){

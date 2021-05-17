@@ -7,69 +7,77 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="connect4.FXMLRememberPController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="400.0" stylesheets="@../themes/light.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="connect4.FXMLRememberPController">
    <children>
-      <VBox prefHeight="394.0" prefWidth="600.0">
+      <VBox prefHeight="96.0" prefWidth="600.0" styleClass="banner">
          <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label text="Username">
-                     <HBox.margin>
-                        <Insets right="10.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="txtUsername">
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                  </TextField>
-               </children>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Log in">
+               <font>
+                  <Font size="28.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="30.0" top="10.0" />
+               </VBox.margin>
+            </Text>
+         </children>
+      </VBox>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Label text="Username">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtUsername" onKeyPressed="#handleEnterAccept">
+               <VBox.margin>
+                  <Insets right="80.0" top="5.0" />
+               </VBox.margin>
+            </TextField>
+            <Label text="Email">
+               <font>
+                  <Font size="24.0" />
+               </font>
                <VBox.margin>
                   <Insets top="40.0" />
                </VBox.margin>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="600.0">
-               <children>
-                  <Label text="Email">
-                     <HBox.margin>
-                        <Insets right="10.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="txtEmail">
-                     <HBox.margin>
-                        <Insets left="60.0" />
-                     </HBox.margin>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </TextField>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label fx:id="onErrorLabel" />
-               </children>
-            </HBox>
+            </Label>
+            <TextField fx:id="txtEmail" onKeyPressed="#handleEnterAccept" stylesheets="@../themes/light.css">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets right="10.0" top="5.0" />
+               </VBox.margin>
+            </TextField>
          </children>
+         <VBox.margin>
+            <Insets left="50.0" right="50.0" top="50.0" />
+         </VBox.margin>
       </VBox>
-      <HBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="600.0">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button fx:id="bOK" minWidth="50.0" mnemonicParsing="false" text="Ok">
+            <Label fx:id="onErrorLabel" prefHeight="46.0" prefWidth="300.0" textFill="#e42727" wrapText="true" />
+         </children>
+      </HBox>
+      <HBox alignment="BOTTOM_RIGHT" prefHeight="150.0" prefWidth="400.0">
+         <children>
+            <Button fx:id="bOK" minWidth="50.0" mnemonicParsing="false" onAction="#handleButtonAccept" onKeyPressed="#handleEnterAccept" text="Accept">
                <HBox.margin>
-                  <Insets right="20.0" />
+                  <Insets bottom="30.0" right="20.0" />
                </HBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </Button>
-            <Button fx:id="bClose" mnemonicParsing="false" text="Close">
+            <Button fx:id="bClose" mnemonicParsing="false" onAction="#handleButtonCancel" onKeyPressed="#handleEnterCancel" text="Cancel">
                <HBox.margin>
-                  <Insets right="120.0" />
+                  <Insets bottom="30.0" right="50.0" />
                </HBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </Button>
          </children>
       </HBox>

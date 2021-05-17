@@ -5,6 +5,25 @@
  */
 package connect4;
 
+;
+import com.sun.javafx.css.StyleManager;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,12 +36,23 @@ import javafx.stage.Stage;
  */
 public class Connect4 extends Application {
     
+        
+    private final String darkCSS = "dark.css";
+    
+    private final String lightCSS = "light.css";
+    
+    
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLStart.fxml"));
-        
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLGameBoard.fxml"));
+        //Application.setUserAgentStylesheet(getClass().getResource("light.css").toExternalForm());
         Scene scene = new Scene(root);
-       
+        
+        //this is only for a single stage
+        scene.getStylesheets().add(getClass().getResource("light.css").toExternalForm());
+
+        stage.setTitle("Connect4");
+        stage.getIcons().add(new Image("images/Icon.png"));
         stage.setScene(scene);
         stage.show();
     }
@@ -33,5 +63,6 @@ public class Connect4 extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+    
     
 }

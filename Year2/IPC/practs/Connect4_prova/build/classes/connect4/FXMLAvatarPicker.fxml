@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="328.0" stylesheets="@../themes/light.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="connect4.FXMLAvatarPickerController">
+   <children>
+      <VBox prefHeight="65.0" prefWidth="373.0" styleClass="banner">
+         <children>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit avatar">
+               <font>
+                  <Font size="28.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="30.0" top="10.0" />
+               </VBox.margin>
+            </Text>
+         </children>
+      </VBox>
+      <GridPane fx:id="grid" alignment="CENTER" focusTraversable="true" gridLinesVisible="true" onMouseClicked="#handlerOnMouseClick" prefHeight="197.0" prefWidth="373.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <ImageView fx:id="avatar_1_2" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@../avatars/default.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="avatar_0_1" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../avatars/avatar3.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="avatar_0_2" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@../avatars/avatar2.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="avatar_1_1" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../avatars/avatar5.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="avatar_1_0" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+               <image>
+                  <Image url="@../avatars/avatar1.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="avatar_0_0" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../avatars/avatar4.png" />
+               </image>
+            </ImageView>
+         </children>
+         <VBox.margin>
+            <Insets top="20.0" />
+         </VBox.margin>
+      </GridPane>
+      <HBox alignment="CENTER" prefHeight="69.0" prefWidth="328.0">
+         <children>
+            <TextField fx:id="txtPath" editable="false" prefHeight="25.0" prefWidth="210.0" />
+            <Button fx:id="bUpload" mnemonicParsing="false" onAction="#handleButtonOpenImage" onKeyPressed="#handleEnterOpenImage" text="Upload">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </HBox>
+      <Separator prefWidth="333.0" />
+      <HBox alignment="BOTTOM_CENTER" prefHeight="73.0" prefWidth="328.0">
+         <children>
+            <Button fx:id="bOk" alignment="CENTER" mnemonicParsing="false" onAction="#handleButtonAccept" onKeyPressed="#handleEnterAccept" text="Accept">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="30.0" right="20.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="bClose" mnemonicParsing="false" onAction="#handleButtonCancel" onKeyPressed="#handleEnterCancel" text="Cancel">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="30.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</VBox>

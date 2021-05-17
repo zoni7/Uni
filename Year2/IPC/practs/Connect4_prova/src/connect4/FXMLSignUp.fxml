@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="400.0" stylesheets="@../themes/light.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="connect4.FXMLSignUpController">
+   <children>
+      <VBox prefHeight="96.0" prefWidth="600.0" styleClass="banner">
+         <children>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign up">
+               <font>
+                  <Font size="28.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="30.0" top="10.0" />
+               </VBox.margin>
+            </Text>
+         </children>
+      </VBox>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Label text="Username">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Label>
+            <TextField fx:id="txtUsername" onKeyPressed="#handleEnterAccept" prefHeight="25.0" prefWidth="435.0">
+               <VBox.margin>
+                  <Insets right="80.0" top="5.0" />
+               </VBox.margin>
+               <tooltip>
+                  <Tooltip fx:id="ttUser" text="Empty Tooltip" />
+               </tooltip>
+            </TextField>
+            <Label text="Email">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </Label>
+            <TextField fx:id="txtEmail" onKeyPressed="#handleEnterAccept" prefHeight="25.0" prefWidth="435.0">
+               <VBox.margin>
+                  <Insets right="10.0" top="5.0" />
+               </VBox.margin>
+            </TextField>
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Separator>
+            <Label text="Password">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </Label>
+            <PasswordField fx:id="txtPassw" onKeyPressed="#handleEnterAccept">
+               <VBox.margin>
+                  <Insets right="80.0" top="5.0" />
+               </VBox.margin>
+               <tooltip>
+                  <Tooltip fx:id="ttPwd" text="8 to 20 characters, upper and lower case letters. At least one of  the following special characters: !@#$%&amp;*()-+=" />
+               </tooltip>
+            </PasswordField>
+            <Label text="Confirm Password">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </Label>
+            <PasswordField fx:id="txtConfirmPassw" onKeyPressed="#handleEnterAccept">
+               <VBox.margin>
+                  <Insets right="80.0" top="5.0" />
+               </VBox.margin>
+            </PasswordField>
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Separator>
+            <Label text="Birth">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </Label>
+            <DatePicker fx:id="datePicker" promptText="1/01/2001">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </DatePicker>
+            <Label text="Avatar">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </Label>
+            <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="myAvatar" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../avatars/default.png" />
+                     </image></ImageView>
+                  <Button fx:id="bAvatar" alignment="BOTTOM_RIGHT" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#handleButtonPickAvatar" onKeyPressed="#handleEnterPickAvatar" text="Select">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin></Button>
+               </children>
+            </HBox>
+         </children>
+         <VBox.margin>
+            <Insets left="50.0" right="50.0" top="10.0" />
+         </VBox.margin>
+      </VBox>
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label fx:id="onWrongLogin" alignment="TOP_LEFT" textFill="#e42727" />
+            <Label fx:id="infoText" textFill="RED" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="20.0" left="50.0" right="50.0" top="10.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="BOTTOM_RIGHT" prefHeight="1.0" prefWidth="400.0">
+         <children>
+            <Button fx:id="bOk" alignment="CENTER" mnemonicParsing="false" onAction="#handleButtonAccept" onKeyPressed="#handleEnterAccept" text="Accept">
+               <HBox.margin>
+                  <Insets bottom="30.0" right="20.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="bClose" mnemonicParsing="false" onAction="#handleButtonCancel" onKeyPressed="#handleEnterCancel" text="Cancel">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="30.0" right="50.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</VBox>

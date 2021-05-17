@@ -106,24 +106,17 @@ int2:
 	li $t1, 0x1
 	sb $t1,0($s0)
 	# if(state==WAITING)
-	la $t0, estado
-	lw $t1, 0($t0)
-	beq $t1, ESPERANDO, if
+	lw $t0,estado
+  li $t1, ESPERANDO
+  bne $t0,$t1,retexc
 
-	b retexc			# fin
+  lw $t0,awake
+  lw $t1, seconds
+  bne $t0,$t1,retexc
+  li $t1, LISTO
+  sw $t1, estado
 
-if:
-	la $t0, seconds
-	lb $t1, 0($t0)
-	la $s0, awake
-	lb $s1, 0($s0)
-	beq $t1, $s1, ready
-	b retexc			# fin
-
-ready:
-	la $t0, estado
-	sw LISTO, 0($t0)
-  b retexc			# fin
+  b retexc
 
 ## Tratamiento de la interrupci�n de TECLADO
 
@@ -203,14 +196,15 @@ get_time:
 wait_time:
 	# state = WAITING
 	la $t0, estado
-	sw ESPERANDO , 0($t0)
+	li $t1, ESPERANDO
+	sw $t1 , 0($t0)
 	# awake = seconds + $a0
-	la $t0, awake
-	la $s0, seconds
-	lb $t1, 0($t0)
-	lb, $s1, 0($s0)
-	add $t1, $s1 ,$a0
-	b retexc
+	lw $t0,seconds
+  add $t0,$t0, $a0
+  sw $t0, awake
+  li $t0, ESPERANDO
+  sw $t0,estado
+  b retexc
 
 
 #############################################################
