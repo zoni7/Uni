@@ -141,9 +141,8 @@ public class FXMLAvatarPickerController implements Initializable {
      * Methods to send the image to the previous window and close the actual one
      */
     private void performAccept() {
-        if (signUpController != null) {
-            signUpController.updateAvatar(myAvatar);
-        } else {
+        
+        if (signUpController == null) {
             modifyPController.updateAvatar(myAvatar);
         }
         //close window, return Player object            
@@ -164,9 +163,10 @@ public class FXMLAvatarPickerController implements Initializable {
     /**
      * Methods to close the windows
      */
-    private void performCancel() {
+    public boolean performCancel() {
         //close window, return Player object            
         bClose.getScene().getWindow().hide();
+        return true;
     }
     @FXML
     private void handleEnterCancel(KeyEvent event) {
@@ -179,5 +179,7 @@ public class FXMLAvatarPickerController implements Initializable {
         performCancel();
     }
 
-    
+    public Image updateAvatar() {
+        return myAvatar;
+    }
 }
