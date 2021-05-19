@@ -190,7 +190,10 @@ public class FXMLSignUpController implements Initializable {
 
         stage.initModality(Modality.APPLICATION_MODAL); // The modal avoid to used the rest of the app if we don't close the new window
         stage.setResizable(false);
-        stage.show(); 
+        stage.showAndWait();
+        if (!detailsController.performCancel()) {
+            updateAvatar(detailsController.updateAvatar());
+        }
     }
     
     @FXML
