@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -29,6 +29,7 @@ import javafx.animation.PauseTransition;
 import javafx.animation.SequentialTransition;
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
 import javafx.beans.binding.StringBinding;
@@ -38,6 +39,7 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -74,7 +76,7 @@ import javafx.util.Duration;
  *
  * @author Joan y Jorge uwu
  */
-public class FXMLGameBoardController implements Initializable {
+public class FXMLGameBoardController implements Initializable {          
     
     public class InnerWaitTask extends Task<Void> {
     
@@ -93,18 +95,18 @@ public class FXMLGameBoardController implements Initializable {
                    //be consistent, put color effects on every game
                    
                    //now we are active, set colors
-                   boxP1.setStyle("-fx-background-color: ganesBoro");
-                   boxP2.setStyle("-fx-background-color :  LightBLUE" );
-                   
+                   boxP2.setId("VBox-AI");
+                   boxP1.setId("VBox-playerStandard");                                    
                    //thinking...
                    Thread.sleep(700);
                    circleGrid[col][h].setVisible(true);
                    circleGrid[col][h].setFill(Color.BLUE);
                    
                    //no longer active, eliminate color, swap turn
-                   boxP2.setStyle("-fx-background-color : ganesBoro");
-                   boxP1.setStyle("-fx-background-color :  #ffe6e6" );
+                   boxP1.setId("VBox-player1");  
+                   boxP2.setId("VBox-playerStandard");
                    grid.setDisable(false);
+                   
                } catch (InterruptedException intex) {}
                return null;
            }
@@ -323,7 +325,11 @@ public class FXMLGameBoardController implements Initializable {
     @FXML
     private MenuItem bRanking;
     
-    private Player machine;
+    
+    @FXML
+    private Button bStop;
+    
+    private boolean isAI; 
     
 
     
@@ -357,8 +363,6 @@ public class FXMLGameBoardController implements Initializable {
         // Initialize the counter to 0
         cont = 0;
 
-        // create machine        
-        machine = new Player("machine", "o", "o", LocalDate.now(), 0);
 
         // PLAY CONNECT4
         
@@ -510,6 +514,8 @@ public class FXMLGameBoardController implements Initializable {
 
             bModifyP1.disableProperty().bind(player1NotLoged.or(bPlayAIActive.not().and(bPlayFriendActive.not())));
             bModifyP2.disableProperty().bind(player2NotLoged.or(bPlayAIActive.not().and(bPlayFriendActive.not())));
+            
+            bStop.disableProperty().bind(Bindings.not((bPlayAIActive.not()).and(bPlayFriendActive.not())));
 
     }
     
@@ -558,15 +564,14 @@ public class FXMLGameBoardController implements Initializable {
                             if (playerArray[0] != null && isCooperative) {
                                 // Increase points of the winner, in this case player1
                                 // Increase 5 points because there are two players
-                                playerArray[0].plusPoints(5);
+                                playerArray[0].plusPoints(api.getPointsRound());
                                 txtPointsP1.textProperty().setValue(playerArray[0].getPoints() + "");
                                 api.regiterRound(LocalDateTime.now(), playerArray[0], playerArray[1]);
 
                             } else if (playerArray[0] != null && !isCooperative) {
                                 //Increase 1 point because there is just one player against the AI
-                                playerArray[0].plusPoints(1);
+                                playerArray[0].plusPoints(api.getPointsAlone());
                                 txtPointsP1.textProperty().setValue(playerArray[0].getPoints() + "");
-                                api.regiterRound(LocalDateTime.now(), playerArray[0] , machine);
                             }
                         } catch (Connect4DAOException ex) {
                             Logger.getLogger(FXMLGameBoardController.class.getName()).log(Level.SEVERE, null, ex);
@@ -579,7 +584,7 @@ public class FXMLGameBoardController implements Initializable {
                             if (playerArray[1] != null && isCooperative) {
                                 // Increase points of the winner, in this case player2
                                 // Increase 5 points because there are two players
-                                playerArray[1].plusPoints(5);
+                                playerArray[1].plusPoints(api.getPointsRound());
                                 txtPointsP2.textProperty().setValue(playerArray[1].getPoints() + "");
                                 api.regiterRound(LocalDateTime.now(), playerArray[1], playerArray[0]);
                             }
@@ -603,28 +608,41 @@ public class FXMLGameBoardController implements Initializable {
                     flipTurn = !flipTurn;
                     // change the colour of the grid every turn
                     if (!flipTurn) {
-                        boxP1.setStyle("-fx-background-color :  ganesBoro");
+                        boxP1.setId("VBox-playerStandard");
                         effect.setColor(Color.YELLOW);
-                        boxP2.setStyle("-fx-background-color :  #ffffe6" );
+                        boxP2.setId("VBox-player2");
 
                     }
                     else {
-                        boxP2.setStyle("-fx-background-color :  ganesBoro");
+                        boxP2.setId("VBox-playerStandard");
                         effect.setColor(Color.RED);
-                        boxP1.setStyle("-fx-background-color :  #ffe6e6" );
+                        boxP1.setId("VBox-player1");
 
                     }
                     if (!grid.isDisabled()) grid.setEffect(effect);
                 } else {
-                    //"AI"
-                    
-                    
-                    InnerWaitTask iwt = new InnerWaitTask();
-                    
+                    //"AI"                  
+                    InnerWaitTask iwt = new InnerWaitTask();                   
                     try{
                         Thread t = new Thread(iwt);
                         t.setDaemon(true);
-                        t.start();                        
+                        t.start();   
+                        //We change the cursor when the Task starts
+                        iwt.setOnRunning((e) -> {
+                            bLogP1.getScene().setCursor(Cursor.WAIT);                            
+                        });
+                        //We change the cursor when the Task ends succesfully
+                        iwt.setOnSucceeded((e)->{
+                            bLogP1.getScene().setCursor(Cursor.DEFAULT);
+                        });
+                        //We change the cursor when the Task ends with error
+                        iwt.setOnFailed((e)->{
+                            bLogP1.getScene().setCursor(Cursor.DEFAULT);
+                        });
+                        //We change the cursor when the Task is cancelled
+                        iwt.setOnCancelled((e)->{
+                            bLogP1.getScene().setCursor(Cursor.DEFAULT);
+                        });
                     } catch (Exception e) {}                                       
                     
                     if (areFourConnected(P_RIGHT_TOK, gameGrid)) {
@@ -632,8 +650,6 @@ public class FXMLGameBoardController implements Initializable {
                         txtWinner.textProperty().setValue("The AI is the winner");
                         txtCongrats.setTextFill(color.PURPLE);
                         txtCongrats.textProperty().setValue("GAME OVER");
-                        // Register the Round
-                        api.regiterRound(LocalDateTime.now(), machine , playerArray[0]);
                         // Don't permit more intectation with the game
                         grid.setDisable(true);
                         // Restart the game and cleans the board
@@ -648,7 +664,7 @@ public class FXMLGameBoardController implements Initializable {
     private void reStartGame() {
         // Don't permit more intectation with the game
         grid.setDisable(true);
-        //reenable login and gamemodes, the game has ended
+        //reenable login and gamemodes, the game has ended       
         bPlayAI.setDisable(false);
         bPlayFriend.setDisable(false);
         bLogP1.setDisable(false);
@@ -658,9 +674,33 @@ public class FXMLGameBoardController implements Initializable {
 
         // Eliminate the color of both boxes
         effect.setColor(Color.BLACK);
-        boxP1.setStyle("-fx-background-color :  ganesBoro");
-        boxP2.setStyle("-fx-background-color :  ganesBoro");
+        boxP1.setId("VBox-playerStandard");
+        boxP2.setId("VBox-playerStandard");
+        
+        // Sleep Bob
+        if (isAI) {
+            isAI = false;
+            imageP2.setImage( new Image("avatars/default.png"));
+            txtNameP2.setText("Player2");
+            txtPointsP2.setText("0");
+        }
 
+    }
+    /**
+     * Method to clean the board for the next match
+     */
+    private void cleanBoard() {
+        grid.setEffect(effect);
+        gameGrid = new int[8][7];
+        grid.getChildren().forEach((Node circle) -> {
+            if(circle instanceof  Circle){
+                ((Circle)circle).setVisible(false);
+            }
+        });
+        txtWinner.textProperty().setValue("");
+        txtCongrats.textProperty().setValue("");
+        // set the BLACK colour to the grid
+        effect.setColor(Color.BLACK);        
     }
     /**
      * This method allows the FULL SCREEN option without destroying the gameboard
@@ -829,36 +869,23 @@ public class FXMLGameBoardController implements Initializable {
                 txtPointsP2.textProperty().setValue("0");
             }
         }
-    }
-    private void handleButtonLogOut(ActionEvent event) throws IOException {
-        performLogOut(event);
-    }
-
-    private void handleEnterLogOut(KeyEvent event) throws IOException{
-        if(event.getCode() == KeyCode.ENTER)
-            performLogOut(event);
-    }
+    }    
 
     /**
      * methods to select the option play with a AI
      */
     private void performPlayIA() {
         // Restart the game
-        grid.setEffect(effect);
-        gameGrid = new int[8][7];
-        grid.getChildren().forEach((Node circle) -> {
-            if(circle instanceof  Circle){
-                ((Circle)circle).setVisible(false);
-            }
-        });
-        txtWinner.textProperty().setValue("");
-        txtCongrats.textProperty().setValue("");
-        // set the the BLACK colour to the grid
-        effect.setColor(Color.BLACK);
+        cleanBoard();
         // Get player points if it is logged
         if (playerArray[0] != null) {
             txtPointsP1.textProperty().setValue(playerArray[0].getPoints() + "");
         }
+        // Wake Up AI
+        isAI = true;
+        txtNameP2.setText("Lord Visionary");
+        imageP2.setImage( new Image("avatars/lord_visionary.png"));
+        txtPointsP2.setText("X");
         // disable the buttons logIn
         bLogP1.disableProperty().unbind();
         bLogP2.disableProperty().unbind();
@@ -893,18 +920,10 @@ public class FXMLGameBoardController implements Initializable {
      */
     private void performPlayFriend() {
         // Restart the game
-        grid.setEffect(effect);
-        gameGrid = new int[8][7];
-        grid.getChildren().forEach((Node circle) -> {
-            if(circle instanceof  Circle){
-                ((Circle)circle).setVisible(false);
-            }
-        });
-        txtWinner.textProperty().setValue("");
-        txtCongrats.textProperty().setValue("");
+        cleanBoard();
         // Set the red colour which indicates that the turn is from the player1
         effect.setColor(Color.RED);
-        boxP1.setStyle("-fx-background-color :  #ffe6e6" );
+        boxP1.setId("VBox-player1");
         // Get players points if they are logged
         if (playerArray[0] != null) {
             txtPointsP1.textProperty().setValue(playerArray[0].getPoints() + "");
@@ -1006,6 +1025,22 @@ public class FXMLGameBoardController implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL); // The modal avoid to used the rest of the app if we don't close the new window
         stage.setResizable(false);
         stage.showAndWait();
+    }
+    
+    private void performStop() {
+        reStartGame();
+        cleanBoard();
+        
+    }
+    @FXML
+    private void handleEnterStop(KeyEvent event) {
+        if(event.getCode() == KeyCode.ENTER)
+            performStop();
+    }
+
+    @FXML
+    private void handleButtonStop(ActionEvent event) {
+        performStop();
     }
 
 }

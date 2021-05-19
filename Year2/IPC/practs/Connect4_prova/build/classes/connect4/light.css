@@ -19,15 +19,28 @@ and open the template in the editor.
     
 }
 
-.button:hover {
-    -fx-background-color: lightgray;    
+#button-stop{
+    -fx-background-color: #BC2121;
 }
-.button:focused {
-    -fx-background-color: lightgray;  
+
+.button:hover , .button:focused {
+    -fx-background-color: #0061C4;    
 }
 
 .rectangle {
     -fx-fill: lightwhite;
+}
+#VBox-playerStandard{
+    -fx-background-color: whitesmoke;
+}
+#VBox-player1 {
+    -fx-background-color: #ffe6e6;
+}
+#VBox-player2 {
+    -fx-background-color: #ffffe6;
+}
+#VBox-AI {
+    -fx-background-color: LightBLUE;
 }
 /*
 .text-field {
@@ -71,6 +84,8 @@ and open the template in the editor.
 .tab .tab-label{
     -fx-text-fill: black;
 }
+
+.tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {-fx-border-color: black}
 
 /*
 #select-image {

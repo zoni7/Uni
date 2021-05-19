@@ -17,12 +17,22 @@ and open the template in the editor.
     -fx-text-fill: white;
     -fx-background-radius: 16px;
 }
-
-.button:hover {
-    -fx-background-color: lightgrey;
+#button-stop{
+    -fx-background-color: #992121;
 }
-.button:focused {
-    -fx-background-color: lightgray;  
+.button:hover ,.button:focused {
+    -fx-background-color: #4C82D1;
+}
+#VBox-playerStandard{
+    -fx-background-color: #2C3E50;
+}
+#VBox-player1 {
+    -fx-background-color: #831F1F;
+}
+#VBox-player2 {
+    -fx-background-color: #9B9E2B;
+}#VBox-AI {
+    -fx-background-color: #2338A9;
 }
 
 
@@ -87,3 +97,5 @@ and open the template in the editor.
 .context-menu {
     -fx-background-color: #2C3E50
 }
+
+.tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {-fx-border-color: white}

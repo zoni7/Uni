@@ -6,6 +6,7 @@
 package connect4;
 
 import DBAccess.Connect4DAOException;
+import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -16,6 +17,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -61,19 +63,19 @@ public class FXMLInfoController implements Initializable {
     private ObservableList<Player> observablePlayerData;
     private ArrayList<Player> playerData;
     @FXML
-    private TableView<Round> table1_9;
+    private TableView<Round> gamesPlayedTable;
     @FXML
-    private TableColumn<Round, String> dayColumn1_9;
+    private TableColumn<Round, String> gamesPlayedDayCol;
     @FXML
-    private TableColumn<Round, String> timeColumn1_9;
+    private TableColumn<Round, String> gamesPlayedTimeCol;
     @FXML
-    private TableColumn<Round, String> winnerColumn1_9;
+    private TableColumn<Round, String> gamesPlayedWinnerCol;
     @FXML
-    private TableColumn<Round, String> loserColumn1_9;
+    private TableColumn<Round, String> gamesPlayedLoserCol;
     @FXML
-    private DatePicker startDate1_9;
+    private DatePicker gamesPlayedStartDate;
     @FXML
-    private DatePicker endDate1_9;
+    private DatePicker gamesPlayedEndDate;
     @FXML
     private Button bSearch1_9;
     @FXML
@@ -130,6 +132,18 @@ public class FXMLInfoController implements Initializable {
     private ChoiceBox<String> pickerPlayer1_12;
     
     private  model.Connect4 api;
+    @FXML
+    private TableView<DayRank> tPopularity;
+    @FXML
+    private TableColumn<DayRank, String> cDayPopularity;
+    @FXML
+    private TableColumn<DayRank, Integer> cNumberPopularity;
+    @FXML
+    private DatePicker dSatartPopularity;
+    @FXML
+    private DatePicker dEndPupularity;
+    @FXML
+    private Button bSearchPopularity;
 
     /**
      * Initializes the controller class.
@@ -151,6 +165,8 @@ public class FXMLInfoController implements Initializable {
             actionsPlayerWins();
             // Initialize actions for Player loses pane
             actionsPlayerLoses();
+            // Initialize actions for Game's Popularity
+            actionsPopularity();
         } catch (Connect4DAOException ex) {
             Logger.getLogger(FXMLInfoController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -158,7 +174,11 @@ public class FXMLInfoController implements Initializable {
     
     private void bindings() {
         bSearch1_10.disableProperty().bind(pickerPlayer1_10.valueProperty().isNull().or(startDate1_10.valueProperty().isNull()).or(endDate1_10.valueProperty().isNull()));
-        bSearch1_9.disableProperty().bind(startDate1_9.valueProperty().isNull().or(endDate1_9.valueProperty().isNull()));
+        bSearch1_9.disableProperty().bind(gamesPlayedStartDate.valueProperty().isNull().or(gamesPlayedEndDate.valueProperty().isNull()));
+        bSearch1_11.disableProperty().bind(pickerPlayer1_11.valueProperty().isNull().or( startDate1_11.valueProperty().isNull()).or( endDate1_11.valueProperty().isNull()));
+        bSearch1_12.disableProperty().bind(pickerPlayer1_12.valueProperty().isNull().or( startDate1_12.valueProperty().isNull()).or( endDate1_12.valueProperty().isNull()));
+
+        bSearchPopularity.disableProperty().bind(Bindings.or(dSatartPopularity.valueProperty().isNull(), dEndPupularity.valueProperty().isNull()));
     }
     
     /**
@@ -224,8 +244,6 @@ public class FXMLInfoController implements Initializable {
 
                     if (player.getNickName().toLowerCase().contains(lowerCaseFilter)) {
                             return true; // Filter matches first name.
-                    } else if (player.getNickName().toLowerCase().contains(lowerCaseFilter)) {
-                            return true; // Filter matches last name.
                     }
                     return false; // Does not match.
                  });
@@ -246,22 +264,20 @@ public class FXMLInfoController implements Initializable {
         bSearch1_9.setOnAction((event) -> performGamesPlayed());
     }
     
-    @FXML
     private void performGamesPlayed() {                    
             
             Map<LocalDate, List<Round> > perDate = api.getRoundsPerDay();
             //since this map is sorted
             
-            // x favor renombra las variables :3
-            LocalDate start = startDate1_9.getValue();
-            LocalDate end = endDate1_9.getValue();
+            LocalDate start = gamesPlayedStartDate.getValue();
+            LocalDate end = gamesPlayedEndDate.getValue();
             
             //generate days
             int lim = (int)start.until(end, ChronoUnit.DAYS);
             LocalDate current = start;
             List<Round> toShow = new ArrayList<Round>();
             
-            for (int i = 0; i < lim; i++) {
+            for (int i = 0; i <= lim; i++) {
                 List<Round> l = perDate.get(current);   
                 
                 //"unwrap" list
@@ -279,17 +295,18 @@ public class FXMLInfoController implements Initializable {
             ObservableList<Round> obsList = FXCollections.observableArrayList(toShow);
             
             //set element per column
-            dayColumn1_9.setCellValueFactory(cellData-> new SimpleStringProperty(cellData.getValue().getLocalDate().getDayOfMonth() + "/" +
+            gamesPlayedDayCol.setCellValueFactory(cellData-> new SimpleStringProperty(cellData.getValue().getLocalDate().getDayOfMonth() + "/" +
                 cellData.getValue().getLocalDate().getMonthValue() + "/" + cellData.getValue().getLocalDate().getYear())
             );
-            timeColumn1_9.setCellValueFactory(cellData-> new SimpleStringProperty(cellData.getValue().getTimeStamp().getHour() + ":" +
+            gamesPlayedTimeCol.setCellValueFactory(cellData-> new SimpleStringProperty(cellData.getValue().getTimeStamp().getHour() + ":" +
                     cellData.getValue().getTimeStamp().getMinute() + ":" + cellData.getValue().getTimeStamp().getSecond()
             ));
-            winnerColumn1_9.setCellValueFactory(cellData-> new SimpleStringProperty(cellData.getValue().getWinner().getNickName()));
-            loserColumn1_9.setCellValueFactory(cellData-> new SimpleStringProperty(cellData.getValue().getLoser().getNickName()));
+            gamesPlayedWinnerCol.setCellValueFactory(cellData-> new SimpleStringProperty(cellData.getValue().getWinner().getNickName()));
+            gamesPlayedLoserCol.setCellValueFactory(cellData-> new SimpleStringProperty(cellData.getValue().getLoser().getNickName()));
 
             //init
-            table1_9.setItems(obsList);                            
+            if (obsList.size() == 0) {return;}
+            gamesPlayedTable.setItems(obsList);                            
     }
     
     /**
@@ -330,7 +347,8 @@ public class FXMLInfoController implements Initializable {
         ));
         winnerColumn1_10.setCellValueFactory(cellData-> new SimpleStringProperty(cellData.getValue().getWinner().getNickName()));
         loserColumn1_10.setCellValueFactory(cellData-> new SimpleStringProperty(cellData.getValue().getLoser().getNickName()));
-
+        
+        if (observableRoundList.size() == 0) {return;}
         table1_10.setItems(observableRoundList);
     }
     
@@ -370,7 +388,8 @@ public class FXMLInfoController implements Initializable {
         ));
         winnerColumn1_11.setCellValueFactory(cellData-> new SimpleStringProperty(cellData.getValue().getWinner().getNickName()));
         loserColumn1_11.setCellValueFactory(cellData-> new SimpleStringProperty(cellData.getValue().getLoser().getNickName()));
-
+        
+        if (observableRoundList.size() == 0) {return;}
         table1_11.setItems(observableRoundList);
     }
     private void actionsPlayerLoses() {
@@ -384,7 +403,8 @@ public class FXMLInfoController implements Initializable {
         });
         
     }
-    private void performPlayerLoses() {
+    private void performPlayerLoses() {               
+        
         Player player = api.getPlayer(pickerPlayer1_12.getValue());
         LocalDate datePickerStart = startDate1_12.getValue();
         LocalDate datePickerEnd = endDate1_12.getValue();
@@ -410,7 +430,50 @@ public class FXMLInfoController implements Initializable {
         ));
         winnerColumn1_12.setCellValueFactory(cellData-> new SimpleStringProperty(cellData.getValue().getWinner().getNickName()));
 
+        if (observableRoundList.size() == 0) {return;}
         table1_12.setItems(observableRoundList);
+    }
+    
+    private void actionsPopularity() {
+        
+         bSearchPopularity.setOnAction((event) -> {
+        Map<LocalDate, Integer > perDate = api.getRoundCountsPerDay();
+        //since this map is sorted
+            
+            LocalDate start = dSatartPopularity.getValue();
+            LocalDate end = dEndPupularity.getValue();
+            
+            //generate days
+            int lim = (int)start.until(end, ChronoUnit.DAYS);
+            LocalDate current = start;            
+            
+            List<DayRank> toShow = new ArrayList<DayRank>();
+            for (int i = 0; i <= lim; i++){
+                if (perDate.get(current) != null) {
+                    DayRank aux = new DayRank(current, perDate.get(current) , 0, 0);
+                    toShow.add(aux);
+                }
+                current = current.plusDays(1);
+            }
+            
+            
+            
+            //set grid view
+            ObservableList<DayRank> obsList = FXCollections.observableArrayList(toShow);
+            
+            
+            //set element per column
+            cDayPopularity.setCellValueFactory(cellData-> new SimpleStringProperty(cellData.getValue().getDate().getDayOfMonth() + "/" +
+                cellData.getValue().getDate().getMonthValue() + "/" + cellData.getValue().getDate().getYear())
+            );
+            cNumberPopularity.setCellValueFactory(cellData-> new SimpleIntegerProperty(cellData.getValue().getWinnedGames()).asObject());  
+        
+            
+
+            //init
+            if (obsList.size() == 0) {return;}
+            tPopularity.setItems(obsList); 
+            });
     }
 
 }
