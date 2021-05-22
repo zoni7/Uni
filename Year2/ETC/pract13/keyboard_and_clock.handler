@@ -21,6 +21,7 @@ context: .space 16 # the area to put the context
           .ktext 0x80000080
 
     ## Save the user program context
+
     .set noat
     sw  $at, 0($k1)
     .set at
@@ -28,15 +29,36 @@ context: .space 16 # the area to put the context
     sw $v0, 8($k1)
     sw $a0, 12($k1)
 
+ ## Identify and handle interrupts
+    ## (nothing for the moment)
+    
+    mfc0 $k0, $13
+    andi $t0, $k0, 0x003C
+    bne $t0, $zero, retexc
+    
+    andi $t0, $k0, 0x400
+    bne $t0, $zero, int0
+    
+    andi $t0, $k0, 0x1000
+    bne $t0, $zero, int2
+int0:
     ## Identify and handle interrupts
     la $t0 ,0xFFFF0000
     lw  $a0 , 4($t0)            # <--- Cancel
+    
 
     li $v0, 11
     li $a0, '*'
     syscall
 
+    j retexc
+
+int2:
+    la $t0 ,0xFFFF0010
+    sw  $0 , 0($t0)            # <--- Cancel
+    j retexc
     ## Restore context
+retexc:
     .set noat
     lw  $at, 0($k1)
     .set at
@@ -60,16 +82,20 @@ context: .space 16 # the area to put the context
 __start: 
     ## Starting code 
       
-    # enable interrupts
+    # enable interrupts keyboard
     li $t0, 0xFFFF0000    
     li $t1,2
+    sb $t1, 0($t0)
+    # enable interrupts clock
+    li $t0, 0xFFFF0010    
+    li $t1,1
     sb $t1, 0($t0)
 
     # Context base address
     la $k1, context
 
     # the line Int0* goes to unmasked
-    li $t0, 0x0103
+    li $t0, 0x0503
     mtc0 $t0, $12
 
     ## Jump to user program
