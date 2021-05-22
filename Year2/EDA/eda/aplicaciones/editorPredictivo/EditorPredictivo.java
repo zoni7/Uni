@@ -99,6 +99,7 @@ public class EditorPredictivo extends ABB<String> {
      *                  es el propio prefijo siempre y cuando sea ya una 
      *                  palabra del editor.
      */
+    /*
     public ListaConPI<String> recuperarSucesores(String prefijo, int n) {       
         // Create a list to save the result
         ListaConPI<String> list = new LEGListaConPI<String>();
@@ -116,4 +117,31 @@ public class EditorPredictivo extends ABB<String> {
         // Return the result list
         return list;	
     }
+   */
+   
+    public ListaConPI<String> recuperarSucesores(String prefijo, int n) {
+    
+        ListaConPI<String> lpi = new LEGListaConPI<String>();
+        int numeroSucesores = 0; // Prescindible: lpi.talla() ya los cuenta
+        
+        if (this.recuperar(prefijo) != null) {  
+            lpi.insertar(prefijo);
+            numeroSucesores++;
+        }
+        
+        String siguienteSucesor = prefijo; 
+        boolean seguir = true; 
+        do {
+            siguienteSucesor = this.sucesor(siguienteSucesor);
+            if (siguienteSucesor != null 
+                && siguienteSucesor.startsWith(prefijo)) {
+                    lpi.insertar(siguienteSucesor);
+                    numeroSucesores++;
+            } 
+            else { seguir = false; }
+        } while (seguir && numeroSucesores < n);
+        
+        return lpi;
+    }
+    
 }

@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=numV
+comment0.target=GrafoNoDirigido(int)
+comment0.text=\ Construye\ un\ grafo\ No\ Dirigido\ vacio\ con\ numV\ vertices.\ \n\ \ @param\ numV\ \ Numero\ de\ vertices\ del\ grafo\ vacio\n
+comment1.params=i\ j
+comment1.target=void\ insertarArista(int,\ int)
+comment1.text=\ Si\ no\ esta,\ inserta\ la\ arista\ (i,\ j)\ en\ un\ grafo\ No\ Dirigido\ \ \n\ \ y\ No\ Ponderado;\ por\ tanto,\ tambi\u00E9n\ inserta\ la\ arista\ (j,\ i).\n\ \ @param\ i\ \ \ \ Vertice\ origen\n\ \ @param\ j\ \ \ \ Vertice\ destino\n
+comment2.params=i\ j\ p
+comment2.target=void\ insertarArista(int,\ int,\ double)
+comment2.text=\ Si\ no\ esta,\ inserta\ la\ arista\ (i,\ j)\ de\ peso\ p\ en\ un\ grafo\ \ \n\ \ No\ Dirigido\ y\ Ponderado;\ por\ tanto,\ tambi\u00E9n\ inserta\ la\ arista\ \n\ \ (j,\ i)\ de\ peso\ p.\n\ @param\ i\ \ \ \ Vertice\ origen\n\ @param\ j\ \ \ \ Vertice\ destino\n\ @param\ p\ \ \ \ Peso\ de\ (i,\ j)\n
+numComments=3
