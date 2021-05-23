@@ -1,5 +1,7 @@
-### ESTRUCTURA Y TECNOLOG�A DE COMPUTADORES II (ETISINF)
-###
+
+  
+### ESTRUCTURA Y TECNOLOGÍA DE COMPUTADORES II (ETISINF)
+###  
 ###
 ### LAB 15: SYSTEM CALLS II
 ###
@@ -27,7 +29,7 @@ addrret:		.word 0		# the returning address is stored here
 		WAITING_WRITE = 3
 
 
-state:		.word READY		# Process state
+state:		.word READY		# Process state 
 					        # initially ready
 
 		## Clock variables
@@ -58,17 +60,17 @@ awake:         	.word 0
 
 	mfc0 $k0,$13		# Copy cause register
 	andi $t0,$k0, 0x003c	# Isolate cause code
-	beq $t0,$zero,interrupt	# Hardware interrupt?
-	li $t1, 0x20		# syscall?
-	beq $t1, $t0, call
+	beq $t0,$zero,interrupt	# Hardware interrupt?  
+	li $t1, 0x20		# syscall? 
+	beq $t1, $t0, call 
 
-	b retexc			# Ignoro cualquier otra causa
+	b retexc			# Ignoro cualquier otra causa   
 
 #############################################################
 ##             TRATAMIENTO DE INTERRUPCIONES               ##
 #############################################################
 
-interrupt:
+interrupt:      
 
 ## Prepare returning address (only if it is the main process)
 
@@ -78,7 +80,7 @@ interrupt:
 	mfc0 $t0, $14		# EPC
 	sw $t0, addrret
 
-## An�lisis de interrupciones pendientes
+## Análisis de interrupciones pendientes
 
 $L1:	andi $t0, $k0, 0x1000	# int2 pendat?
 	bne  $t0, $zero, int2
@@ -116,44 +118,33 @@ int2:
 ## Handling keyboard interrupt
 
 int0:
-
+	# To do
 	lw $t0, state
 	li $t1, WAITING_READ
-	# if (state == WAITING_READ)
-	bne $t1, $t0 , retexc
-
-	# $a0 = read character
+	bne $t0, $t1, fin
+	la $t0, 0xffff0004
+	lb $a0, 0($t0)
 	la $t0, 0xffff0000
-	lb $a0, 4($t0)
-
-	# Cancel and suppress keyboard interrupt
-	sw $zero, 0($t0)
-
-	# State = READY
-	li $t1, READY
-	sw $t1, state
-
+	sb $zero, 0($t0)
+	li $t1,READY			
+	sw $t1,state
+fin:
 	b retexc		# end
 
 ## Handling console interrupt
 
 int1:
-	lw $t1, state
-	li $t0, 3
-	# if (state == WAITING_WRITE)
-	bne $t1, $t0 , retexc
-
-	# $a0 = read character
+	# To do
+	lw $t0, state
+	li $t1, WAITING_WRITE
+	bne $t0, $t1, fin
+	la $t0, 0xffff000c
+	sb $a0, 0($t0)
 	la $t0, 0xffff0008
-	sb $a0, 4($t0)
-
-	# Cancel and suppress keyboard interrupt
-	sb $0, 0($t0)
-
-	# State = READY
-
-	li $t1, READY
-	sw $t1, state
+	sb $zero, 0($t0)
+	li $t1,READY			
+	sw $t1,state
+fin:
 	b retexc		# end
 
 
@@ -188,25 +179,24 @@ call:
 ###### PRINT_CHAR (Service 11)
 
 print_char:
-	# Enable keyboard interrupt
-	la $t0, 0xffff0008
-	li $t1, 2
-	sb $t1, 0($t0)
-
-	# state = WAITING_WRITE
+	li $t0, 0xffff0008
+	li $t1, 0x2
+	sw $t1, 0($t0)
+	la $t0, state
 	li $t1, WAITING_WRITE
-	sw $t1 ,state
+	sw $t1, 0($t0)
 	b retexc
-
 
 ###### READ_CHAR (Service 12)
 
 read_char:
-	la $t0, 0xffff0000     # Dir base teclado
-	li $t1, 2
-	sb $t1, 0($t0)
+	# To do
+	li $t0, 0xffff0000
+	li $t1, 0x2
+	sw $t1, 0($t0)
+	la $t0, state
 	li $t1, WAITING_READ
-	sw $t1, state
+	sw $t1, 0($t0)
 	b retexc
 
 
@@ -249,7 +239,7 @@ retexc:
 
 	la $k0,void_process
 	b $L3			# otherwise return to the void process
-
+         
 $L2:	lw $k0,addrret		# (on addrret there is the returning address to the
 				            #  main process)
 
@@ -272,8 +262,8 @@ $L3:	lw $t1, 8($k1)		# restore $t1
 ###################################################################
 
           .text
-          .globl __start
-__start:
+          .globl __start 
+__start: 
 
 ## Set peripheral interfaces
 
@@ -290,7 +280,7 @@ __start:
 ## Prepare coprocessor state register and set user mode
 
 	mfc0 $t0, $12
-	ori $t0, $t0, 0x0703	# Interrupts masked
+	ori $t0, $0, 0x0703	# Interrupts masked
 	mtc0 $t0, $12
 
 ## Jump to user program

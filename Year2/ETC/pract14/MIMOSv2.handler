@@ -30,8 +30,8 @@ estado:		.word LISTO		# Estado del proceso
 					# (inicialmente, est� listo)
 
 		## Variables para el reloj
-		seconds: .byte 0
-		awake: 	 .byte 0
+		seconds: .word 0
+		awake: 	 .word 0
 
 		## Variables para el teclado
 
