@@ -58,9 +58,7 @@ wait1:
 	beqz $t1,wait1
 
 	
-	lw $v0, 4($a2)    # Handle
-    li $t1, 0x00	  # Cancel
-    sw $t1, 0($a2)
+	lw $v0, 4($a2)    # Handle and Cancel
 
 
 ###
@@ -77,9 +75,7 @@ wait2:
 	beqz $t1,wait2
 
 	
-	sw $a0, 4($a3)    # Handle
-    li $t1, 0x00	  # Cancel
-    sw $t1, 0($a3)
+	sw $a0, 4($a3)    # Handle and Cancel
 
 
 ###

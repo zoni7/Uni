@@ -35,9 +35,7 @@ wait:   # Waits for bit R == 1
 	beqz $t1,wait
 
         ### TO BE COMPLETED: Read keyboard data register
-    lw $t2, 4($t0)    # Handle
-    li $t1, 0x00	  # Cancel
-    sw $t1, 0($t0)
+    lw $t2, 4($t0)    # Handle and Cancel   
 
     li $v0, 1
     move $a0, $t2
