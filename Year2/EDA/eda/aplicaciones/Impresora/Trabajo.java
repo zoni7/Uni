@@ -1,4 +1,4 @@
-package aplicaciones.Impresora;
+package aplicaciones.impresora;
 
 /** Clase Trabajo: representa un trabajo a imprimir.
  *  ATRIBUTOS: 
@@ -59,9 +59,9 @@ public class Trabajo implements Comparable<Trabajo> {
      */
     public int compareTo(Trabajo otro) { 
         /*COMPLETAR*/
-        if(this.compareTo(otro) > 0) {
+        if((this.numPaginas - otro.numPaginas) > 0) {
             return 1;
-        } else if (this.compareTo(otro) < 0) {
+        } else if ((this.numPaginas - otro.numPaginas) < 0) {
             return -1;
         } else {
             return 0;

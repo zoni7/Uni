@@ -1,10 +1,10 @@
 #BlueJ package file
 objectbench.height=94
-objectbench.width=452
+objectbench.width=760
 package.divider.horizontal=0.5997386759581881
-package.divider.vertical=0.8295711060948082
-package.editor.height=483
-package.editor.width=673
+package.divider.vertical=0.8285229202037352
+package.editor.height=481
+package.editor.width=644
 package.editor.x=392
 package.editor.y=36
 package.frame.height=689
@@ -25,7 +25,7 @@ target1.width=80
 target1.x=200
 target1.y=30
 target2.height=62
-target2.name=Impresora
+target2.name=impresora
 target2.type=PackageTarget
 target2.width=80
 target2.x=200

@@ -70,21 +70,20 @@ public class FXMLController implements Initializable {
         
         // XYChart.Series used in LineChart
         XYChart.Series s1 = new XYChart.Series(data);
-        s1.setName("hist1");
-        XYChart.Series s2 = new XYChart.Series(data2);
-        s2.setName("hist2");
+        //s1.setName("hist1");
+        
         
         // Populate the LineChart
-        lineChart.getData().addAll(s1, s2);
+        lineChart.getData().add(s1);
         // LineChart Axes names
         lineChart_xAxis.setLabel("Ranges");
         lineChart_yAxis.setLabel("Frequencies");
         
         // XYChart.Series used in BarChart
         XYChart.Series s3 = new XYChart.Series(data3);
-        s1.setName("hist3");
+        s3.setName("hist3");
         XYChart.Series s4 = new XYChart.Series(data4);
-        s2.setName("hist4");
+        s4.setName("hist4");
         
         // Populate the BarChart
         barChart.getData().addAll(s3, s4);

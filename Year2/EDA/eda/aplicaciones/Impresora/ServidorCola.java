@@ -1,4 +1,4 @@
-package aplicaciones.Impresora;
+package aplicaciones.impresora;
 
 import librerias.estructurasDeDatos.modelos.Cola;
 import librerias.estructurasDeDatos.lineales.ArrayCola;
