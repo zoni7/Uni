@@ -1,0 +1,58 @@
+//spanningTreeDFS
+public int[]spanningTreeDFS() {
+   String[] res = new String[numVertices() - 1 /*artistas = V - 1*/];
+   ordenVisita= 0;
+   visitados = new int[numVertices()];
+   spanningTreeDFS(0,res);
+   if (ordenVisita != numVertices() - 1) return null;
+   return res;
+ }
+
+ protected spanningTreeDFS(int v, String[] res) {
+   visitados[v] = 1;
+    //res[ordenVisita] = v;
+     ListaConPI<Adyacente> l = adyacentesDe(v);
+     for (l.inicio(); !l.esFin(); l.siguiente()) {
+       int w = l.recuperar().getDestino();
+       if (visitados[w] == 0) {
+         res[ordenVisita++] = "(" + v + ", " + w + ")";
+         spanningTreeDFS(w, res);
+       }
+      }
+    }
+//esConexo
+  public boolean esConexo() {
+    ordenVisita = 0;
+    visitados = new int[numVertices()];
+    esConexo(0);
+    return ordenVisita == numVertices();
+  }
+
+  protected boolean esConexo(int v) {
+    visitados[v] = 1;
+    ordenVisita++;
+    ListaConPI<Adyacente> l = adyacentesDe(v);
+    for (l.inicio(); !l.esFin(); l.siguiente()) {
+      int w = l.recuperar().getDestino();
+      if (visitados[w] == 0) {
+        esConexo(w);
+      }
+     }
+  }
+//toStringCC
+public String toStringCC() {
+  String res = "";
+  int nCC = 0;
+  visitados = new int[numVertices()];
+  for (int v= 0; v < numVertices() ; v++ ) {
+    if (visitados[v] == 0) {
+      nCC++;
+      res += "[" + toStringCC(v) + "]\n";
+    }
+  }
+  return "Hay " + nCC + "Componentes Conexas y son \n" + res;
+}
+...
+//esAlcanzable
+
+//verticeRaiz

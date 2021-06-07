@@ -1,4 +1,4 @@
-package aplicaciones.impresora;
+package aplicaciones.Impresora;
 
 /** Clase Trabajo: representa un trabajo a imprimir.
  *  ATRIBUTOS: 

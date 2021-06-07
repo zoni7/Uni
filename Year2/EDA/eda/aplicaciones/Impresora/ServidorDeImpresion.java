@@ -1,4 +1,4 @@
-package aplicaciones.impresora;
+package aplicaciones.Impresora;
 
 /** Interfaz ServidorDeImpresion: especifica la velocidad de la
  *  impresora asociada a un un Servidor de Impresion (print server)

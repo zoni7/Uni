@@ -1,4 +1,4 @@
-package aplicaciones.impresora;
+package aplicaciones.Impresora;
 
 import librerias.estructurasDeDatos.modelos.ColaPrioridad;
 import librerias.estructurasDeDatos.jerarquicos.MonticuloBinarioR0;
