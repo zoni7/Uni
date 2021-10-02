@@ -8,5 +8,5 @@ do {
 	setTimeout(function(){console.log(i)},i*1000);
 	i++;  
 } while (i<10);
-
+// i will be 10 always as it is in the global scope
 console.log("Terminado codigo script  valor actual de i: ",i);

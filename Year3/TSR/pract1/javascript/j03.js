@@ -7,7 +7,7 @@ function main(y){
 
 	var traza="inicio";
 	gety=getY;
-	return f(y);
+	return f(y); // Al retornar el valor de f(y) cada nova cridada al metode main mantendrà el valor privat "y"
 	
 //   - - - - - - - - - - - - - - - - - - - - - - - - - -
 	
@@ -43,6 +43,6 @@ var z=main(-100);
 for(var i=0; i<10;i++) z=z();
 
 //¿Cuál es el resultado de la ejecución de la sentencia
-//console.log(gety());
-//?
+console.log(gety());
+// -100 porque la y de gety() se refiere a la y de la clousure de la funcion main y no a la de f(y) que tiene un scope diferente
 

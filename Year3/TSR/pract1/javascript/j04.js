@@ -7,3 +7,4 @@ for(var i=0; i<10; i++) setTimeout(function(){console.log(i)},i*1000);
 
 
 console.log("Terminado codigo script  valor actual de i: ",i);
+//  the first Timeout finishes after the console.log (main) so it ill print the last i, i = 10 

@@ -6,7 +6,7 @@ for(var i=0; i<10; i++)
   setTimeout(function(índice){return function(){
 		           console.log("índice:  ",índice,"  i:  ",i)}
 		      }(i),i*1000);
-
+// el indici se mantiene y la i es global
 
 console.log("Terminado codigo script","   valor actual de i: ",i);
 

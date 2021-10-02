@@ -12,6 +12,10 @@ const server = net.createServer(
             function(data) {
                 c.write(parseInt(data+'')*3+'')
             })
+        c.on('error', 
+        function() {
+            console.log('Client error')
+        })
     })
 
 server.listen(parseInt(process.argv[2]) || 8001,

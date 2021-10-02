@@ -7,7 +7,7 @@ function g(){return this.valor;}
 
 var obj01={ valor:-5*2,
 	      fun:function(){
-				  var gg=g.bind(this);
+				  var gg=g.bind(this); // bind funcion dentro de otra funcion, sirve para que la funcion se comporte como lo haria en java
 				  return gg;
 			   }
 	    }
@@ -30,7 +30,6 @@ console.log("obj02.fun():  ",obj02.fun());
 console.log("obj02.fan():  ",obj02.fan());
 
 console.log("__________________________________________________________\n");
-
 obj01.valor="nuevo valor";
 console.log("obj01.valor:  ",obj01.valor);
 console.log("obj02.fun():  ",obj02.fun());

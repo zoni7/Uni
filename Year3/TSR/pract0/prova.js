@@ -53,8 +53,14 @@ function v() {
     console.log(global.x)
 }
 
+function fibo(n) {
+    return (n<2) ? 1: fibo(n-2) + fibo(n-1)
+}
 
+setTimeout(function() {
+    console.lo
+})
 // OUTPUTS
 //x(1,2,4)
 //f(2)
-v()
+//v()

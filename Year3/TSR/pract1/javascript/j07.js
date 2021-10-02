@@ -5,7 +5,7 @@
 var i = 0;
 
 do {
-	let k = i;
+	let k = i; // El let k permite que la variable k se mantenga en cada bloque, debe de existir un scope para cada buvle
 	setTimeout(function(){console.log(k)},k*1000);
 	i++;
     

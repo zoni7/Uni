@@ -8,7 +8,7 @@ for(var i=0; i<10; i++)
 	             i*1000,i);
 
   
-
+// Lo mismo que el anterior ej.
 console.log("Terminado codigo script","   valor actual de i: ",i);
 
 

@@ -12,3 +12,4 @@ function tempo(índice){
 	setTimeout(function(){console.log("índice:  ",índice,"  i:  ",i);},índice*1000);
 }
 
+// Lo mismo que el anterior ej.
