@@ -16,7 +16,8 @@ function handler (e,n) { // e es el evento, n el valor asociado
 }
 emitter.on(e1, handler(e1,0))
 emitter.on(e2, handler(e2,''))
-function etapa() {      
+function etapa() {    
+      
     emitter.emit(e1, inc)
     emitter.emit(e2, inc)
     // Increment global inc
