@@ -10,8 +10,8 @@ function handler (event,n) {
     }
 }
 
-emitter.on(e1, handler(e1,0))
-emitter.on(e2, handler(e2,'')) // implicit type casting
+emitter.on(e1, handler(e1,0))  // n = 0
+emitter.on(e2, handler(e2,'')) // implicit type casting, n = ''
 
 console.log('\n\n--------------------------- init\n\n')
 for (let i=1; i<4; i++) emitter.emit(e1,i) // sequence, iteration, generation with param
