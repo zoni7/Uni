@@ -1,9 +1,8 @@
-(deffacts data
-
-    (grid_size 8 5 ) ;; Static facts
-    (garbage G 1 3 G 2 1 G 4 3 G 6 1 G 4 4 G 1 4 G 7 4 G 7 1 G 7 3) 
-
-    (robot 3 3 cans C 3 2 C 3 4 C 2 3 C 4 3 level 0 movement null)  ;; Dynamic fact
+(deffacts base
+	
+	(garbage G 1 3 G 2 1 G 4 3 G 6 1 G 4 4 G 1 4 G 7 4 G 7 1 G 7 3) 
+	(grid_size 8 5)
+	(robot 2 3 cans C 2 2 C  level 0 movement null)  ;; Dynamic fact
 
 )
 
@@ -84,7 +83,7 @@
 
 =>
 
-	(assert (robot ?x (+ ?y 1) cans $?cans_list_pre C ?cx (+ ?cy 1) $?cans_list_post level (+ ?lev 1) movement up)))
+	(assert (robot ?x (+ ?y 1) cans $?cans_list_pre C ?cx (+ ?cy 1) $?cans_list_post level (+ ?lev 1) movement up))
 
 )
 
@@ -101,7 +100,7 @@
 
 =>
 
-	(assert (robot ?x (- ?y 1) cans $?cans_list_pre C ?cx (- ?cy 1) $?cans_list_post level (+ ?lev 1) movement down)))
+	(assert (robot ?x (- ?y 1) cans $?cans_list_pre C ?cx (- ?cy 1) $?cans_list_post level (+ ?lev 1) movement down))
 
 )
 
@@ -119,7 +118,7 @@
 
 =>
 
-	(assert (robot (+ ?x 1) ?y cans $?cans_list_pre C (+ ?cx 1) ?cy $?cans_list_post level (+ ?lev 1) movement right)))
+	(assert (robot (+ ?x 1) ?y cans $?cans_list_pre C (+ ?cx 1) ?cy $?cans_list_post level (+ ?lev 1) movement right))
 
 )
 
@@ -136,9 +135,19 @@
 
 =>
 
-	(assert (robot (- ?x 1) ?y cans $?cans_list_pre C (- ?cx 1) ?cy $?cans_list_post level (+ ?lev 1) movement right)))
+	(assert (robot (- ?x 1) ?y cans $?cans_list_pre C (- ?cx 1) ?cy $?cans_list_post level (+ ?lev 1) movement right))
 
 )
+
+(defrule are_you_winning_son
+(declare (salience 9999))
+?fn<-(robot ?x ?y cans level ?lev movement ?*);; cans is empty!!
+=>
+(printout t "Solution found at level" ?lev)
+(halt)
+
+)
+
 
 ;;
 ;;	|on hold|
@@ -153,20 +162,6 @@
 
 	(retract ?fn) ;; retract so branches with cans on garbages are ignored
 	(assert (robot $?robot cans $?cans_list_pre $?cans_list_post level ?lev movement ?mov))
-
-	
-
-)
-
-(defrule goal
-	(declare (salience 150) ) 
-	?fn <- (robot $?robot cans level ?lev movement ?mov) 
-=>
-	(printout t "---------- END  ----------")
-	(halt)
-	
-
-	
 
 )
 
