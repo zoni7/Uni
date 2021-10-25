@@ -27,5 +27,5 @@ w(-1000);
 console.log("ww(): " + ww());
 
 //¿Cuál es el resultado de la ejecución de la sentencia
-//console.log("u= ",u);
-//?
+console.log("u= ",u);
+// Infinity because it refers to the global one

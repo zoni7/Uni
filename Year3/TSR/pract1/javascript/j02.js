@@ -2,7 +2,7 @@
 //Clausuras de variables y funciones.
 
 function f(y){
-	var x=100;
+	let x=100;
 	function g(){
 		x++;
 		console.log("incremento de x:  "+x);
