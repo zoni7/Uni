@@ -1,4 +1,7 @@
 const net = require('net');
+const fs = require('fs')
+
+
 const server = net.createServer(
     function(c) { //connection listener
         console.log('server: client connected');
@@ -8,8 +11,8 @@ const server = net.createServer(
         });
         c.on('data',
             function(data) {
-                c.write('Hello\r\n'+ data.toString()); // send
-                resp
+                c.write('localhost :' + getLoad()); // send resp
+                
                 c.end(); // close socket
         });
     });

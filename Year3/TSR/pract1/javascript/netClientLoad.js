@@ -1,8 +1,11 @@
 const net = require('net');
-const client = net.connect({port:8000,host:"tsr1.dsic.upv.es"},
+const PORT = process.argv[2]
+const IP = process.argv[3]
+const client = net.connect({port:PORT,host:IP},
     function() { //connect listener
         console.log('client connected');
-        client.write('world!\r\n');
+        client.write('localhost')
+        
 });
 client.on('data',
     function(data) {
