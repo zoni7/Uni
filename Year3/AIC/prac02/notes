@@ -1,0 +1,39 @@
+1)
+    . to cycle 8 to cycle 28 
+    . 21 and 21 (we wait the same)
+    . 11 and Data hazards 8 and control hazards 3 (last two stalls in the nope)
+    . 10
+    . CPI = 21 / 10 = 2,1
+    
+2) Here the stals will appear if the branch is taken but not if is not taken
+    . to cycle 8 to cycle 28
+    . 21 and 18
+    . 11- > 8 data hazards and 3 control hazards when the branch is not taken
+    . 10 
+    . 21 / 10 = 2,1 when the branch is not taken
+
+3)  . to cycle 6 to 20
+    . 15 and 12
+    . 5 -> 2 data hazards and 2 control hazards when the branch is not taken
+    . 10
+    . 15 / 10 = 1,5 when the branch is not taken
+    
+4)  . 6 - 18
+    . 13 and 10
+    . 3 control hazards 0 data h.
+    . 10
+    . 13 / 10= 1,3
+
+5)  . 6 - 16
+    . 11 AND 10
+    . 1 control hazards 0 data h.
+    . 10
+    . 11 / 10 = 1,1
+6)
+    . 6 - 15
+    . 10
+    . 0 and 0
+    . 10
+    . 10 /10 = 1 (de locos XD)
+
+7) Reorganizing the code I have reached a CPI of = 1,2 with just 2 control hazards because of the 2 branches and the pnt1

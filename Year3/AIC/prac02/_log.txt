@@ -1,0 +1,35 @@
+Ciclo: 9, Señal: IFnop, IDnop; Instrucción dadd r1,r1,1
+Ciclo: 9, Señal: Salto Efectivo; Instrucción bnez r2,else
+Ciclo: 12, Señal: IFstall; Instrucción trap 0
+Ciclo: 12, Señal: IFnop, IDnop; Instrucción -nop-
+Ciclo: 12, Señal: Salto Efectivo; Instrucción bne r4,r0,loop
+Ciclo: 20, Señal: IFstall; Instrucción trap 0
+Ciclo: 20, Señal: IFnop, IDnop; Instrucción dadd r10,r10,1
+Ciclo: 20, Señal: Salto Efectivo; Instrucción bne r4,r0,loop
+Ciclo: 28, Señal: IFstall; Instrucción trap 0
+Ciclo: 28, Señal: IFnop, IDnop; Instrucción dadd r10,r10,1
+Ciclo: 28, Señal: Salto Efectivo; Instrucción bne r4,r0,loop
+Ciclo: 36, Señal: IFstall; Instrucción trap 0
+Ciclo: 36, Señal: IFnop, IDnop; Instrucción dadd r10,r10,1
+Ciclo: 36, Señal: Salto Efectivo; Instrucción bne r4,r0,loop
+Ciclo: 44, Señal: IFstall; Instrucción trap 0
+Ciclo: 44, Señal: IFnop, IDnop; Instrucción dadd r10,r10,1
+Ciclo: 44, Señal: Salto Efectivo; Instrucción bne r4,r0,loop
+Ciclo: 52, Señal: IFstall; Instrucción trap 0
+Ciclo: 52, Señal: IFnop, IDnop; Instrucción dadd r10,r10,1
+Ciclo: 52, Señal: Salto Efectivo; Instrucción bne r4,r0,loop
+Ciclo: 60, Señal: IFstall; Instrucción trap 0
+Ciclo: 60, Señal: IFnop, IDnop; Instrucción dadd r10,r10,1
+Ciclo: 60, Señal: Salto Efectivo; Instrucción bne r4,r0,loop
+Ciclo: 68, Señal: IFstall; Instrucción trap 0
+Ciclo: 68, Señal: IFnop, IDnop; Instrucción dadd r10,r10,1
+Ciclo: 68, Señal: Salto Efectivo; Instrucción bne r4,r0,loop
+Ciclo: 74, Señal: IFnop, IDnop; Instrucción dadd r1,r1,1
+Ciclo: 74, Señal: Salto Efectivo; Instrucción bnez r2,else
+Ciclo: 77, Señal: IFstall; Instrucción trap 0
+Ciclo: 77, Señal: IFnop, IDnop; Instrucción -nop-
+Ciclo: 77, Señal: Salto Efectivo; Instrucción bne r4,r0,loop
+Ciclo: 85, Señal: IFstall; Instrucción trap 0
+Ciclo: 86, Señal: IFstall; Instrucción trap 0
+Ciclo: 87, Señal: IFstall; Instrucción trap 0
+Ciclo: 88, Señal: IFstall; Instrucción trap 0

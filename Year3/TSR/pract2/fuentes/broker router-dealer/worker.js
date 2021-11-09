@@ -3,6 +3,7 @@ let rep = zmq.socket('rep');
 rep.connect('tcp://localhost:9999')
 rep.on('message', (msg)=> {
 	setTimeout(()=> {
-		rep.send('resp')
+		rep.send('Hello there')
+		console.log(msg)
 	}, 1000)
 })

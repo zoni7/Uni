@@ -2,14 +2,19 @@ const zmq = require('zeromq')
 let cli=[], req=[], workers=[]
 let sc = zmq.socket('router') // frontend
 let sw = zmq.socket('router') // backend
-sc.bind('tcp://*:9998')
-sw.bind('tcp://*:9999')
+let PORT_FRONTEND = process.argv[2]
+let PORT_BACKEND = process.argv[3]
+let contreq = 0 // Cont request
+sc.bind('tcp://*:' + PORT_FRONTEND)
+sw.bind('tcp://*:' + PORT_BACKEND)
 sc.on('message',(c,sep,m)=> {
 	if (workers.length==0) { 
 		cli.push(c); req.push(m)
 	} else {
 		sw.send([workers.shift(),'',c,'',m])
 	}
+	console.log(contreq++) // Print number of requests managed
+
 })
 sw.on('message',(w,sep,c,sep2,r)=> {
     if (c=='') {workers.push(w); return}
