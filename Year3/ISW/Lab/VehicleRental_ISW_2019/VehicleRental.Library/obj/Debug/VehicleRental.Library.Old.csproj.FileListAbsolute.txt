@@ -1,0 +1,10 @@
+D:\Workspace\ISW\Visual Studio 2015\VehicleRental\VehicleRental.BussinessLogic\bin\Debug\VehicleRental.Library.dll.config
+D:\Workspace\ISW\Visual Studio 2015\VehicleRental\VehicleRental.BussinessLogic\bin\Debug\VehicleRental.Library.dll
+D:\Workspace\ISW\Visual Studio 2015\VehicleRental\VehicleRental.BussinessLogic\bin\Debug\VehicleRental.Library.pdb
+D:\Workspace\ISW\Visual Studio 2015\VehicleRental\VehicleRental.BussinessLogic\bin\Debug\EntityFramework.dll
+D:\Workspace\ISW\Visual Studio 2015\VehicleRental\VehicleRental.BussinessLogic\bin\Debug\EntityFramework.SqlServer.dll
+D:\Workspace\ISW\Visual Studio 2015\VehicleRental\VehicleRental.BussinessLogic\bin\Debug\EntityFramework.xml
+D:\Workspace\ISW\Visual Studio 2015\VehicleRental\VehicleRental.BussinessLogic\bin\Debug\EntityFramework.SqlServer.xml
+D:\Workspace\ISW\Visual Studio 2015\VehicleRental\VehicleRental.BussinessLogic\obj\Debug\VehicleRental.Library.Old.csprojResolveAssemblyReference.cache
+D:\Workspace\ISW\Visual Studio 2015\VehicleRental\VehicleRental.BussinessLogic\obj\Debug\VehicleRental.Library.dll
+D:\Workspace\ISW\Visual Studio 2015\VehicleRental\VehicleRental.BussinessLogic\obj\Debug\VehicleRental.Library.pdb

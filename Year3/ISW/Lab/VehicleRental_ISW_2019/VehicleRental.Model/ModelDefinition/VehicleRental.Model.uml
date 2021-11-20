@@ -1,0 +1,661 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel"
+  dslVersion="1.0.0.0"
+  Id="32d17a02-9854-4424-989c-f7b4f57b9f24"
+  name="VehicleRental.DesignModel" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <appliedStereotypesInternal>
+    <stereotypeInstance
+      Id="cd477fca-d79b-4537-b3a0-becad8bae0e1"
+      name="namespace"
+      profile="CSharpProfile">
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="3e37ca55-37c5-4d04-a022-adf8fb93a980">
+          <propertyInstance
+            Id="df2a6590-29be-4d1a-a3c3-dfd8a8ade333"
+            name="BaseName" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="7aa9f985-8ed9-4d0e-bef8-01c2b974188e">
+          <propertyInstance
+            Id="aab7de18-bf96-4297-aa97-f719eb212c4d"
+            name="ClrAttributes" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="b6bff994-7b49-40d8-8075-3322bbdf32d3">
+          <propertyInstance
+            Id="4c0f2755-9e3d-4dc6-940e-ae15b8daac58"
+            name="Usings" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+    <stereotypeInstance
+      Id="d7af47d2-e308-480e-a116-5fae4525d29c"
+      name="TextTemplateBindings"
+      profile="TextTemplateBindings">
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="fba5cfc7-6b90-4382-bb04-9df96a1cebfb">
+          <propertyInstance
+            Id="57364af2-7a25-4b6a-807f-35b32ab9ace4"
+            name="Alias"
+            value="ClassTemplate|EnumTemplate|InterfaceTemplate|StructTemplate" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="5c56f531-45a1-4511-85f7-4f0f5231d758">
+          <propertyInstance
+            Id="de77a63e-0e33-4eb2-b0d4-f00c0d5de88c"
+            name="TemplateFilePath"
+            value="ClassTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 14.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4|EnumTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 14.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\EnumTemplate.t4|InterfaceTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 14.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\InterfaceTemplate.t4|StructTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 14.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="469d0fde-0c10-4190-9b59-82bf9ef18f9e">
+          <propertyInstance
+            Id="6a806dc0-8256-411c-ac39-6e395a98236b"
+            name="ProjectPath"
+            value="ClassTemplate=..\VehicleRental.DesignModelLib\VehicleRental.DesignModelLib.csproj|EnumTemplate=..\VehicleRental.DesignModelLib\VehicleRental.DesignModelLib.csproj|InterfaceTemplate=..\VehicleRental.DesignModelLib\VehicleRental.DesignModelLib.csproj|StructTemplate=..\VehicleRental.DesignModelLib\VehicleRental.DesignModelLib.csproj" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="70ae7e3d-d2fd-40a0-8dc7-792a3c31a5c6">
+          <propertyInstance
+            Id="c31bcf54-5cab-4c11-82fc-3d50f06beb74"
+            name="TargetDirectory"
+            value="ClassTemplate=GeneratedCode\{PackageStructure}|EnumTemplate=GeneratedCode\{PackageStructure}|InterfaceTemplate=GeneratedCode\{PackageStructure}|StructTemplate=GeneratedCode\{PackageStructure}" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="522bc6c6-3196-4850-a91f-44ff567568fb">
+          <propertyInstance
+            Id="e6469ce1-c4ce-450c-b134-f82b8f65bea5"
+            name="TargetName"
+            value="ClassTemplate={Name}|EnumTemplate={Name}|InterfaceTemplate={Name}|StructTemplate={Name}" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="2ee697b5-5b68-49c2-90ad-b0aa89434884">
+          <propertyInstance
+            Id="71f45e11-c875-46ed-be63-c74ff39a0556"
+            name="Overwrite"
+            value="ClassTemplate=True|EnumTemplate=True|InterfaceTemplate=True|StructTemplate=True" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="0a6a524d-7d9a-43cc-a426-3448d17548f8">
+          <propertyInstance
+            Id="e09d842e-77b3-490e-84b0-d6cb0dd9d156"
+            name="Parameters" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+  </appliedStereotypesInternal>
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
+      <profileInstance
+        Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791"
+        name="StandardProfileL2" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="29349502-908c-4fda-9054-c48619c59ed0">
+      <profileInstance
+        Id="532ea607-fb19-44b8-8502-3351b05452be"
+        name="StandardProfileL3" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="a6d5bb0f-b46c-42ce-b316-e1014e7a8a14">
+      <profileInstance
+        Id="27b4c7a2-6304-4818-b2ae-76a7bb8c0f16"
+        name="CSharpProfile" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="d482b34c-8c87-4128-a6ce-4a1785d1c5fd">
+      <profileInstance
+        Id="b46b3ff7-0579-456d-81ca-5ed5c4fd219a"
+        name="TextTemplateBindings" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="cfdb9f39-91db-4079-bb9d-11b026cb8e38"
+        name="BranchOffice"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="34f0710e-c47c-4740-8e19-09bf3ca65335"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="b747f98a-7cc6-4ef3-a155-7e5f5fb9c365">
+                <propertyInstance
+                  Id="ddd3b0fb-738b-4ae6-904e-f0933f4035a2"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="7a5d0606-3544-4072-bb3d-7824c34a98bb">
+                <propertyInstance
+                  Id="53a21674-56ea-4ec6-a31c-867e32912a30"
+                  name="IsPartial"
+                  value="true" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="871d5caa-b084-4c9c-a30f-11aef0e83d0c">
+                <propertyInstance
+                  Id="5711d5a6-415b-4a8c-94f6-dcecd6761ffe"
+                  name="IsStatic"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="9c4ceb16-320c-4253-bcd4-db9ddafdea54">
+                <propertyInstance
+                  Id="747bac85-a92f-4093-a313-812d93b22c27"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="3229148d-303c-4845-a443-3269c635e831">
+                <propertyInstance
+                  Id="67cef7e2-14d8-48b6-aa2b-a7204b350b59"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="7209e2fb-ccc6-4809-a611-9d66a1aafa58"
+            name="address"
+            isLeaf="true"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="64212897-a6b7-4a12-a11d-9918a7d34bc4"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="26f4cad2-240b-44af-b33e-5f898d104079">
+                    <propertyInstance
+                      Id="c1d83051-ad60-440d-9a81-c0626ae5568c"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5bbf98d0-0bbe-4ba3-9073-d26c05fdd596">
+                    <propertyInstance
+                      Id="861efba4-d05d-48b8-bab9-c9cc1e5b68ff"
+                      name="Get"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="daa3a571-6b8a-4e76-b08a-1b1ac1f93bed">
+                    <propertyInstance
+                      Id="e86a70c7-3805-4aa3-8e08-031a3d2e5efe"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9aec7713-524e-4f44-a4f7-aa0e6172dc01">
+                    <propertyInstance
+                      Id="10175647-87b4-457b-a4a1-e4791d7cd41b"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4c5ee47f-6b80-42b6-a02a-64f616ad0f84">
+                    <propertyInstance
+                      Id="a419d9a0-ba99-4db2-9811-ea2b5145ca9e"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9ef14281-cf87-490a-8d5b-00a17f4808f7">
+                    <propertyInstance
+                      Id="49d3d7c7-aaba-4e3e-a0a4-3d713c7aed0f"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9b373679-2c1d-4e53-8874-a5ee382e38c9">
+                    <propertyInstance
+                      Id="eb2bd174-bb50-4f6b-bcc8-b89ef1154b9b"
+                      name="Set"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="VehicleRental.Model.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="a8d07188-40ce-420b-a056-fd2a50a96449"
+            name="Id"
+            isLeaf="true"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="eb852879-e0ba-4d6b-8d98-20bf08c0c7b8"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a7913c1b-6fb0-4ea2-bf8f-0ce515395a1d">
+                    <propertyInstance
+                      Id="bd094e79-4708-46ee-9ac1-3acd04a27940"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e9f5e3b3-b53e-4527-8066-89ac288c4788">
+                    <propertyInstance
+                      Id="6caf1bee-1848-47d4-b180-4fba6d912973"
+                      name="Get"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="43690196-b573-4097-9655-c2ff7c9c190e">
+                    <propertyInstance
+                      Id="83211186-fdef-4292-ba8f-c41571c649c5"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bbb68b42-f94b-4a6c-9f72-287d9d48069b">
+                    <propertyInstance
+                      Id="5e2ae527-8c6e-4050-8a3a-52d2ff47e1f4"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0ce568c1-e668-400c-8a13-6e01a7764976">
+                    <propertyInstance
+                      Id="06545a46-f204-4e87-8a41-3864be025c07"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a222ca21-edd0-4aa6-92cd-613b4c21b5fc">
+                    <propertyInstance
+                      Id="3a03dc8a-e062-4a50-b121-97671ef4306b"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c6811288-a159-46a7-87ec-1cbd4b66fc12">
+                    <propertyInstance
+                      Id="4fc35384-52cb-4b11-ac76-4550dce2ff62"
+                      name="Set"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                LastKnownName="Integer"
+                LastKnownLocation="VehicleRental.Model.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="6443eeb1-64cf-4174-a1a5-3ff5d37533d9"
+        name="DateTime" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="efbb660a-d8d5-415d-b80c-7b6417c01469"
+        name="Double" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="caf1d367-44e0-40fb-bafd-a07b37a81212"
+        LastKnownName="VehicleRental.Entities"
+        LastKnownLocation="Package_0013.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="f3bce578-3fa2-4ec4-ba57-5a3087da6ff9"
+        name="Employee"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="1feeeccd-1834-45c0-8638-de1020a3bd18"
+            isDerived="false"
+            sourceEndRoleName="Employee"
+            targetEndRoleName="Add New Reservation"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="9c41eece-074f-4370-9736-16e7331f4b54"
+              LastKnownName="Add New Reservation"
+              LastKnownLocation="VehicleRental.Model.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="71e6e488-f109-4c13-9005-9e69b1376f37"
+                  name="Employee"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9aaa4b8d-6651-4397-b026-e5a8e9bb5dc4"
+                  name="Add New Reservation"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="23b081ad-5b10-4db8-88a1-47706681d237"
+            isDerived="false"
+            sourceEndRoleName="Employee"
+            targetEndRoleName="List Customer Reservations"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="dc236fc3-b72e-45f5-9411-253456cb9c6d"
+              LastKnownName="List Customer Reservations"
+              LastKnownLocation="VehicleRental.Model.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="af815feb-363a-44da-bb1d-596d447caf61"
+                  name="Employee"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="64ec8a08-99a8-4198-8b3d-e8ea498715d3"
+                  name="List Customer Reservations"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="7ea0e4fc-2f27-42ee-98dd-2071bb345a57"
+            isDerived="false"
+            sourceEndRoleName="Employee"
+            targetEndRoleName="List Co-Drivers"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="dd2abda0-42b0-4f84-810f-2e72fe8af0e6"
+              LastKnownName="List Co-Drivers"
+              LastKnownLocation="VehicleRental.Model.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="dd00afad-2b1e-45bb-a069-b033aa359535"
+                  name="Employee"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="20083603-fc07-49b9-ac7d-5eeee0ea6ed6"
+                  name="List Co-Drivers"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="9c41eece-074f-4370-9736-16e7331f4b54"
+        name="Add New Reservation"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="1709dcc8-6f4e-4dee-93bc-b9aa17ffb5e8">
+            <useCaseMoniker
+              Id="bf428a30-6626-4858-990c-0de0ca32d700"
+              LastKnownName="Search Customers"
+              LastKnownLocation="VehicleRental.Model.uml" />
+          </include>
+          <include
+            Id="763a0743-e218-4a36-8650-cc1dad8e4f28">
+            <useCaseMoniker
+              Id="e35fb857-92a4-481f-b44b-5bc453778468"
+              LastKnownName="Search Drivers"
+              LastKnownLocation="VehicleRental.Model.uml" />
+          </include>
+          <include
+            Id="23d8f4b6-c713-4fbf-9e35-7cbcc090f40d">
+            <useCaseMoniker
+              Id="fb945628-5a4c-448c-90e5-4b42f78c976a"
+              LastKnownName="Search Offices"
+              LastKnownLocation="VehicleRental.Model.uml" />
+          </include>
+          <include
+            Id="9b6925a5-6d50-4cf2-a1ba-99f762aa11b4">
+            <useCaseMoniker
+              Id="2cac8ed4-eda6-4bd9-a452-44b5a456da21"
+              LastKnownName="Search Categories"
+              LastKnownLocation="VehicleRental.Model.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="bf428a30-6626-4858-990c-0de0ca32d700"
+        name="Search Customers"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="6d8a092b-ae26-4371-990e-ae8586235912"
+        name="Add New Customer"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="d21770a1-a112-4819-a4d2-00734dfba808">
+            <useCaseMoniker
+              Id="9c41eece-074f-4370-9736-16e7331f4b54"
+              LastKnownName="Add New Reservation"
+              LastKnownLocation="VehicleRental.Model.uml" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include
+            Id="c736f579-ff05-401c-b07f-d20f98c94bd0">
+            <useCaseMoniker
+              Id="f92647c7-6e0d-4246-a9b7-230a8ad77c59"
+              LastKnownName="Add New Card"
+              LastKnownLocation="VehicleRental.Model.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="e35fb857-92a4-481f-b44b-5bc453778468"
+        name="Search Drivers"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="8fddf0f9-d673-4b0d-a793-de541a99760f"
+        name="Add New Driver"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="580097d3-f2de-430a-9f2f-100be86dc7e8">
+            <useCaseMoniker
+              Id="9c41eece-074f-4370-9736-16e7331f4b54"
+              LastKnownName="Add New Reservation"
+              LastKnownLocation="VehicleRental.Model.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="fb945628-5a4c-448c-90e5-4b42f78c976a"
+        name="Search Offices"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="2cac8ed4-eda6-4bd9-a452-44b5a456da21"
+        name="Search Categories"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="dc236fc3-b72e-45f5-9411-253456cb9c6d"
+        name="List Customer Reservations"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="32220121-78b8-446d-8a47-de8f1c60ce00">
+            <useCaseMoniker
+              Id="50c48e5b-4f25-4537-aa7d-bbccd4b4d1ff"
+              LastKnownName="Search Customers1"
+              LastKnownLocation="VehicleRental.Model.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="50c48e5b-4f25-4537-aa7d-bbccd4b4d1ff"
+        name="Search Customers1"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="dd2abda0-42b0-4f84-810f-2e72fe8af0e6"
+        name="List Co-Drivers"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="63e4bf00-1083-41aa-8998-235bd70f6f06">
+            <useCaseMoniker
+              Id="08050e4d-cf64-4fcf-8a48-63e491f0dde7"
+              LastKnownName="Search Persons"
+              LastKnownLocation="VehicleRental.Model.uml" />
+          </include>
+          <include
+            Id="459cb8c8-68d2-4bdf-bd20-2a805b7194a4">
+            <useCaseMoniker
+              Id="6509dc73-1362-4ee1-adba-cb44e1a159ec"
+              LastKnownName="Search Reservations"
+              LastKnownLocation="VehicleRental.Model.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="08050e4d-cf64-4fcf-8a48-63e491f0dde7"
+        name="Search Persons"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="f92647c7-6e0d-4246-a9b7-230a8ad77c59"
+        name="Add New Card"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="6509dc73-1362-4ee1-adba-cb44e1a159ec"
+        name="Search Reservations"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>

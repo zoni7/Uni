@@ -10,6 +10,7 @@ req.connect(URL)
 req.on('message', (c,sep,msg)=> {
 	setTimeout(()=> {
 		req.send([c,'',TXTREPLAY + ' and ' + NICKNAME + ' managed ' + ++contReqManaged])
+		console.log(contReqManaged);
 	}, 1000)
 })
-req.send(['','',''])
+req.send(['','','']) // Initial request 
