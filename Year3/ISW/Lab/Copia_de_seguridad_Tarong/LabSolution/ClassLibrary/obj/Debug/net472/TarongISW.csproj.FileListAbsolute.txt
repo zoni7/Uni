@@ -1,0 +1,11 @@
+C:\Users\Joan\source\repos\LabSolution\ClassLibrary\obj\Debug\net472\TarongISW.csproj.AssemblyReference.cache
+C:\Users\Joan\source\repos\LabSolution\ClassLibrary\obj\Debug\net472\TarongISW.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Joan\source\repos\LabSolution\ClassLibrary\obj\Debug\net472\TarongISW.AssemblyInfoInputs.cache
+C:\Users\Joan\source\repos\LabSolution\ClassLibrary\obj\Debug\net472\TarongISW.AssemblyInfo.cs
+C:\Users\Joan\source\repos\LabSolution\ClassLibrary\obj\Debug\net472\TarongISW.csproj.CoreCompileInputs.cache
+C:\Users\Joan\source\repos\LabSolution\ClassLibrary\bin\Debug\net472\TarongISW.dll
+C:\Users\Joan\source\repos\LabSolution\ClassLibrary\bin\Debug\net472\TarongISW.pdb
+C:\Users\Joan\source\repos\LabSolution\ClassLibrary\obj\Debug\net472\TarongISW.dll
+C:\Users\Joan\source\repos\LabSolution\ClassLibrary\obj\Debug\net472\TarongISW.pdb
+C:\Users\Joan\source\repos\LabSolution\ClassLibrary\bin\Debug\net472\EntityFramework.SqlServer.dll
+C:\Users\Joan\source\repos\LabSolution\ClassLibrary\bin\Debug\net472\EntityFramework.dll

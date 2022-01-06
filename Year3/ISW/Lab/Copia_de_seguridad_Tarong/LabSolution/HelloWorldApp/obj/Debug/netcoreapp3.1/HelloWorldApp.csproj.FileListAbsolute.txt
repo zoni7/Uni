@@ -1,0 +1,14 @@
+C:\Users\Joan\source\repos\LabSolution\HelloWorldApp\bin\Debug\netcoreapp3.1\HelloWorldApp.exe
+C:\Users\Joan\source\repos\LabSolution\HelloWorldApp\bin\Debug\netcoreapp3.1\HelloWorldApp.deps.json
+C:\Users\Joan\source\repos\LabSolution\HelloWorldApp\bin\Debug\netcoreapp3.1\HelloWorldApp.runtimeconfig.json
+C:\Users\Joan\source\repos\LabSolution\HelloWorldApp\bin\Debug\netcoreapp3.1\HelloWorldApp.runtimeconfig.dev.json
+C:\Users\Joan\source\repos\LabSolution\HelloWorldApp\bin\Debug\netcoreapp3.1\HelloWorldApp.dll
+C:\Users\Joan\source\repos\LabSolution\HelloWorldApp\bin\Debug\netcoreapp3.1\HelloWorldApp.pdb
+C:\Users\Joan\source\repos\LabSolution\HelloWorldApp\obj\Debug\netcoreapp3.1\HelloWorldApp.csproj.AssemblyReference.cache
+C:\Users\Joan\source\repos\LabSolution\HelloWorldApp\obj\Debug\netcoreapp3.1\HelloWorldApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Joan\source\repos\LabSolution\HelloWorldApp\obj\Debug\netcoreapp3.1\HelloWorldApp.AssemblyInfoInputs.cache
+C:\Users\Joan\source\repos\LabSolution\HelloWorldApp\obj\Debug\netcoreapp3.1\HelloWorldApp.AssemblyInfo.cs
+C:\Users\Joan\source\repos\LabSolution\HelloWorldApp\obj\Debug\netcoreapp3.1\HelloWorldApp.csproj.CoreCompileInputs.cache
+C:\Users\Joan\source\repos\LabSolution\HelloWorldApp\obj\Debug\netcoreapp3.1\HelloWorldApp.dll
+C:\Users\Joan\source\repos\LabSolution\HelloWorldApp\obj\Debug\netcoreapp3.1\HelloWorldApp.pdb
+C:\Users\Joan\source\repos\LabSolution\HelloWorldApp\obj\Debug\netcoreapp3.1\HelloWorldApp.genruntimeconfig.cache

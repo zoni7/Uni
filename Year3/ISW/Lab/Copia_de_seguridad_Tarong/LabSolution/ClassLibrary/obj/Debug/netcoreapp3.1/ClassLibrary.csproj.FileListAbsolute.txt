@@ -1,0 +1,10 @@
+C:\Users\Joan\source\repos\LabSolution\ClassLibrary\bin\Debug\netcoreapp3.1\ClassLibrary.deps.json
+C:\Users\Joan\source\repos\LabSolution\ClassLibrary\bin\Debug\netcoreapp3.1\ClassLibrary.dll
+C:\Users\Joan\source\repos\LabSolution\ClassLibrary\bin\Debug\netcoreapp3.1\ClassLibrary.pdb
+C:\Users\Joan\source\repos\LabSolution\ClassLibrary\obj\Debug\netcoreapp3.1\ClassLibrary.csproj.AssemblyReference.cache
+C:\Users\Joan\source\repos\LabSolution\ClassLibrary\obj\Debug\netcoreapp3.1\ClassLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Joan\source\repos\LabSolution\ClassLibrary\obj\Debug\netcoreapp3.1\ClassLibrary.AssemblyInfoInputs.cache
+C:\Users\Joan\source\repos\LabSolution\ClassLibrary\obj\Debug\netcoreapp3.1\ClassLibrary.AssemblyInfo.cs
+C:\Users\Joan\source\repos\LabSolution\ClassLibrary\obj\Debug\netcoreapp3.1\ClassLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Joan\source\repos\LabSolution\ClassLibrary\obj\Debug\netcoreapp3.1\ClassLibrary.dll
+C:\Users\Joan\source\repos\LabSolution\ClassLibrary\obj\Debug\netcoreapp3.1\ClassLibrary.pdb

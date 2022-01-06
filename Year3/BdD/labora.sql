@@ -130,7 +130,20 @@ ORDER BY titulo;
 SELECT Count(*)
 FROM Clasificacion JOIN Genero USING(cod_gen)
 WHERE nombre = 'Comedia' AND cod_peli IN (SELECT cod_peli FROM Actua WHERE papel = 'Secundario' ); -- I am not sure if it is picking just one actor
-
+-- Alternative to 21
+SELECT count(P.cod_peli)
+FROM Pelicula P, Clasificacion C, Genero G
+WHERE P.cod_peli = C.cod_peli AND C.cod_gen = G.cod_gen AND G.nombre = 'Comedia'
+        AND 1 = (SELECT COUNT(A.cod_act)
+                FROM Actua A
+                WHERE A.cod_peli = P.cod_peli AND A.papel = 'Secundario');
+-- Alternative to 21 without subquery
+SELECT COUNT(A.cod_act)
+FROM Pelicula P, Clasificacion C, Genero G, Actua A
+WHERE P.cod_peli = C.cod_peli AND C.cod_gen = G.cod_gen AND A.cod_peli = P.cod_peli AND G.nombre = 'Comedia' AND A.papel = 'Secundario';
+-- It is not possible to use group by
+ 
+    
 -- 22
 SELECT MIN(anyo) -- Pick the FIRST movie
 FROM Pelicula 
@@ -155,7 +168,7 @@ Order By nombre;
 -- 26
 SELECT cod_lib, Libro_peli.titulo
 From Libro_peli JOIN Pelicula using(cod_lib)
-WHERE cod_peli IN (SELECT cod_peli From Actua JOIN Actor using(cod_act) WHERE cod_pais IN (SELECT cod_pais FROM Pais WHERE nombre = 'España'))
+WHERE cod_peli IN (SELECT cod_peli From Actua JOIN Actor using(cod_act) WHERE cod_pais IN (SELECT cod_pais FROM Pais WHERE nombre = 'Espaï¿½a'))
 ORDER BY  titulo;
 
 -- 27
@@ -174,7 +187,7 @@ FROM Pelicula P1
 WHERE 250 < (SELECT SUM(duracion) FROM Pelicula P2 WHERE P1.director = P2.director)
 ORDER BY director;
 
-- 30
+-- 30
 SELECT DISTINCT EXTRACT(YEAR FROM A1.fecha_nac)
 FROM Actor A1
 WHERE 3 < (SELECT COUNT(cod_act) FROM Actor A2 WHERE EXTRACT(YEAR FROM A1.fecha_nac) = EXTRACT(YEAR FROM A2.fecha_nac) )
@@ -205,6 +218,29 @@ WHERE NOT EXISTS(SELECT P.cod_peli FROM Actua AC, Pelicula P WHERE
                             NOT EXISTS (SELECT * FROM Actua AC2 WHERE A.cod_act = AC2.cod_act AND AC2.cod_peli = AC.cod_peli ) 
                             AND AC.cod_peli = P.cod_peli AND P.director = 'Guy Ritchie') 
     AND EXISTS (SELECT * FROM Pelicula WHERE director = 'Guy Ritchie');
+    
+SELECT DISTINCT A.cod_act, A.nombre
+FROM Actor A
+WHERE NOT EXISTS(
+                SELECT P.cod_peli 
+                FROM Pelicula P 
+                WHERE A.cod_act NOT IN (
+                    SELECT AC2.cod_act 
+                    FROM Actua AC2 
+                    WHERE AC2.cod_peli = P.cod_peli
+                )
+                AND P.director = 'Guy Ritchie')
+    AND EXISTS (SELECT * FROM Pelicula WHERE director = 'Guy Ritchie');
+    
+SELECT name
+FROM Cyclist C
+WHERE NOT EXISTS (SELECT *
+FROM Stage S
+WHERE km > 200 AND
+C.cnum NOT IN (SELECT C2.cnum FROM Cyclist C2 WHERE C2.cnum = S.cnum  ) )
+AND EXISTS ( SELECT *
+FROM Stage S
+WHERE km > 200);
 
 -- 35
 
@@ -218,27 +254,54 @@ WHERE NOT EXISTS(SELECT P.cod_peli FROM Actua AC, Pelicula P WHERE
 -- 36
 SELECT DISTINCT P.cod_peli, P.titulo  
 FROM Pelicula P, Actua AC1, Actor A1
-WHERE AC1.cod_peli = P.cod_peli AND A1.cod_act = AC1.cod_act AND P.duracion < 100 AND NOT EXISTS (SELECT * FROM Actua AC2, Actor A2 WHERE AC2.cod_act = A2.cod_act AND AC2.cod_peli = P.cod_peli AND A2.cod_pais <> A1.cod_pais)
+WHERE AC1.cod_peli = P.cod_peli AND A1.cod_act = AC1.cod_act AND P.duracion < 100 AND 
+    NOT EXISTS (SELECT * FROM Actua AC2, Actor A2 WHERE AC2.cod_act = A2.cod_act AND AC2.cod_peli = P.cod_peli AND A2.cod_pais <> A1.cod_pais)
                                                                                     -- Witch is the addom ?
                                                                                     -- AND EXISTS (SELECT * FROM Actua AC2, Actor A2 WHERE AC2.cod_act = A2.cod_act AND AC2.cod_peli = P.cod_peli)
 ORDER BY P.titulo;                                                                                    
 
 
--- 37 WORKING ON IT
-SELECT DISTINCT P.cod_peli, P.titulo, P.anyo
-FROM   Pelicula P, Actua AC
-WHERE AC.cod_peli = P.cod_peli AND NOT EXISTS (SELECT A.cod_act FROM Actor A WHERE A.cod_act = AC.cod_act AND EXTRACT(YEAR FROM A.fecha_nac) > 1943)
-                                    AND EXISTS (SELECT * FROM Actor A WHERE EXTRACT(YEAR FROM A.fecha_nac) < 1943);
-                                
--- 38 WORKING ON IT
+
+-- alternative
+SELECT P.cod_peli, P.titulo
+FROM Pelicula P
+WHERE P.duracion < 100 AND NOT EXISTS (
+        SELECT A.cod_act
+        FROM Actor A JOIN Actua AC on (A.cod_act = AC.cod_Act), Actor A2 JOIN Actua AC2 on(A2.cod_act = AC2.cod_act)
+        WHERE AC.cod_peli = P.cod_peli AND AC2.cod_peli = P.cod_peli AND A.cod_pais <> A2.cod_pais
+                
+        )
+        AND EXISTS (
+            SELECT A.cod_act
+            FROM Actua A
+            WHERE A.cod_peli = P.cod_peli
+        );
+-- 37 VIP capitan
+SELECT P.cod_peli, P.titulo, P.anyo
+FROM   Pelicula P 
+WHERE NOT EXISTS (
+        SELECT  A.cod_act 
+        FROM Actor A , Actua AC
+        WHERE A.cod_act = AC.cod_act AND AC.cod_peli = P.cod_peli AND EXTRACT(YEAR FROM A.fecha_nac) >= 1943 )      
+    AND EXISTS (
+        SELECT A.cod_act 
+        FROM Actor A , Actua AC
+        WHERE A.cod_act = AC.cod_act AND AC.cod_peli = P.cod_peli);
+        
+
+-- 38 VIP
 SELECT DISTINCt P.cod_pais , P.nombre
 FROM Pais P
-WHERE  NOT EXISTS (SELECT A.cod_act FROM Actor A, Actua AC, Pelicula PE WHERE A.cod_pais = P.cod_pais AND A.cod_act = AC.cod_act AND AC.cod_peli = PE.cod_peli AND PE.duracion <= 120 )
-        AND EXISTS (SELECT * FROM Pelicula PE WHERE PE.duracion > 120)  
+WHERE  NOT EXISTS (SELECT A.cod_act FROM Actor A WHERE A.cod_pais = P.cod_pais AND A.cod_act NOT IN(
+        SELECT AC.cod_act
+        FROM Actua AC, Pelicula PE
+        WHERE PE.duracion > 120 and  AC.cod_peli = PE.cod_peli  
+        ))
+    AND EXISTS (SELECT * FROM  Actor A WHERE A.cod_pais = P.cod_pais)
 ORDER BY P.nombre;        
         
 -- 39 
-SELECT L.cod_lib, L.titulo, COUNT(P.cod_peli) AS CUÁNTAS
+SELECT L.cod_lib, L.titulo, COUNT(P.cod_peli) AS CUï¿½NTAS
 FROM Libro_peli L, Pelicula P
 WHERE L.cod_lib = P.cod_lib 
 GROUP BY L.cod_lib, L.titulo
@@ -266,11 +329,15 @@ GROUP BY P.director
 HAVING COUNT(P.cod_peli) = 2;
 
 -- 43
-SELECT P.cod_peli, P.titulo, COUNT(AC.cod_act)
+SELECT P.cod_peli, P.titulo, COUNT(AC.cod_act), COUNT( C.cod_gen)
 FROM Pelicula P, Actua AC, Clasificacion C
 WHERE P.cod_peli = AC.cod_peli AND P.cod_peli = C.cod_peli
 GROUP BY P.cod_peli, P.titulo
 HAVING COUNT(DISTINCT C.cod_gen) = 1;
+
+SELECT AC.cod_act, P.cod_peli, P.titulo, C.cod_gen
+FROM Pelicula P, Actua AC, Clasificacion C
+WHERE P.cod_peli = AC.cod_peli AND P.cod_peli = C.cod_peli;
 
 -- 44
 SELECT P.cod_pais, P.nombre, COUNT(DISTINCT A.cod_act)
@@ -278,14 +345,65 @@ FROM Pais P, Actor A, ACTUA AC, Pelicula PE
 WHERE P.cod_pais = A.cod_pais AND AC.cod_act = A.cod_act AND PE.cod_peli = AC.cod_peli AND PE.anyo BETWEEN 1960 AND 1969
 GROUP BY P.cod_pais, P.nombre;
 
--- 45 WORKING ON IT
+
+-- 45 VIP
 SELECT G.cod_gen , G.nombre
 FROM Genero G, Clasificacion C
 WHERE G.cod_gen = C.cod_gen
 Group by  G.cod_gen , G.nombre
-HAVING  MAX(C.cod_peli) IN COUNT(C.cod_peli)
+HAVING   COUNT(C.cod_peli) = (
+    SELECT MAX(COUNT(C.cod_peli)) 
+    FROM Clasificacion C, Genero G
+    WHERE G.cod_gen = C.cod_gen
+    GROUP BY G.cod_gen , G.nombre ) ;
 
+-- 46 similar to 45
+SELECT L.cod_lib, L.titulo, L.autor
+FROM Libro_peli L, Pelicula P
+WHERE L.cod_lib = P.cod_lib
+Group by L.cod_lib, L.titulo, L.autor
+HAVING   COUNT(P.cod_peli) = (
+    SELECT MAX(COUNT(P.cod_peli)) 
+    FROM Libro_peli L, Pelicula P
+    WHERE L.cod_lib = P.cod_lib
+    GROUP BY L.cod_lib, L.titulo, L.autor ) ;
+    
+-- 47 KING VIP
+SELECT P.cod_pais, P.nombre, COUNT(AC.cod_peli)
+FROM Pais P, Actor A, Actua AC
+WHERE P.cod_pais = A.cod_pais AND A.cod_act = AC.cod_act
+AND AC.cod_act IN (
+    SELECT AC2.cod_act
+    FROM Actua AC2
+    Group by AC2.cod_act
+    having COUNT(AC2.cod_act) = 2) 
+GROUP BY P.cod_pais, P.nombre
+HAVING COUNT(*) = (
+            SELECT MAX(COUNT(*)
+            FROM Pais P, Actor A, Actua AC
+            WHERE P.cod_pais = A.cod_pais AND A.cod_act = AC.cod_act
+            AND AC.cod_act IN (
+                SELECT AC2.cod_act
+                FROM Actua AC2
+                Group by AC2.cod_act
+                having COUNT(AC2.cod_act) = 2) 
+            GROUP BY P.cod_pais, P.nombre
+);
 
+    
+-- 48
+SELECT EXTRACT(YEAR FROM A.fecha_nac) AS Aï¿½o, COUNT(A.cod_act)
+FROM Actor A
+GROUP BY EXTRACT(YEAR FROM A.fecha_nac)
+HAVING COUNT(cod_act) > 3;
+
+-- 49
+SELECT P.cod_peli, P.titulo
+FROM Pelicula P, Actua AC, Pais PA, Actor A
+WHERE PA.cod_pais = A.cod_pais AND AC.cod_act = A.cod_act AND AC.cod_peli = P.cod_peli  AND P.duracion < 100
+GROUP BY P.cod_peli, P.titulo
+HAVING COUNT(DISTINCt PA.cod_pais) = 1;
+    
 -- 50
 SELECT P.cod_pais, P.nombre, COUNT(A.cod_act)
 FROM Pais P LEFT JOIN Actor A on(P.cod_pais = A.cod_pais)
@@ -294,6 +412,7 @@ GROUP BY P.cod_pais, P.nombre;
 -- 51
 SELECT L.cod_lib, L.titulo, COUNT(P.cod_peli)
 FROM Libro_peli L LEFT JOIN  Pelicula P on(P.cod_lib = L.cod_lib)
+--WHERE L.anyo > 1980
 GROUP BY L.cod_lib, L.titulo, L.anyo
 HAVING L.anyo > 1980;
 
@@ -305,8 +424,82 @@ GROUP BY P.cod_pais, P.nombre;
 -- 53
 SELECT P.cod_peli, P.titulo, COUNT(DISTINCT C.cod_gen), COUNT(DISTINCT A.cod_act)
 FROM Actua A right join (Pelicula P left join Clasificacion C on (C.cod_peli = P.cod_peli)) on(A.cod_peli = P.cod_peli)
-WHERE P.duracion > 140
-GROUP BY P.cod_peli, P.titulo
+--WHERE P.duracion > 140
+GROUP BY P.cod_peli, P.titulo, P.duracion
+HAVING P.duracion > 140;
 
+-- 54
+(select anyo
+from Pelicula
+Where anyo  NOT LIKE '%9%')
+union
+(select anyo
+from Libro_peli
+Where anyo NOT LIKE '%9%')
+ORDER BY anyo ASC;
 
+-- 56 KING VIP
+SELECT A.cod_act, A.nombre, A.fecha_nac, COUNT( DISTINCT AC2.cod_peli)
+FROM (Actor A JOIN Actua AC on (A.cod_act = AC.cod_act )) LEFT JOIN Actua AC2 on ( AC2.papel = 'Principal' AND AC.cod_act = AC2.cod_act)
+GROUP BY  A.cod_act, A.nombre, A.fecha_nac
+HAVING EXTRACT(YEAR FROM A.fecha_nac) < 1948 AND COUNT(  AC.cod_peli) >= 2
+ORDER BY A.nombre;
+
+-- CANCION
+-- 31 
+SELECT C.nombre, COUNT(DISTINCT E.can)
+FROM Companyia C, Disco D, Esta E
+WHERE C.cod = D.cod_comp AND D.cod = E.cod
+GROUP BY C.cod, C.nombre
+HAVING COUNT(DISTINCT E.can) = (
+                SELECT MAX(COUNT(DISTINCT E.can))
+                FROM Companyia C, Disco D, Esta E
+                WHERE C.cod = D.cod_comp AND D.cod = E.cod
+                GROUP BY C.cod, C.nombre);
+-- 30
+SELECT A.nombre
+FROM Artista A JOIN Pertenece P on (A.dni = P.dni)
+WHERE P.funcion = 'bajo' 
+        AND P.cod IN (
+                        SELECT G.cod
+                        FROM Grupo G JOIN Pertenece P on (G.cod = P.cod)
+                        GROUP BY G.cod
+                        HAVING COUNT (P.dni) > 2
+                    )
+        
+GROUP BY A.dni, A.nombre
+HAVING COUNT(P.cod) =1;
+
+-- 19
+SELECT DISTINCT C.nombre, C.dir
+FROM Companyia C, Grupo G
+WHERE NOT EXISTS (
+                SELECT D.cod
+                FROM Disco D  
+                WHERE D.cod_gru = G.cod AND D.cod_comp NOT IN (
+                    SELECT  D2.cod_comp 
+                    FROM    Disco D2
+                    WHERE   D2.cod_comp = C.cod AND D2.cod_comp IS NOT NULL
+                    ) 
+                )
+     AND EXISTS (
+                SELECT D.cod
+                FROM Disco D 
+                WHERE D.cod_gru = G.cod
+                );
+
+-- 17 ?
+SELECT C.nombre
+FROM Companyia C 
+WHERE NOT EXISTS (
+    SELECT D.cod
+    FROM Disco D, Grupo G
+    WHERE D.cod_comp = C.cod AND D.cod_grup = G.cod
+        AND G.pais = 'EspaÃ±a'
+)
+    And EXISTS(
+        SELECT D.cod
+    FROM Disco D
+    WHERE D.cod_comp = C.cod
+    );
 

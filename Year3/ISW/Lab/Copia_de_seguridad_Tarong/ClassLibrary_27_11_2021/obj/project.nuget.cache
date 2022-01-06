@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "lhPWoJmsR3ETYM1BV17Urzk1TvM5EHdHM/JutGO/x+Q0oMd+2uC9Iti/pRfNIzVkfEa2fTDcBUA2s2mnV22iMQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Joan\\source\\repos\\LabSolution\\ClassLibrary\\TarongISW.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Joan\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512"
+  ],
+  "logs": []
+}

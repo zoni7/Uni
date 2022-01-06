@@ -117,88 +117,119 @@ namespace VehicleRental.Presentation
             this.searchButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
+            // dnitextBox
+            // 
+            this.dnitextBox.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            // 
+            // nametextBox
+            // 
+            this.nametextBox.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            // 
+            // addresstextBox
+            // 
+            this.addresstextBox.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            // 
+            // citytextBox
+            // 
+            this.citytextBox.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            // 
+            // postalcodetextBox
+            // 
+            this.postalcodetextBox.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            // 
             // addPersonButton
             // 
-            this.addPersonButton.Location = new System.Drawing.Point(212, 474);
+            this.addPersonButton.Location = new System.Drawing.Point(318, 729);
+            this.addPersonButton.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 290);
+            this.label7.Location = new System.Drawing.Point(14, 446);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(59, 13);
+            this.label7.Size = new System.Drawing.Size(89, 20);
             this.label7.TabIndex = 13;
             this.label7.Text = "Credit Card";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(37, 319);
+            this.label8.Location = new System.Drawing.Point(56, 491);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(44, 13);
+            this.label8.Size = new System.Drawing.Size(65, 20);
             this.label8.TabIndex = 14;
             this.label8.Text = "Number";
             // 
             // numberCCtextBox
             // 
-            this.numberCCtextBox.Location = new System.Drawing.Point(87, 316);
+            this.numberCCtextBox.Location = new System.Drawing.Point(130, 486);
+            this.numberCCtextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.numberCCtextBox.Name = "numberCCtextBox";
-            this.numberCCtextBox.Size = new System.Drawing.Size(110, 20);
+            this.numberCCtextBox.Size = new System.Drawing.Size(163, 26);
             this.numberCCtextBox.TabIndex = 15;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(27, 356);
+            this.label9.Location = new System.Drawing.Point(40, 548);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(54, 13);
+            this.label9.Size = new System.Drawing.Size(79, 20);
             this.label9.TabIndex = 16;
             this.label9.Text = "Exp. Date";
             // 
             // expCCdateTimePicker
             // 
-            this.expCCdateTimePicker.Location = new System.Drawing.Point(87, 350);
+            this.expCCdateTimePicker.Location = new System.Drawing.Point(130, 538);
+            this.expCCdateTimePicker.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.expCCdateTimePicker.Name = "expCCdateTimePicker";
-            this.expCCdateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.expCCdateTimePicker.Size = new System.Drawing.Size(298, 26);
             this.expCCdateTimePicker.TabIndex = 17;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(53, 392);
+            this.label10.Location = new System.Drawing.Point(80, 603);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(28, 13);
+            this.label10.Size = new System.Drawing.Size(42, 20);
             this.label10.TabIndex = 18;
             this.label10.Text = "CVC";
             // 
             // cvcCCtextBox
             // 
-            this.cvcCCtextBox.Location = new System.Drawing.Point(87, 389);
+            this.cvcCCtextBox.Location = new System.Drawing.Point(130, 598);
+            this.cvcCCtextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cvcCCtextBox.Name = "cvcCCtextBox";
-            this.cvcCCtextBox.Size = new System.Drawing.Size(32, 20);
+            this.cvcCCtextBox.Size = new System.Drawing.Size(46, 26);
             this.cvcCCtextBox.TabIndex = 19;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(30, 430);
+            this.label11.Location = new System.Drawing.Point(45, 662);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(56, 13);
+            this.label11.Size = new System.Drawing.Size(81, 20);
             this.label11.TabIndex = 20;
             this.label11.Text = "Card Type";
             // 
             // typeCCtextBox
             // 
-            this.typeCCtextBox.Location = new System.Drawing.Point(87, 427);
+            this.typeCCtextBox.Location = new System.Drawing.Point(130, 657);
+            this.typeCCtextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.typeCCtextBox.Name = "typeCCtextBox";
-            this.typeCCtextBox.Size = new System.Drawing.Size(100, 20);
+            this.typeCCtextBox.Size = new System.Drawing.Size(148, 26);
             this.typeCCtextBox.TabIndex = 22;
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(202, 28);
+            this.searchButton.Location = new System.Drawing.Point(303, 43);
+            this.searchButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(75, 23);
+            this.searchButton.Size = new System.Drawing.Size(112, 35);
             this.searchButton.TabIndex = 23;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
@@ -206,8 +237,8 @@ namespace VehicleRental.Presentation
             // 
             // NewCustomerForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(324, 509);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.ClientSize = new System.Drawing.Size(486, 783);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.typeCCtextBox);
             this.Controls.Add(this.label11);
@@ -218,6 +249,7 @@ namespace VehicleRental.Presentation
             this.Controls.Add(this.numberCCtextBox);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
+            this.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.Name = "NewCustomerForm";
             this.Text = "New Customer";
             this.Controls.SetChildIndex(this.dnitextBox, 0);

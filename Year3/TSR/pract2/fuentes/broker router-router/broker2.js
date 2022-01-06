@@ -1,38 +1,36 @@
 const zmq = require('zeromq')
-let cli=[], req=[], workers=[]
-let dealer = zmq.socket('dealer') // B2 <-- B1
+let workers=[]
+let sb = zmq.socket('dealer') // broker1
 let sw = zmq.socket('router') // backend
-//let PORT_FRONTEND = process.argv[2]
-let PORT_BACKEND = process.argv[2]
-let contreq = 0 // Cont request dealer.bind('tcp://*:8002')
+let PORT_BROKER = process.argv[2] || '8001'
+let PORT_BACKEND = process.argv[3] || '8002'
+
+//Connect the B1 dealer
+sb.connect('tcp://localhost:' + PORT_BROKER)
+// Bind for the req of the worker
 sw.bind('tcp://*:' + PORT_BACKEND)
 
 
- dealer.on('message',(c,sep,m)=> {
-	/*
-	if (workers.length==0) { 
-		cli.push(c); req.push(m)
-		console.log('hola')
-	} else {
-		sw.send([workers.shift(),'',c,'',m])
-		console.log('hola')
+sb.on('message',(c,sep,m)=> {
+	
+	// This will not happen because in broker1 we take care of available workers
+	if (workers.length==0) { 		
+		console.log('No worker available packet dropped')
+		return
 	}
-	*/
-	sw.send([workers.shift(),'',b1,'',c,'',m])
-	console.log(contreq++) // Print number of requests managed
+
+	let worker = workers.shift()
+	sw.send([worker,'',c,'',m])
+	console.log("BROKER 2 ==> FROM CLI: " + c + " / TO WOR: " + worker + " / CONTENT: " + m + "(freeWorkers=" + workers.length + ")")
+
 
 })
 
 sw.on('message',(w,sep,c,sep2,r)=> {
-    if (c=='') {workers.push(w); return}
-	/*
-	if (cli.length>0) { 
-		sw.send([w,'',
-			cli.shift(),'',req.shift()])
-	} else {
-		workers.push(w)
-	}
-	*/
- dealer.send(['',c,'',r])
-	console.log("response sended: " + r)
+    // Add the worker to the available workers list
+	workers.push(w)	
+	
+ 	sb.send(['',c,'',r])
+	console.log("BROKER 2 ==> FROM WOR: " + w + " / TO: CLI: " + c + " / CONTENT: " + r)
+	
 })

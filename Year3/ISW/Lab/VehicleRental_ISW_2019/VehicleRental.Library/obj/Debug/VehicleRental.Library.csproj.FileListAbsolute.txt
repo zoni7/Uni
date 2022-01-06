@@ -32,3 +32,14 @@ C:\Users\Javier\Documents\Docencia\ISW\ISW_19_20\VehicleRental_ISW_2017\VehicleR
 C:\Users\Javier\Documents\Docencia\ISW\ISW_19_20\VehicleRental_ISW_2017\VehicleRental.Library\obj\Debug\VehicleRental.Library.csproj.CopyComplete
 C:\Users\Javier\Documents\Docencia\ISW\ISW_19_20\VehicleRental_ISW_2017\VehicleRental.Library\obj\Debug\VehicleRental.Library.dll
 C:\Users\Javier\Documents\Docencia\ISW\ISW_19_20\VehicleRental_ISW_2017\VehicleRental.Library\obj\Debug\VehicleRental.Library.pdb
+C:\Users\Joan\Desktop\Estudis\Uni-Odin\Year3\ISW\Lab\VehicleRental_ISW_2019\VehicleRental.Library\bin\Debug\VehicleRental.Library.dll.config
+C:\Users\Joan\Desktop\Estudis\Uni-Odin\Year3\ISW\Lab\VehicleRental_ISW_2019\VehicleRental.Library\bin\Debug\VehicleRental.Library.dll
+C:\Users\Joan\Desktop\Estudis\Uni-Odin\Year3\ISW\Lab\VehicleRental_ISW_2019\VehicleRental.Library\bin\Debug\VehicleRental.Library.pdb
+C:\Users\Joan\Desktop\Estudis\Uni-Odin\Year3\ISW\Lab\VehicleRental_ISW_2019\VehicleRental.Library\bin\Debug\EntityFramework.dll
+C:\Users\Joan\Desktop\Estudis\Uni-Odin\Year3\ISW\Lab\VehicleRental_ISW_2019\VehicleRental.Library\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Joan\Desktop\Estudis\Uni-Odin\Year3\ISW\Lab\VehicleRental_ISW_2019\VehicleRental.Library\bin\Debug\EntityFramework.xml
+C:\Users\Joan\Desktop\Estudis\Uni-Odin\Year3\ISW\Lab\VehicleRental_ISW_2019\VehicleRental.Library\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Joan\Desktop\Estudis\Uni-Odin\Year3\ISW\Lab\VehicleRental_ISW_2019\VehicleRental.Library\obj\Debug\VehicleRental.Library.csproj.AssemblyReference.cache
+C:\Users\Joan\Desktop\Estudis\Uni-Odin\Year3\ISW\Lab\VehicleRental_ISW_2019\VehicleRental.Library\obj\Debug\VehicleRental.Library.csproj.CoreCompileInputs.cache
+C:\Users\Joan\Desktop\Estudis\Uni-Odin\Year3\ISW\Lab\VehicleRental_ISW_2019\VehicleRental.Library\obj\Debug\VehicleRental.Library.dll
+C:\Users\Joan\Desktop\Estudis\Uni-Odin\Year3\ISW\Lab\VehicleRental_ISW_2019\VehicleRental.Library\obj\Debug\VehicleRental.Library.pdb
