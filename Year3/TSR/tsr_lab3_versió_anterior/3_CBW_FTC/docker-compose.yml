@@ -52,22 +52,6 @@ services:
   bro:
     image: broker
     build: ./broker/
-    links:
-      - log
     expose:
       - "9998"
       - "9999"
-    ports:
-      - "9998:9998"
-    environment:
-      - LOGGER_URL=tcp://log:9995
-  log:
-    image: logger
-    build: ./logger/
-    expose:
-      - "9995"
-    volumes:
-# /tmp/logger.log DIRECTORY must exist on host and writeable
-      - /tmp/logger.log:/tmp/cbwlog
-    environment:
-      - LOGGER_DIR=/tmp/cbwlog

@@ -32,11 +32,8 @@ rw.on('message', (c,sep,m) => {
 
 rw.send(['', cid])
 
-
 rc.on('message', (m)=> {
   setTimeout(()=>{
     rw.send([pendingClient,'',m,cid])}
 	, delay/2); // 50% returning
 })
-
-//rc.send(['hola', cid])

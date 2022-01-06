@@ -57,8 +57,6 @@ services:
     expose:
       - "9998"
       - "9999"
-    ports:
-      - "9998:9998"
     environment:
       - LOGGER_URL=tcp://log:9995
   log:
