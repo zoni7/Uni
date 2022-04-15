@@ -1,0 +1,36 @@
+A. Joan Matarredona Coloma   
+   grupo 3IS11
+
+B. 1. En AWS utilizan modelos formales de comprobación para resolver problemas difíciles en sistemas críticos.
+La alta complejidad de algunos sistemas provoca un aumento de errores humanos de diseño y de código. 
+Entonces, antes de lanzar un servicio de este tipo, debemos alcanzar una confianza extremadamente alta.
+La capacidad de intuición de un humano es pobre para estimar la gran probabilidad de combinaciones que pueden
+producirse en muchos sistemas.
+
+En mayor parte se utiliza el proceso formal de programas a propiedades para el Analisis y verificacion
+automática del software. 
+	- Herramientas de verificacion (con el servicio TIROS para probar la accesibilidad de Amazon 
+		con las redes EC2. Estas tienen la posiblidad de realizar examenes semanales. 
+	- Zelkova razona sobre las politicas de recursos de AWS.	
+
+   2. En concreto en AWS usan el razonamiento automático para todas las propiedades del servicio. En este servicio 
+disponen de herramientas de prueba tanto para el cliente como para el software de AWS, de esta forma se garantiza
+el buen funcionamiento y la seguridad del software.
+
+   3. En TIROS se coje la semántica de la red la transforma en lógica y luego utilizan probadores de teoremas
+para retornar una respuesta. Utilice políticas para otorgar permisos para realizar una operación en AWS.
+Cuando usa una acción en una política, generalmente permite o deniega el acceso a la operación API o al comando 
+CLI con el mismo nombre.
+
+Zelkova traduce las políticas a un lenguaje matemático preciso y luego utiliza herramientas de razonamiento 
+automatizado para verificar las propiedades de las políticas de recursos. Estas herramientas incluyen razonadores 
+automatizados llamados solucionadores de teorías del módulo de satisfacción (SMT), que utilizan una combinación de números, 
+cadenas, expresiones regulares, fechas y direcciones IP para probar y refutar fórmulas lógicas. 
+
+
+   4. Las herramientas automáticas de verificación de corrección hacen que los ingenieros
+esten más seguros y productivos ya que prueban grandes cantidades de combinaciones de imputs y 
+estados del sistema. Estas herramientas brindan a los ingenieros la tranquilidad de poder innovar
+sin introducir regresiones. Segun AWS en un futuro los sistemas que se construyan seran correctos demostrablemente
+que permitirá dar garantias sólidas sobre la durabilidad, seguridad, disponibilidad y del rendimiento.
+

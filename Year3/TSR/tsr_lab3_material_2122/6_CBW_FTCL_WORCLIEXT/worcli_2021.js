@@ -29,7 +29,7 @@ rw.on('message', (c,sep,m) => {
 	  rc.send([m, cid])}
 	  , delay/2); // 50% forwarding
 })
-
+rc.send(['', cid])
 rw.send(['', cid])
 
 
@@ -39,4 +39,4 @@ rc.on('message', (m)=> {
 	, delay/2); // 50% returning
 })
 
-//rc.send(['hola', cid])
+
