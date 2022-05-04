@@ -19,19 +19,20 @@ public class ATM {
   public ATM(double balance) {
     this.balance = balance;
   }
+  
 
-
-  //@ ensures this.balance >= 0;
+  //@ ensures this.balance >= 0;  
   //@ ensures \result >= 0;
   public double sacarDinero(double dineroSacar) {
     //@ assume 0 < dineroSacar <= this.balance;
     if(balance - dineroSacar >= 0){
-        balance = balance - dineroSacar;
+        balance = balance - dineroSacar; 
         //@ assert this.balance >= 0;
-        return dineroSacar;
-    }
-    //@ assert this.balance >= 0;
-    return 0;
+        this.balance = -1;
+        return dineroSacar;      
+    }      
+    //@ assert this.balance >= 0;    
+    return 0;    
   }
 
   //@ requires dineroMeter > 0.0;
@@ -49,9 +50,9 @@ public class ATM {
   public static void main(String[] args){
 
     ATM o = new ATM();
-    o.meterDinero(30.0);
+    o.meterDinero(-1.0);    
     double miExtraccion=o.sacarDinero(5.0);
     double balance = o.mostrarBalance();
-
+    
   }
 }

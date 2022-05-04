@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ASCII"?>
+<goalModel:GoalModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:goalModel="http://goalModel" name="Kindle" iteration="1">
+  <actors elementName="Lector" importance="Very_High" confidence="Possibly_More">
+    <intentionalelements xsi:type="goalModel:Goal" elementName="Leer libros" importance="Very_High" confidence="Possibly_More" localValue="47.95006144864237" globalValue="47.95006144864237" evaluation="Strongly_Agree">
+      <iterations iteration="1" confidence="Possibly_More" globalValue="47.95006144864237" localValue="47.95006144864237">
+        <valuefrom value="26.245740836341646" intentionalelement="//@actors.0/@intentionalelements.0"/>
+        <valuefrom value="21.704320612300727" intentionalelement="//@actors.0/@intentionalelements.3"/>
+      </iterations>
+      <srcLinks xsi:type="goalModel:Decomposition" trgs="//@actors.0/@intentionalelements.1 //@actors.0/@intentionalelements.2" decompositionType="IOR"/>
+      <srcLinks xsi:type="goalModel:Dependency" trgs="//@actors.1/@intentionalelements.0"/>
+    </intentionalelements>
+    <intentionalelements xsi:type="goalModel:Task" elementName="Libro en papel" importance="Medium" confidence="Confident" localValue="23.308429193340817" globalValue="23.308429193340817" evaluation="Strongly_Agree" trgLinks="//@actors.0/@intentionalelements.0/@srcLinks.0">
+      <iterations iteration="1" importance="Medium" globalValue="23.308429193340817" localValue="23.308429193340817">
+        <valuefrom value="13.122870418170823" intentionalelement="//@actors.0/@intentionalelements.1"/>
+        <valuefrom value="10.185558775169994" intentionalelement="//@actors.0/@intentionalelements.3"/>
+      </iterations>
+      <srcLinks xsi:type="goalModel:Contribution" trgs="//@actors.0/@intentionalelements.3" contributionType="p25"/>
+    </intentionalelements>
+    <intentionalelements xsi:type="goalModel:Task" elementName="Kindle" importance="Medium" confidence="Confident" localValue="31.658806865650845" globalValue="31.658806865650845" trgLinks="//@actors.0/@intentionalelements.0/@srcLinks.0">
+      <iterations iteration="1" importance="Medium" globalValue="31.658806865650845" localValue="31.658806865650845">
+        <valuefrom value="13.122870418170823" intentionalelement="//@actors.0/@intentionalelements.2"/>
+        <valuefrom value="18.535936447480022" intentionalelement="//@actors.0/@intentionalelements.3"/>
+      </iterations>
+      <srcLinks xsi:type="goalModel:Contribution" trgs="//@actors.0/@intentionalelements.3" contributionType="p75"/>
+    </intentionalelements>
+    <intentionalelements xsi:type="goalModel:SoftGoal" elementName="Bajo Coste" importance="High" confidence="Possibly_More" localValue="23.24153409339475" globalValue="23.24153409339475" trgLinks="//@actors.0/@intentionalelements.1/@srcLinks.0 //@actors.0/@intentionalelements.2/@srcLinks.0">
+      <iterations iteration="1" importance="High" confidence="Possibly_More" globalValue="23.24153409339475" localValue="23.24153409339475">
+        <valuefrom value="23.24153409339475" intentionalelement="//@actors.0/@intentionalelements.3"/>
+      </iterations>
+    </intentionalelements>
+  </actors>
+  <actors elementName="Autor" importance="High" confidence="Confident">
+    <intentionalelements xsi:type="goalModel:Goal" elementName="Publicar Libro" importance="Very_High" confidence="Confident" localValue="48.164513696695735" globalValue="96.11457514533811" trgLinks="//@actors.0/@intentionalelements.0/@srcLinks.1">
+      <iterations iteration="1" globalValue="96.11457514533811" localValue="48.164513696695735">
+        <valuefrom value="26.245740836341646" valueFrom="External" intentionalelement="//@actors.0/@intentionalelements.0"/>
+        <valuefrom value="21.704320612300727" valueFrom="External" intentionalelement="//@actors.0/@intentionalelements.3"/>
+        <valuefrom value="19.177670198669432" intentionalelement="//@actors.1/@intentionalelements.0"/>
+        <valuefrom value="11.307113902993036" intentionalelement="//@actors.1/@intentionalelements.3"/>
+        <valuefrom value="17.67972959503327" intentionalelement="//@actors.1/@intentionalelements.4"/>
+      </iterations>
+      <srcLinks xsi:type="goalModel:Decomposition" trgs="//@actors.1/@intentionalelements.1 //@actors.1/@intentionalelements.2" decompositionType="IOR"/>
+    </intentionalelements>
+    <intentionalelements xsi:type="goalModel:Task" elementName="Libro en papel" importance="High" confidence="Confident" localValue="29.797408146561416" globalValue="77.7474695952038" trgLinks="//@actors.1/@intentionalelements.0/@srcLinks.0">
+      <iterations iteration="1" importance="High" globalValue="77.7474695952038" localValue="29.797408146561416">
+        <valuefrom value="26.245740836341646" valueFrom="External" intentionalelement="//@actors.0/@intentionalelements.0"/>
+        <valuefrom value="21.704320612300727" valueFrom="External" intentionalelement="//@actors.0/@intentionalelements.3"/>
+        <valuefrom value="9.588835099334716" intentionalelement="//@actors.1/@intentionalelements.1"/>
+        <valuefrom value="5.264799556887214" intentionalelement="//@actors.1/@intentionalelements.3"/>
+        <valuefrom value="14.943773490339488" intentionalelement="//@actors.1/@intentionalelements.4"/>
+      </iterations>
+      <srcLinks xsi:type="goalModel:Contribution" trgs="//@actors.1/@intentionalelements.3" contributionType="p25"/>
+      <srcLinks xsi:type="goalModel:Contribution" trgs="//@actors.1/@intentionalelements.4" contributionType="p50"/>
+    </intentionalelements>
+    <intentionalelements xsi:type="goalModel:Task" elementName="Kindle" importance="High" confidence="Confident" localValue="27.270206647325082" globalValue="75.22026809596746" trgLinks="//@actors.1/@intentionalelements.0/@srcLinks.0">
+      <iterations iteration="1" importance="High" globalValue="75.22026809596746" localValue="27.270206647325082">
+        <valuefrom value="26.245740836341646" valueFrom="External" intentionalelement="//@actors.0/@intentionalelements.0"/>
+        <valuefrom value="21.704320612300727" valueFrom="External" intentionalelement="//@actors.0/@intentionalelements.3"/>
+        <valuefrom value="9.588835099334716" intentionalelement="//@actors.1/@intentionalelements.2"/>
+        <valuefrom value="9.633066640648751" intentionalelement="//@actors.1/@intentionalelements.3"/>
+        <valuefrom value="8.048304907341619" intentionalelement="//@actors.1/@intentionalelements.4"/>
+      </iterations>
+      <srcLinks xsi:type="goalModel:Contribution" trgs="//@actors.1/@intentionalelements.3" contributionType="p75"/>
+    </intentionalelements>
+    <intentionalelements xsi:type="goalModel:SoftGoal" elementName="Aumentar lectores" importance="Medium" confidence="Confident" localValue="23.613487669700056" globalValue="23.613487669700056" trgLinks="//@actors.1/@intentionalelements.1/@srcLinks.0 //@actors.1/@intentionalelements.2/@srcLinks.0">
+      <iterations iteration="1" importance="Medium" globalValue="23.613487669700056" localValue="23.613487669700056">
+        <valuefrom value="12.15738467292474" intentionalelement="//@actors.1/@intentionalelements.3"/>
+        <valuefrom value="11.456102996775318" intentionalelement="//@actors.1/@intentionalelements.4"/>
+      </iterations>
+      <srcLinks xsi:type="goalModel:Contribution" trgs="//@actors.1/@intentionalelements.4" contributionType="p50"/>
+    </intentionalelements>
+    <intentionalelements xsi:type="goalModel:SoftGoal" elementName="Beneficios" importance="Very_High" confidence="Confident" localValue="19.177670198669432" globalValue="19.177670198669432" trgLinks="//@actors.1/@intentionalelements.1/@srcLinks.1 //@actors.1/@intentionalelements.3/@srcLinks.0">
+      <iterations iteration="1" globalValue="19.177670198669432" localValue="19.177670198669432">
+        <valuefrom value="19.177670198669432" intentionalelement="//@actors.1/@intentionalelements.4"/>
+      </iterations>
+    </intentionalelements>
+  </actors>
+</goalModel:GoalModel>
